@@ -10,7 +10,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav" id="menu">
-        <li class="dropdown">
+        <li class="dropdown show-on-hover">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-user-circle"></i> Vue joueur <i class="fa fa-caret-down"></i></a>
           <ul class="dropdown-menu">
             <?php foreach($char as $k => $c) { ?>
@@ -23,5 +23,4 @@
     </div>
   </div>
 </nav>
-<div class="container">
-  <div class="container-fluid" style="padding-top: 100px;">
+<div class="container-fluid" style="padding-top: 100px;">

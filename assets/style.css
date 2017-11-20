@@ -9,6 +9,10 @@ body {
   height: 100%;
 }
 
+.show-on-hover:hover > ul.dropdown-menu {
+  display: block;
+}
+
 #footer {
   height: 28px;
   line-height:28px;

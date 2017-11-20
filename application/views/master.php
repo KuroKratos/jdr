@@ -1,10 +1,49 @@
-<?php
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+<?php foreach ($characters as $c) { ?>
 
-echo "<pre>";
-print_r($characters);
-echo "</pre>";
+<div class="col-sm-4 col-md-3">
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="panel-title text-left"><?= $c['name'] ?></p>
+        </div>
+        <div class="col-sm-6">
+          <p class="panel-title text-center"><?= $c['race'] ?> <?= $c['class'] ?></p>
+        </div>
+        <div class="col-sm-3">
+          <p class="panel-title text-right">Niveau <?= $c['level'] ?></p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-4">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center" style="padding: 5px;">Physique</div>
+            <div class="panel-body text-center" style="font-weight: bold; font-size: 18px; padding: 5px;"><?= $c['physic'] ?></div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center" style="padding: 5px;">Mental</div>
+            <div class="panel-body text-center" style="font-weight: bold; font-size: 18px; padding: 5px;"><?= $c['mental'] ?></div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center" style="padding: 5px;">Social</div>
+            <div class="panel-body text-center" style="font-weight: bold; font-size: 18px; padding: 5px;"><?= $c['social'] ?></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<?php } ?>
