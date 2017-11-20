@@ -1,0 +1,201 @@
+html,body { height: 100%; }
+
+body {
+  /*background-image: url('images/payon_bg.jpg');*/
+  background-size: 100%;
+}
+
+.site-content-wrapper {
+  height: 100%;
+}
+
+#footer {
+  height: 28px;
+  line-height:28px;
+}
+
+#footer .navbar-text {
+  margin-top: 0 !important;
+}
+
+.popover {
+  min-width:300px;
+}
+
+hr.news {
+  width: 50%;
+  margin: 20px auto;
+}
+
+.panel-news {
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  background-color: #f8f8f8;
+}
+
+.news-content {
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  text-align: justify;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3) inset;
+}
+
+.news-footer {
+  margin:0;
+  padding:0;
+}
+
+.staff-role {
+  line-height: 13px;
+  font-size: 10px;
+  padding: 0 5px 0 5px !important;
+  margin-bottom: 0;
+  margin-top: 3px;
+}
+
+ul.staff {
+  padding: 0 0 0 5px;
+  margin:0;
+}
+
+.alert-default {
+  color: #8748a2;
+  background-color: #e9dbef;
+  border-color: #d3b8df;
+}
+
+.alert-primary {
+  color: #484fa2;
+  background-color: #dbdcef;
+  border-color: #b7bbdf;
+}
+
+/* ======================================================== */
+/* NAVBAR CUSTOM                                            */
+/* ======================================================== */
+nav { box-shadow: 0 0 20px rgba(0,0,0,0.3); /*background-color: rgba(248, 248, 248, 0.8) !important;*/ }
+/*.navbar-login { margin-top: 5px; margin-right: -25px; }*/
+.nav_login_input { width: 150px !important; }
+/*.navbar-primary .navbar { border-bottom:none; }
+.navbar-primary .navbar .nav > li > a {}
+.navbar-primary .navbar .nav > li > a:hover {}
+.navbar-primary .navbar .nav .active > a,.navbar .nav .active > a:hover {}
+.navbar-primary .navbar .nav li > a .caret, .tnav .navbar .nav li > a:hover .caret {}
+.navbar-primary .navbar .nav > li.dropdown.open.active > a:hover {}
+.navbar-primary .navbar .nav > li.dropdown.open > a {}
+.navbar-primary .navbar .nav > li.dropdown.open.active > a:hover .caret, .tnav .navbar .nav > li.dropdown.open > a .caret {}
+.navbar-primary .navbar .navbar-brand {}
+.navbar-primary .navbar .nav.pull-right {margin-left: 10px; margin-right: 0;}
+
+.navbar-xs .navbar { min-height:28px; height: 28px; }
+.navbar-xs .navbar .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 28px; }
+.navbar-xs .navbar .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 28px; }
+.navbar-sm .navbar { min-height:40px; height: 40px; }
+.navbar-sm .navbar .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 40px; }
+.navbar-sm .navbar .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 40px; }*/
+
+/* ======================================================== */
+/* SERVER STATUS CIRCLE TOP                                 */
+/* ======================================================== */
+#server_status_wrapper {
+  position:         fixed;
+  left:             50%;
+  z-index:          99999;
+}
+#server_status {
+  width:            250px;
+  height:           250px;
+  position:         relative;
+  top:              -165px;
+  background-color: #f8f8f8;
+  border:           1px solid #e7e7e7;
+  border-radius:    1000px;
+  z-index:          999999;
+  box-shadow:       0 0 20px rgba(0,0,0,0.3);
+  left:             -50%;
+}
+#online_players {
+  font-size:        28px;
+  position:         relative;
+  top:              64%;
+  color:            #122b40;
+  text-shadow:      0 0 5px rgba(0,0,0,0.5);
+  text-align:       center;
+  font-weight:      bold;
+}
+#online_players_label {
+  position:         relative;
+  top:              56%;
+  text-align:       center;
+  font-size:        12px;
+}
+#server_status_frame {
+  position:         relative;
+  top:              54%;
+  text-align:       center;
+  font-size:        12px;
+}
+.server_status {
+  height: 20px !important;
+  width:  20px !important;
+  border-radius: 20px;
+  padding:       0;
+  margin-left:   2px;
+  margin-right:  2px;
+  line-height:   16px;
+}
+.server_status span {
+  margin:  0;
+  padding: 0;
+  font-size: 10px;
+  font-weight: bold;
+}
+/* ======================================================== */
+/* INPUT GROUP ADDONS EXTENDED                              */
+/* ======================================================== */
+.input-group-addon {
+  max-width:        35px;
+}
+.input-group-addon.primary {
+  color:            rgb(255, 255, 255);
+  background-color: rgb(50, 118, 177);
+  border-color:     rgb(40, 94, 142);
+}
+.input-group-addon.success {
+  color:            rgb(255, 255, 255);
+  background-color: rgb(92, 184, 92);
+  border-color:     rgb(76, 174, 76);
+}
+.input-group-addon.info {
+  color:            rgb(255, 255, 255);
+  background-color: rgb(57, 179, 215);
+  border-color:     rgb(38, 154, 188);
+}
+.input-group-addon.warning {
+  color:            rgb(255, 255, 255);
+  background-color: rgb(240, 173, 78);
+  border-color:     rgb(238, 162, 54);
+}
+.input-group-addon.danger {
+  color:            rgb(255, 255, 255);
+  background-color: rgb(217, 83, 79);
+  border-color:     rgb(212, 63, 58);
+}
+/* ======================================================== */
+/* GENDER BUTTONS                                           */
+/* ======================================================== */
+.head-male {
+  width:            27px;
+  height:           26px;
+  margin-bottom:    14px;
+  background:       url(images/heads.png) -135px -40px;
+  display:          inline-block;
+}
+.head-female {
+  width:            24px;
+  height:           40px;
+  background:       url(images/heads.png) -96px 0;
+  display:          inline-block;
+}
