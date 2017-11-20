@@ -62,4 +62,16 @@ class Welcome extends MY_Controller {
       }
     }
   }
+
+  public function master() {
+    $this->params["characters"] = $this->m_char->allCharDetails();
+    $this->params["title"]     = "Panel MJ";
+    $post = filter_input_array(INPUT_POST);
+    if(!empty($post['ajax']) && $post['ajax'] == 1) {
+      $this->load->view("master", $this->params);
+    }
+    else {
+      $this->loadView(["master"], $this->params);
+    }
+  }
 }

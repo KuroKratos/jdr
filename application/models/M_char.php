@@ -16,8 +16,11 @@ class M_Char extends CI_Model {
     return $list;
   }
 
-  // Returns character details
   public function charDetails($char) {
     return $this->db->where("name",$char)->get("jdr_chars")->result_array();
+  }
+
+  public function allCharDetails() {
+    return $this->db->get("jdr_chars")->result_array();
   }
 }

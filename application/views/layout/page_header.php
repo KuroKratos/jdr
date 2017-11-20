@@ -18,7 +18,7 @@
             <?php } ?>
           </ul>
         </li>
-        <li><a href=""><i class="fa fa-user-circle-o"></i> Vue MJ</a></li>
+        <li><a href="<?= base_url("master") ?>"><i class="fa fa-user-circle-o"></i> Vue MJ</a></li>
       </ul>
     </div>
   </div>
