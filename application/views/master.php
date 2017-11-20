@@ -1,18 +1,18 @@
 <?php foreach ($characters as $c) { ?>
 
-<div class="col-sm-4 col-md-3">
+<div class="col-sm-6 col-md-4">
 
   <div class="panel panel-default">
 
     <div class="panel-heading">
       <div class="row">
-        <div class="col-sm-3">
-          <p class="panel-title text-left"><?= $c['name'] ?></p>
+        <div class="col-sm-12 col-md-12 col-lg-3">
+          <p class="panel-title text-left" style="font-variant: small-caps"><b><?= $c['name'] ?></b></p>
         </div>
-        <div class="col-sm-6">
-          <p class="panel-title text-center"><?= $c['race'] ?> <?= $c['class'] ?></p>
+        <div class="col-xs-6">
+          <p class="panel-title class-race"><?= $c['race'] ?> <?= $c['class'] ?></p>
         </div>
-        <div class="col-sm-3">
+        <div class="col-xs-6 col-lg-3">
           <p class="panel-title text-right">Niveau <?= $c['level'] ?></p>
         </div>
         <div class="clearfix"></div>
