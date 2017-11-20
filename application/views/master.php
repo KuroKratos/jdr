@@ -4,6 +4,7 @@
 
   <div class="panel panel-default">
 
+    <!-- NAME + CLASS & RACE + LEVEL-->
     <div class="panel-heading">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-3">
@@ -19,7 +20,10 @@
       </div>
     </div>
 
+
     <div class="panel-body">
+
+      <!-- MAIN STATS, 1 PANEL/EACH -->
       <div class="row">
         <div class="col-xs-4">
           <div class="panel panel-default">
@@ -40,6 +44,23 @@
           </div>
         </div>
       </div>
+
+      <!-- HP & PP, 1 PANEL/EACH -->
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="panel panel-success">
+            <div class="panel-heading text-center" style="padding: 5px;">P.V.</div>
+            <div class="panel-body text-center text-success" style="font-weight: bold; font-size: 18px; padding: 5px;"><?= $c['hp_cur'] ?> / <?= $c['hp_max'] ?></div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="panel panel-info">
+            <div class="panel-heading text-center" style="padding: 5px;">P.P.</div>
+            <div class="panel-body text-center text-info" style="font-weight: bold; font-size: 18px; padding: 5px;"><?= $c['pp_cur'] ?> / <?= $c['pp_max'] ?></div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
