@@ -204,6 +204,10 @@ nav { box-shadow: 0 0 20px rgba(0,0,0,0.3); /*background-color: rgba(248, 248, 2
   display:          inline-block;
 }
 
+/* ======================================================== */
+/* CHARACTER PANEL HEADER                                   */
+/* ======================================================== */
+
 @media screen and (max-width: 1024px) {
   .class-race {
     text-align: left !important;
@@ -213,4 +217,55 @@ nav { box-shadow: 0 0 20px rgba(0,0,0,0.3); /*background-color: rgba(248, 248, 2
   .class-race {
     text-align: center !important;
   }
+}
+
+/* ======================================================== */
+/* PROGRESS BARS                                            */
+/* ======================================================== */
+
+.hp-bar {
+
+}
+
+.pp-bar {
+
+}
+
+.progress {
+  height: 35px;
+  position: relative;
+}
+.progress .skill {
+  color:white;
+  font: normal 20px monospace;
+  line-height: 35px;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,1);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  /*  -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;*/
+}
+.progress .skill .lbl {
+  float: left;
+  font-style: normal;
+  margin: 0 0 0 20px;
+}
+.progress .skill .val {
+  float: right;
+  font-style: normal;
+  margin: 0 20px 0 0;
+}
+
+.progress-bar {
+  text-align: left;
+  transition-duration: 3s;
+}
+
+.skill-bar {
+  background-color: #ffd0d0;
 }

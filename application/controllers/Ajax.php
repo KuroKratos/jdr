@@ -7,23 +7,10 @@ class Ajax extends MY_Controller {
   // ======================================================== //
   
   // Prints the number of online characters
-  public function getOnlineCharCount () {
+  public function getAllCharDetail () {
     $this->load->model('m_char');
-    $online = $this->m_char->onlineCharCount();
-    echo json_encode($online, JSON_PRETTY_PRINT);
+    $chars = $this->m_char->allCharDetails();
+    echo json_encode($chars, JSON_PRETTY_PRINT);
   }
 
-  // Prints the number of @autotrade merchants
-  public function getAtCharCount () {
-    $this->load->model('m_char');
-    $online = $this->m_char->atCharCount();
-    echo json_encode($online, JSON_PRETTY_PRINT);
-  }
-
-  // Returns JSON object of all accounts except the login server one
-  public function getAccountsList () {
-    $this->load->model('m_account');
-    $acc_list = $this->m_account->accountsList();
-    echo json_encode(['data' => $acc_list], JSON_PRETTY_PRINT);
-  }
 }
