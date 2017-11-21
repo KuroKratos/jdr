@@ -21,6 +21,6 @@ class M_Char extends CI_Model {
   }
 
   public function allCharDetails() {
-    return $this->db->get("jdr_chars")->result_array();
+    return $this->db->join('wow_class cl','(ch.class = cl.name_m OR ch.class = cl.name_f)','left')->get("jdr_chars ch")->result_array();
   }
 }

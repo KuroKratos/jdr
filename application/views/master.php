@@ -2,7 +2,7 @@
 
 <div class="col-sm-6 col-md-4">
 
-  <div class="panel panel-default">
+  <div class="panel panel-default" style="background-color: #<?= $c['color'] ?>">
 
     <!-- NAME + CLASS & RACE + LEVEL-->
     <div class="panel-heading">
