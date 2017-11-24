@@ -69,7 +69,9 @@ function table_modal ($ident, $headers) {
   echo "      <div class='modal-body' id='{$ident}_modal_body'>";
   echo "        <table class='table table-striped table-hover table-condensed' id='{$ident}_modal_table' cellspacing='0' width='100%'>";
   echo "          <thead>";
+  echo "            <tr>";
   foreach ($headers as $h) { echo "<th>$h</th>"; }
+  echo "            </tr>";
   echo "          </thead>";
   echo "          <tbody>";
   echo "          </tbody>";

@@ -1,10 +1,4 @@
 $(document).ready(function() {
-  get_all_char_info();
-  setInterval(
-    function () { get_all_char_info(); },
-    10000
-  );
-
   $('#comp_modal').on('shown.bs.modal', function() {
     var char_id = global.char_id;
 

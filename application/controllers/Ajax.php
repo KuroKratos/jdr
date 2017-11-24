@@ -31,4 +31,14 @@ class Ajax extends MY_Controller {
     }
   }
 
+  public function changeCompVal ($char_id = null, $comp_id = null, $sign = null) {
+    if(!empty($char_id) && !empty($comp_id) && !empty($sign)) {
+      $this->load->model('m_char');
+
+      $send_sign = $sign == "plus" ? "+" : "-";
+
+      $this->m_char->updateComp($char_id, $comp_id, $send_sign);
+    }
+  }
+
 }

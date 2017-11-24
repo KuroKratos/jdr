@@ -103,10 +103,19 @@
     });
 </script>
 
-<?php
-}
+<?php } ?>
 
+<script type="text/javascript">
+   $(document).ready(function() {
+    get_all_char_info();
+    setInterval(
+      function () { get_all_char_info(); },
+      10000
+    );
+  });
+</script>
+
+<?php
 table_modal("comp",  ["Compétence","Valeur"]);
 table_modal("skill", ["Don","Effet", "Coût"]);
-
 ?>
