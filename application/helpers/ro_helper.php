@@ -60,3 +60,25 @@ function recursive_array_values($arr) {
   }
   return $arr2;
 }
+
+function table_modal ($ident, $headers) {
+  echo "<div id='{$ident}_modal' class='modal fade' role='dialog'>";
+  echo "  <div class='modal-dialog' id='{$ident}_modal_dlg'>";
+  echo "    <div class='modal-content'>";
+  echo "      <div class='modal-header'><h4 class='modal-title' id='{$ident}_modal_title'></h4></div>";
+  echo "      <div class='modal-body' id='{$ident}_modal_body'>";
+  echo "        <table class='table table-striped table-hover table-condensed' id='{$ident}_modal_table' cellspacing='0' width='100%'>";
+  echo "          <thead>";
+  foreach ($headers as $h) { echo "<th>$h</th>"; }
+  echo "          </thead>";
+  echo "          <tbody>";
+  echo "          </tbody>";
+  echo "        </table>";
+  echo "      </div>";
+  echo "      <div class='modal-footer'>";
+  echo "        <button class='btn btn-danger' data-dismiss='modal'>Fermer</button>";
+  echo "      </div>";
+  echo "    </div>";
+  echo "  </div>";
+  echo "</div>";
+}

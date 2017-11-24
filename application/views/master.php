@@ -70,7 +70,7 @@
         <div class="col-xs-4">
           <div class="panel panel-default">
             <div class="panel-heading text-center">Dons</div>
-            <div class="panel-body text-center" style="font-weight: bold; font-size: 18px; padding: 5px;"><a href="#">Voir</a></div>
+            <div class="panel-body text-center" style="font-weight: bold; font-size: 18px; padding: 5px;"><a href="#" onclick="get_char_skill(<?= $c['char_id'] ?>,'<?= $c['name'] ?>')">Voir</a></div>
           </div>
         </div>
         <div class="col-xs-4">
@@ -82,7 +82,7 @@
         <div class="col-xs-4">
           <div class="panel panel-default">
             <div class="panel-heading text-center">Comp.</div>
-            <div class="panel-body text-center" style="font-weight: bold; font-size: 18px; padding: 5px;"><a href="#">Voir</a></div>
+            <div class="panel-body text-center" style="font-weight: bold; font-size: 18px; padding: 5px;"><a href="#" onclick="get_char_comp(<?= $c['char_id'] ?>,'<?= $c['name'] ?>')">Voir</a></div>
           </div>
         </div>
       </div>
@@ -103,4 +103,10 @@
     });
 </script>
 
-<?php } ?>
+<?php
+}
+
+table_modal("comp",  ["Compétence","Valeur"]);
+table_modal("skill", ["Don","Effet", "Coût"]);
+
+?>

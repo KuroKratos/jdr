@@ -13,25 +13,15 @@ class Welcome extends MY_Controller {
     $this->params = [
                       "title" => "Accueil",
                       "css"   => [
-                                   ["url" => assets_url("bootstrap/css/bootstrap.min.css"),       "media" => "screen"],
-                                   ["url" => assets_url("font-awesome/css/font-awesome.min.css"), "media" => "screen"],
-                                   ["url" =>            "https://cdn.datatables.net/v/bs/jszip"
-                                                       ."-2.5.0/dt-1.10.16/b-1.4.2/b-colvis-1."
-                                                       ."4.2/b-flash-1.4.2/b-html5-1.4.2/b-pri"
-                                                       ."nt-1.4.2/cr-1.4.1/fc-3.2.3/fh-3.1.3/k"
-                                                       ."t-2.3.2/r-2.2.0/rg-1.0.2/rr-1.2.3/sc-"
-                                                       ."1.4.3/sl-1.2.3/datatables.min.css",     "media" => "screen"],
-                                   ["url" => assets_url("style.css"),                             "media" => "screen"],
+                                   ["url" => assets_url("bootstrap/css/bootstrap.min.css"),                                       "media" => "screen"],
+                                   ["url" => assets_url("font-awesome/css/font-awesome.min.css"),                                 "media" => "screen"],
+                                   ["url" =>            "https://cdn.datatables.net/v/bs/dt-1.10.16/sc-1.4.3/datatables.min.css", "media" => "screen"],
+                                   ["url" => assets_url("style.css"),                                                             "media" => "screen"],
                                  ],
                       "js"  =>   [
                                    ["url" => assets_url("jquery/jquery-3.2.1.min.js")],
                                    ["url" => assets_url("bootstrap/js/bootstrap.min.js")],
-                                   ["url" =>            "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"],
-                                   ["url" =>            "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"],
-                                   ["url" =>            "https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/b-1.4.2/"
-                                                       ."b-colvis-1.4.2/b-flash-1.4.2/b-html5-1.4.2/b-print-1.4.2/cr-1.4"
-                                                       .".1/fc-3.2.3/fh-3.1.3/kt-2.3.2/r-2.2.0/rg-1.0.2/rr-1.2.3/sc-1.4."
-                                                       ."3/sl-1.2.3/datatables.min.js"],
+                                   ["url" =>            "https://cdn.datatables.net/v/bs/dt-1.10.16/sc-1.4.3/datatables.min.js"],
                                    ["url" => assets_url("js/main.js")],
                                    ["url" => assets_url("js/register.js")],
                                  ],

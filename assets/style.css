@@ -10,10 +10,6 @@ body {
   height: 100%;
 }
 
-.show-on-hover:hover > ul.dropdown-menu {
-  display: block;
-}
-
 #footer {
   height: 28px;
   line-height:28px;
@@ -75,6 +71,9 @@ ul.staff {
   color: #484fa2;
   background-color: #dbdcef;
   border-color: #b7bbdf;
+}
+
+.modal-body {
 }
 
 /* ======================================================== */
