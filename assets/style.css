@@ -28,6 +28,50 @@ hr.news {
   margin: 20px auto;
 }
 
+.fieldset {
+  margin-bottom: 0 !important;
+}
+
+fieldset, .fieldset
+{
+  border: 1px solid #ddd !important;
+  margin: 0;
+  min-width: 0;
+  padding: 10px 10px 0 10px;
+  position: relative;
+  border-radius:4px;
+  background-color: rgba(245,245,245,0.40);
+  padding-left:10px!important;
+  margin-bottom: 10px;
+}
+
+legend
+{
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom: 0px;
+  width: 35%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 5px 5px 10px;
+  background-color: rgba(255,255,255,0.75);
+}
+
+.input-underline {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  text-align: left;
+  font-family: monospace;
+  margin-left: 10px;
+  padding: 0;
+}
+
+.input-underline:focus {
+  outline: none;
+  background-color: #f0f0f0;
+}
+
 .panel-news {
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
   background-color: #f8f8f8;
@@ -224,14 +268,23 @@ nav { box-shadow: 0 0 20px rgba(0,0,0,0.3); /*background-color: rgba(248, 248, 2
   }
 }
 
-.panel-default .panel-heading {
+.panel-default > .panel-heading {
   background-color: rgba(245,245,245,0.5);
 }
 
-.panel-default .panel-body {
+.panel-default > .panel-body {
   background-color: rgba(255,255,255,0.8);
 }
 
+.char-stats .panel {
+  margin-bottom: 10px;
+}
+
+.char-stats .panel-body {
+  padding: 0 !important;
+  border-radius: 4px;
+
+}
 /* ======================================================== */
 /* PROGRESS BARS                                            */
 /* ======================================================== */

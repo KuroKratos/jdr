@@ -1,8 +1,8 @@
 <?php $c = $character[0] ?? null; ?>
 
 <script type="text/javascript">
-  global = {};
-  global.char_id = <?= $c['char_id'] ?>;
+  global = <?= json_encode($c) ?>;
+  console.log(global);
 </script>
 
 <div class="row">
@@ -12,14 +12,26 @@
       <div class="col-md-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h4 class="panel-title">Statistiques de <?= $c['name'] ?></h4>
+            <button class="btn btn-xs btn-info pull-right" style="margin-top: -3px; margin-right: -3px;"><i class="fa fa-floppy-o"></i></button>
+            <h4 class="panel-title">Personnage</h4>
           </div>
           <div class="panel-body">
-            <pre>
-              <?php print_r($c) ?>
-            </pre>
+            <div class="row">
+              <div class="col-sm-4"><label>Nom :    </label><input type="text" id="name"  class="input-underline"></div>
+              <div class="col-sm-4"><label>Race :   </label><input type="text" id="race"  class="input-underline"></div>
+              <div class="col-sm-4"><label>Classe : </label><input type="text" id="class" class="input-underline"></div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-12"><label>Réputations :    </label><input type="text" id="traits"  class="input-underline" style="width: 100%; margin: 0;"></div>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <?php panel("statistics", "default", "", "<h4 class='panel-title'>Statistiques</h4>"); ?>
       </div>
     </div>
     <div class="row">
@@ -105,6 +117,15 @@
         {data: "effect"}
       ]
     });
+
+    $.each(global, function (index, value) {
+      console.log("Index : " + index);
+      console.log("Value : " + value);
+
+      $('#'+index).val(value);
+
+    });
+
   });
 
   function change_comp (id, sign) {

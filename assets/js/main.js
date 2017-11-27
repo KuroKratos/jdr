@@ -50,22 +50,38 @@ function get_all_char_info() {
 
 function fill_char_sheets(chars) {
   $.each(chars, function (index, c) {
+
+    // LEVEL
     $('#c_lvl_'+c.char_id).html('Niveau ' + c.level);
 
-    $('#c_phy_'+c.char_id).html(c.physic);
-    $('#c_soc_'+c.char_id).html(c.social);
-    $('#c_men_'+c.char_id).html(c.mental);
+    // STATS
+    $('#c_str_'+c.char_id).html(c.strength     + '%');
+    $('#c_dex_'+c.char_id).html(c.dexterity    + '%');
+    $('#c_luk_'+c.char_id).html(c.luck         + '%');
+    $('#c_con_'+c.char_id).html(c.constitution + '%');
+    $('#c_cha_'+c.char_id).html(c.charisma     + '%');
+    $('#c_per_'+c.char_id).html(c.perception   + '%');
+    $('#c_edu_'+c.char_id).html(c.education    + '%');
 
-    $('#c_gld_'+c.char_id).html(c.gold);
+    // FIGHT
+    $('#c_wpn_'+c.char_id).html(c.fight_melee    + '%');
+    $('#c_hnd_'+c.char_id).html(c.fight_bare     + '%');
+    $('#c_dst_'+c.char_id).html(c.fight_distance + '%');
 
+    // MONEY
+    $('#c_gld_'+c.char_id).html(c.gold + ' PO');
+
+    // HEALTH
     $('#c_hp_'+c.char_id).attr('aria-valuemax',c.hp_max);
     $('#c_hp_'+c.char_id).attr('aria-valuenow',c.hp_cur);
     $('#c_hp_txt_'+c.char_id).html(c.hp_cur + "/" + c.hp_max);
 
+    // MANA
     $('#c_pp_'+c.char_id).attr('aria-valuemax',c.pp_max);
     $('#c_pp_'+c.char_id).attr('aria-valuenow',c.pp_cur);
     $('#c_pp_txt_'+c.char_id).html(c.pp_cur + "/" + c.pp_max);
 
+    // HEALTH & MANA BARS
     $('.progress .progress-bar').css("width",
       function() {
         return ( ( parseInt($(this).attr("aria-valuenow")) / parseInt($(this).attr("aria-valuemax")) ) * 100 )  + "%";

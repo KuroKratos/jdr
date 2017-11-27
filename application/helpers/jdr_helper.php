@@ -77,10 +77,64 @@ function table_modal ($ident, $headers) {
   echo "          </tbody>";
   echo "        </table>";
   echo "      </div>";
-  echo "      <div class='modal-footer'>";
+  echo "      <div class='modal-footer text-right'>";
   echo "        <button class='btn btn-danger' data-dismiss='modal'>Fermer</button>";
   echo "      </div>";
   echo "    </div>";
   echo "  </div>";
+  echo "</div>";
+}
+
+function modal($name, $title = null, $size = null, $body = null) {
+  $modal_size = (!empty($size) && in_array($size, ['lg','sm'])) ? "modal-$size" : "";
+
+  echo "<div id='{$name}_modal' class='modal fade' role='dialog'>";
+  echo "  <div class='modal-dialog $modal_size' id='{$name}_modal_dlg '>";
+  echo "    <div class='modal-content'>";
+  echo "      <div class='modal-header'><h4 class='modal-title' id='{$name}_modal_title'>" . ($title ?? '') . "</h4></div>";
+  echo "      <div class='modal-body' id='{$name}_modal_body'>";
+  if(!empty($body)) {
+  echo "        $body";
+  }
+  echo "      </div>";
+  echo "      <div class='modal-footer text-right'>";
+  echo "        <button class='btn btn-danger' data-dismiss='modal'>Fermer</button>";
+  echo "      </div>";
+  echo "    </div>";
+  echo "  </div>";
+  echo "</div>";
+}
+
+function panel($name, $class = "primary", $body_html = null, $header_html = null, $footer_html = null) {
+
+  if(!in_array($class, ['default','primary','success','warning','danger'])) {
+    $class = "primary";
+  }
+
+  // PANEL INIT
+  echo "<div class='panel panel-$class'>";
+
+  // HEADER
+  if (!empty($header_html)) {
+    echo "<div class='panel-heading'>";
+    echo $header_html;
+    echo "</div>";
+  }
+
+  // BODY
+  echo "<div class='panel-body' id='{$name}_panel_body'>";
+  if (!empty($body_html)) {
+    echo $body_html;
+  }
+  echo "</div>";
+
+  // FOOTER
+  if (!empty($footer_html)) {
+    echo "<div class='panel-footer'>";
+    echo $footer_html;
+    echo "</div>";
+  }
+
+  // PANEL END
   echo "</div>";
 }
