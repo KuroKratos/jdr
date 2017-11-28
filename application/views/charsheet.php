@@ -22,7 +22,7 @@
                   <div class="col-xs-6 pull-left">
                     <label>Points de Vie</label>
                   </div>
-                  <div class="col-xs-6 pull-right">
+                  <div class="col-xs-6 pull-right text-right">
                     <input type="text" id="hp_cur" class="input-underline char_val" style="width: 30%; text-align: center;"> /
                     <input type="text" id="hp_max" class="input-underline char_val" style="width: 30%; text-align: center;">
                   </div>
@@ -45,7 +45,7 @@
                   <div class="col-xs-6 pull-left">
                     <label>Points de Mana</label>
                   </div>
-                  <div class="col-xs-6 pull-right">
+                  <div class="col-xs-6 pull-right text-right">
                     <input type="text" id="pp_cur" class="input-underline char_val" style="width: 30%; text-align: center;"> /
                     <input type="text" id="pp_max" class="input-underline char_val" style="width: 30%; text-align: center;">
                   </div>
@@ -76,9 +76,9 @@
           </div>
           <div class="panel-body">
             <div class="row">
-              <div class="col-sm-4"><label class="char">Nom</label><input    type="text" id="name"  class="input-underline char_val"></div>
-              <div class="col-sm-4"><label class="char">Race</label><input   type="text" id="race"  class="input-underline char_val"></div>
-              <div class="col-sm-4"><label class="char">Classe</label><input type="text" id="class" class="input-underline char_val"></div>
+              <div class="col-sm-4"><label class="char">Nom</label><input    type="text" id="name"  class="input-underline char_val" disabled></div>
+              <div class="col-sm-4"><label class="char">Race</label><input   type="text" id="race"  class="input-underline char_val" disabled></div>
+              <div class="col-sm-4"><label class="char">Classe</label><input type="text" id="class" class="input-underline char_val" disabled></div>
             </div>
             <hr>
             <div class="row">
