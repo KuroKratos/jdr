@@ -7,6 +7,11 @@ body {
   background-color: #aaaaaa;
 }
 
+kbd {
+  color: black;
+  background-color: white;
+}
+
 .site-content-wrapper {
   height: 100%;
 }
