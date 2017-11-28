@@ -2,7 +2,6 @@
   
 <script type="text/javascript">
   global = <?= json_encode($c) ?>;
-  console.log(global);
 </script>
 
 <div class="row">
@@ -207,6 +206,7 @@
       <div class="col-md-12">
         <div class="panel panel-primary" style="min-height: 194px;">
           <div class="panel-heading">
+			<span class='pull-right'><kbd>Ctrl</kbd> + <kbd>S</kbd> ou cliquer <i class="fa fa-arrow-right"></i> <button class='btn btn-default btn-xs' id="save_story"><i class="fa fa-save"></i></button></span>
             <h4 class="panel-title">Histoire</h4>
           </div>
           <div class="panel-body">
@@ -219,6 +219,7 @@
       <div class="col-md-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
+			<span class='pull-right'><kbd>Ctrl</kbd> + <kbd>S</kbd> ou cliquer <i class="fa fa-arrow-right"></i> <button class='btn btn-default btn-xs' id="save_inventory"><i class="fa fa-save"></i></button></span>
             <h4 class="panel-title">Inventaire</h4>
           </div>
           <div class="panel-body" style="height: 40vh;">
@@ -262,8 +263,6 @@
 
     var tbl_height = $(window).height() - 210;
 
-    console.log("Height : " + tbl_height);
-
     if( $.fn.DataTable.isDataTable('#skill_table') ) {
       $('#skill_table').dataTable().fnDestroy();
     }
@@ -282,8 +281,6 @@
     });
 
     $.each(global, function (index, value) {
-      console.log("Index : " + index);
-      console.log("Value : " + value);
       $('#'+index).val(value);
     });
 
@@ -308,7 +305,6 @@
   }
 
   function change_comp (id, sign) {
-    console.log(sign + "5 on " + id);
     var field = $('#comp_val_'+id);
     var newval;
 
@@ -326,7 +322,7 @@
     field.html(newval);
   }
 
-  function save_char_carac (input) {
+function save_char_carac (input) {
   var old_bg = input.css('background-color');
 
   $.ajax({
@@ -359,4 +355,40 @@
     }
   });
 }
+
+$('#save_story').click(function () {
+	var input = $('#story');
+	save_char_carac (input);
+});
+
+$('#save_inventory').click(function () {
+	var input = $('#inventory');
+	save_char_carac (input);
+});
+
+$('#inventory').bind('keydown', function(e) {
+  if(e.ctrlKey && (e.which == 83)) {
+    e.preventDefault();
+	var input = $('#inventory');
+	save_char_carac (input);
+    return false;
+  }
+  
+});
+
+$('#story').bind('keydown', function(e) {
+  if(e.ctrlKey && (e.which == 83)) {
+    e.preventDefault();
+	var input = $('#story');
+	save_char_carac (input);
+    return false;
+  }
+});  
+
+$(document).bind('keydown', function(e) {
+  if(e.ctrlKey && (e.which == 83)) {
+    e.preventDefault();
+    return false;
+  }
+});
 </script>
