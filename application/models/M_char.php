@@ -72,4 +72,8 @@ class M_Char extends CI_Model {
       $this->db->insert('char_comp');
     }
   }
+
+  public function updateChar ($char_id, $column, $value) {
+    $this->db->set($column,$value)->where('char_id',$char_id)->update('jdr_chars');
+  }
 }

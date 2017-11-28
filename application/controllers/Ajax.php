@@ -41,4 +41,11 @@ class Ajax extends MY_Controller {
     }
   }
 
+  public function updateChar() {
+    $post = filter_input_array(INPUT_POST);
+    if(!empty($post['char_id']) && !empty($post['column']) && !empty($post['value'])) {
+      $this->load->model('m_char');
+      $this->m_char->updateChar($post['char_id'], $post['column'], $post['value']);
+    }
+  }
 }

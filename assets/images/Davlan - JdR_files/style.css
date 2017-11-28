@@ -65,9 +65,7 @@ legend
 }
 
 label.char {
-  width:40%;
-  font-size: 11px;
-  text-align: center;
+  width:30%;
 }
 
 .input-underline {
@@ -78,7 +76,7 @@ label.char {
   font-family: monospace;
   /*margin-left: 10px;*/
   padding: 0;
-  width: 60%;
+  width: 70%;
 }
 
 .input-underline:focus {

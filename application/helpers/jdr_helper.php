@@ -37,6 +37,16 @@ if(!function_exists("site_name")) {
 
 }
 
+if(!function_exists("site_instance")) {
+
+  function site_instance() {
+    $ci       = &get_instance();
+    $siteInstance = $ci->config->item("site_instance");
+    return $siteInstance;
+  }
+
+}
+
 if(!function_exists("method_url")) {
 
   function method_url() {
