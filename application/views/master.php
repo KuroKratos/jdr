@@ -1,11 +1,11 @@
 <?php foreach ($characters as $c) { ?>
 
-<div class="col-sm-6 col-md-4">
+<div class="col-sm-12 col-md-6 col-lg-4">
 
-  <div class="panel panel-default" style="background-color: #<?= $c['color'] ?>">
+  <div class="panel panel-default" style="background-color: <?= $c['color'] ?>; box-shadow: 0 0 5px black; border-color: #888888; border-radius: 10px;">
 
     <!-- NAME + CLASS & RACE + LEVEL-->
-    <div class="panel-heading">
+    <div class="panel-heading" style="border-radius: 10px 10px 0 0;">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-3">
           <p class="panel-title text-left" style="font-variant: small-caps"><b><?= $c['name'] ?></b></p>
@@ -21,7 +21,7 @@
     </div>
 
 
-    <div class="panel-body">
+    <div class="panel-body" style="border-radius: 0 0 10px 10px">
 
       <!-- HP & PP PROGRESS BARS -->
       <div class="row">

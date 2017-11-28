@@ -1,9 +1,13 @@
 html,body { height: 100%; }
+* {
+	font-family: monospace !important;
+}
 
 body {
-  /*background-image: url('images/payon_bg.jpg');*/
-  background-size: 100%;
-  background-color: #f5f5f5;
+  background-image: url('images/bg.jpg');
+  background-size: auto 100%;
+  background-position: bottom left;
+  background-color: #aaaaaa;
 }
 
 .site-content-wrapper {
@@ -32,6 +36,11 @@ hr.news {
   margin-bottom: 0 !important;
 }
 
+fieldset .panel, .fieldset .panel {
+	/*box-shadow: 0 0 3px rgba(0,0,0,1) inset;*/
+	border-color : #888888;
+}
+
 fieldset, .fieldset
 {
   border: 1px solid #ddd !important;
@@ -43,6 +52,7 @@ fieldset, .fieldset
   background-color: rgba(245,245,245,0.40);
   padding-left:10px!important;
   margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 legend
@@ -269,11 +279,14 @@ nav { box-shadow: 0 0 20px rgba(0,0,0,0.3); /*background-color: rgba(248, 248, 2
 }
 
 .panel-default > .panel-heading {
-  background-color: rgba(245,245,245,0.5);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  font-weight: bold;
+  font-family: monospace
 }
 
 .panel-default > .panel-body {
-  background-color: rgba(255,255,255,0.8);
+  background: none;
 }
 
 .char-stats .panel {
@@ -334,4 +347,5 @@ nav { box-shadow: 0 0 20px rgba(0,0,0,0.3); /*background-color: rgba(248, 248, 2
 
 .skill-bar {
   background-color: #ffd0d0;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
