@@ -41,8 +41,8 @@ class Welcome extends MY_Controller {
 
   public function charsheet($char = null) {
     if(!empty($char)) {
-      $this->params["character"] = $this->m_char->charDetails($char);
-      $this->params["title"]     = $char;
+      $this->params["character"] = $this->m_char->charDetails(urldecode($char));
+      $this->params["title"]     = urldecode($char);
       $post = filter_input_array(INPUT_POST);
       if(!empty($post['ajax']) && $post['ajax'] == 1) {
         $this->load->view("charsheet", $this->params);
