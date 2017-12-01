@@ -8,13 +8,13 @@
     <div class="panel-heading" style="border-radius: 10px 10px 0 0;">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-3">
-          <p class="panel-title text-left" style="font-variant: small-caps"><b><?= $c['name'] ?></b></p>
+          <p class="panel-title text-left" style="font-variant: small-caps; font-size: 22px; line-height: 22px;"><b><?= strtoupper($c['name']) ?></b></p>
         </div>
         <div class="col-xs-6">
           <p class="panel-title class-race"><?= $c['race'] ?> <?= $c['class'] ?></p>
         </div>
         <div class="col-xs-6 col-lg-3">
-          <p class="panel-title text-right" id="c_lvl_<?= $c['char_id'] ?>">Niveau <?= $c['level'] ?></p>
+          <p class="panel-title text-right" id="c_lvl_<?= $c['char_id'] ?>">Niveau <input type="text" class="input-underline text-center carac char_val" value="<?= $c['level'] ?>" style="width: 30px; text-align: center !important;" id="level-<?= $c['char_id'] ?>"></p>
         </div>
         <div class="clearfix"></div>
       </div>

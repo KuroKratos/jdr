@@ -72,7 +72,7 @@ legend
 
 label.char {
   width:40%;
-  font-size: 11px;
+  /*font-size: 11px;*/
   text-align: center;
 }
 
@@ -80,7 +80,7 @@ label.char {
   background: none;
   border: none;
   border-bottom: 1px solid black;
-  text-align: left;
+  text-align: center;
   font-family: monospace;
   /*margin-left: 10px;*/
   padding: 0;

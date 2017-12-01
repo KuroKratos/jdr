@@ -75,9 +75,12 @@
           </div>
           <div class="panel-body">
             <div class="row">
-              <div class="col-sm-4"><label class="char">Nom</label><input    type="text" id="name"  class="input-underline char_val" disabled></div>
-              <div class="col-sm-4"><label class="char">Race</label><input   type="text" id="race"  class="input-underline char_val" disabled></div>
-              <div class="col-sm-4"><label class="char">Classe</label><input type="text" id="class" class="input-underline char_val" disabled></div>
+              <div class="col-sm-6"><label class="char">Nom</label><input    type="text" id="name"  class="input-underline char_val" disabled></div>
+              <div class="col-sm-6"><label class="char">Niveau</label><input type="text" id="level" class="input-underline char_val" disabled></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6"><label class="char">Race</label><input   type="text" id="race"  class="input-underline char_val" disabled></div>
+              <div class="col-sm-6"><label class="char">Classe</label><input type="text" id="class" class="input-underline char_val" disabled></div>
             </div>
             <hr>
             <div class="row">
@@ -312,19 +315,19 @@
       }
     });
 
-    refresh_alignement();
+    refresh_stats();
     setInterval(
-      function () { refresh_alignement(); },
+      function () { refresh_stats(); },
       3000
     );
 
   });
 
-  function refresh_alignement() {
+  function refresh_stats() {
     $.ajax({
       data: {
         char_id: '<?= $c['char_id'] ?>',
-        columns: ['alignement']
+        columns: ['alignement','level']
       },
       type: "POST",
       dataType: "json",
@@ -332,6 +335,7 @@
       url: "<?= base_url("/Ajax/getCharInfo") ?>",
       success: function(data){
         $('#alignement').val(data.alignement + '%');
+        $('#level').val(data.level);
         $('#bar_light').css('width',data.alignement + '%');
         $('#bar_dark' ).css('width',(100-data.alignement) + '%');
       },

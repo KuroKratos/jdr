@@ -52,7 +52,7 @@ function fill_char_sheets(chars) {
   $.each(chars, function (index, c) {
 
     // LEVEL
-    $('#c_lvl_'+c.char_id).html('Niveau ' + c.level);
+    //$('#c_lvl_'+c.char_id).html('Niveau ' + c.level);
 
     // STATS
     $('#c_str_'+c.char_id).html(c.strength     + '%');
