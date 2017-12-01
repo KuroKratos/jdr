@@ -1,6 +1,6 @@
 <?php foreach ($characters as $c) { ?>
 
-<div class="col-sm-12 col-md-6 col-lg-4">
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-4 col-lg-offset-0">
 
   <div class="panel panel-default" style="background-color: <?= $c['color'] ?>; box-shadow: 0 0 5px black; border-color: #888888; border-radius: 10px;">
 
@@ -115,29 +115,27 @@
 
       <!-- COMPETENCES & ABILITIES BTN + Gold -->
       <div class="">
-        <div class="col-xs-7 fieldset">
+        <div class="col-xs-8 fieldset" style="width:65%;">
           <div class="row">
             <div class="col-xs-12">
               <div class="panel panel-default" style="margin-bottom: 15px;">
                 <div class="panel-body" style="padding: 5px; border-radius: 5px;">
-                  <div class="col-xs-9 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">COMBAT CAC AVEC ARME</div>
-                  <div class="col-xs-3 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_wpn_<?= $c['char_id'] ?>"><?= $c['fight_melee'] ?></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="panel panel-default" style="margin-bottom: 15px;">
-                <div class="panel-body" style="padding: 5px; border-radius: 5px;">
-                  <div class="col-xs-9 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">COMBAT CAC SANS ARME</div>
-                  <div class="col-xs-3 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_hnd_<?= $c['char_id'] ?>"><?= $c['fight_bare'] ?></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="panel panel-default" style="margin-bottom: 10px;">
-                <div class="panel-body" style="padding: 5px; border-radius: 5px;">
-                  <div class="col-xs-9 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">COMBAT ARME A DISTANCE</div>
-                  <div class="col-xs-3 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_dst_<?= $c['char_id'] ?>"><?= $c['fight_distance'] ?></div>
+                  <div class="col-xs-9 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">PENCHANT LUMIÈRE / OMBRE</div>
+                  <div class="col-xs-3 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_ali_<?= $c['char_id'] ?>">
+                    <input type="text" class="input-underline text-center carac char_val" value="<?= $c['alignement'] ?>%" style="width: 100%; text-align: center !important;" id="alignement-<?= $c['char_id'] ?>">
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="progress progress-striped" style="/*box-shadow: 0px 0px 10px #000000;*/ margin-top:12px; margin-bottom: 10px; border: 1px solid #888888;">
+                        <div class="progress-bar progress-bar-warning" id="bar_light_<?= $c['char_id'] ?>" role="progressbar" style="width:<?= $c['alignement'] ?>%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;">
+                          <b>Lumière</b>
+                        </div>
+                        <div class="progress-bar progress-bar-success" id="bar_dark_<?= $c['char_id'] ?>"  role="progressbar" style="width:<?= (100 - $c['alignement']) ?>%; background-color: #000033; text-align: center; line-height:33px;">
+                          <b>Ombre</b>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -193,6 +191,46 @@
       10000
     );
   });
+
+  $('.char_val').keyup(function (k) {
+      if (k.keyCode == 13) {
+        var input = $(this);
+        save_char_carac(input);
+      }
+    });
+
+    function save_char_carac (input) {
+      var old_bg = input.css('background-color');
+      var char   = input.attr('id').split('-')[1];
+      var val    = input.val().replace('%','');
+      
+      $.ajax({
+        data: {
+          char_id: char,
+          column:  input.attr('id').split('-')[0],
+          value:   val
+        },
+        type: "POST",
+        async: false,
+        url: '<?= base_url('/Ajax/updateChar') ?>',
+        success: function(data){
+          input.css('background-color',"lightgreen");
+          setTimeout( function () {
+            input.css('background-color', old_bg);
+          }, 500);
+          input.blur();
+
+          if(input.attr('id').match('align')) {
+            $('#bar_light_' + char).css('width',val+'%');
+            $('#bar_dark_'  + char).css('width',(100 - val)+'%');
+          }
+
+        },
+        error: function(e, d, l){
+          console.log(e);
+        }
+      });
+    }
 </script>
 
 <?php
