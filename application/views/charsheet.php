@@ -157,7 +157,7 @@
               <div class="col-xs-4"></div>
 
               <div class="col-xs-4">
-                <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">INTEL</div>
+                <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">PERC</div>
                 <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_per_<?= $c['char_id'] ?>">
                   <input type="text" class="input-underline text-center carac char_val" value="<?= $c['perception'] ?>%" style="width: 100%; text-align: center !important;" id="perception">
                 </div>

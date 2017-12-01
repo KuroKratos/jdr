@@ -62,6 +62,7 @@ function fill_char_sheets(chars) {
     $('#c_cha_'+c.char_id).html(c.charisma     + '%');
     $('#c_per_'+c.char_id).html(c.perception   + '%');
     $('#c_edu_'+c.char_id).html(c.education    + '%');
+    $('#c_int_'+c.char_id).html(c.intelligence + '%');
 
     // FIGHT
     $('#c_wpn_'+c.char_id).html(c.fight_melee    + '%');
