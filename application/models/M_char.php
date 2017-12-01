@@ -20,6 +20,13 @@ class M_Char extends CI_Model {
     return $this->db->where("name",$char)->get("jdr_chars")->result_array();
   }
 
+  public function getCharInfo($char_id, $columns = null) {
+    if(!empty($columns) && is_array($columns)) {
+      $this->db->select($columns);
+    }
+    return $this->db->where("char_id",$char_id)->get("jdr_chars")->row_array();
+  }
+
   public function allCharDetails() {
     return $this->db->join('wow_class cl','(ch.class = cl.name_m OR ch.class = cl.name_f)','left')->get("jdr_chars ch")->result_array();
   }

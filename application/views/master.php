@@ -188,7 +188,7 @@
     get_all_char_info();
     setInterval(
       function () { get_all_char_info(); },
-      10000
+      3000
     );
   });
 

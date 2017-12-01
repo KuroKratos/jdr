@@ -83,6 +83,23 @@
             <div class="row">
               <div class="col-sm-12"><label>Réputations :    </label><input type="text" id="traits"  class="input-underline char_val" style="width: 100%; margin: 0;"></div>
             </div>
+            <hr>
+            <div class="col-xs-9 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">PENCHANT LUMIÈRE / OMBRE</div>
+            <div class="col-xs-3 text-righto" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_ali_<?= $c['char_id'] ?>">
+              <input type="text" class="input-underline text-center carac char_val" value="<?= $c['alignement'] ?>" style="width: 100%; text-align: center !important;" id="alignement" disabled>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="progress progress-striped" style="/*box-shadow: 0px 0px 10px #000000;*/ margin-top:12px; margin-bottom: 10px; border: 1px solid #888888;">
+                  <div class="progress-bar progress-bar-warning" id="bar_light" role="progressbar" style="width:<?= $c['alignement'] ?>%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;">
+                    <b>Lumière</b>
+                  </div>
+                  <div class="progress-bar progress-bar-success" id="bar_dark"  role="progressbar" style="width:<?= (100 - $c['alignement']) ?>%; background-color: #000033; text-align: center; line-height:33px;">
+                    <b>Ombre</b>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -95,7 +112,7 @@
           </div>
           <div class="panel-body">
 
-            <div class="row">
+            <div class="row" style="margin-bottom: 38px;">
 
               <div class="col-xs-4">
                 <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">FORC</div>
@@ -120,7 +137,7 @@
 
             </div>
 
-            <div class="row">
+            <div class="row" style="margin-bottom: 38px;">
 
               <div class="col-xs-4">
                 <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">DEXT</div>
@@ -145,7 +162,7 @@
 
             </div>
 
-            <div class="row">
+            <div class="row" style="margin-bottom: 38px;">
 
               <div class="col-xs-4">
                 <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">CHAN</div>
@@ -291,11 +308,38 @@
 
     $('.carac').each(function (index) {
       if($(this).attr('id') != "gold") {
-        $(this).val($(this).val() + '%')
+        $(this).val($(this).val() + '%');
       }
     });
 
+    refresh_alignement();
+    setInterval(
+      function () { refresh_alignement(); },
+      3000
+    );
+
   });
+
+  function refresh_alignement() {
+    $.ajax({
+      data: {
+        char_id: '<?= $c['char_id'] ?>',
+        columns: ['alignement']
+      },
+      type: "POST",
+      dataType: "json",
+      async: false,
+      url: "<?= base_url("/Ajax/getCharInfo") ?>",
+      success: function(data){
+        $('#alignement').val(data.alignement + '%');
+        $('#bar_light').css('width',data.alignement + '%');
+        $('#bar_dark' ).css('width',(100-data.alignement) + '%');
+      },
+      error: function(e, d, l){
+        console.log(e);
+      }
+    });
+  }
 
   function change_bar_val(cur, max, which) {
     $('#'+which+'_bar').attr('aria-valuenow', cur);
