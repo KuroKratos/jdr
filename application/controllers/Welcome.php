@@ -13,15 +13,19 @@ class Welcome extends MY_Controller {
     $this->params = [
                       "title" => "Accueil",
                       "css"   => [
-                                   ["url" => assets_url("bootstrap/css/bootstrap.min.css"),                                       "media" => "screen"],
-                                   ["url" => assets_url("font-awesome/css/font-awesome.min.css"),                                 "media" => "screen"],
-                                   ["url" => assets_url("datatables/datatables.min.css"),                                         "media" => "screen"],
-                                   ["url" => assets_url("style.css"),                                                             "media" => "screen"],
+                                   ["url" => assets_url("bootstrap/css/bootstrap.min.css"),                         "media" => "screen"],
+                                   ["url" => assets_url("font-awesome/css/font-awesome.min.css"),                   "media" => "screen"],
+                                   ["url" => assets_url("datatables/datatables.min.css"),                           "media" => "screen"],
+                                   ["url" => assets_url("datatables/responsive/css/responsive.dataTables.min.css"), "media" => "screen"],
+                                   ["url" => assets_url("datatables/responsive/css/responsive.bootstrap.min.css"),  "media" => "screen"],
+                                   ["url" => assets_url("style.css"),                                               "media" => "screen"],
                                  ],
                       "js"  =>   [
                                    ["url" => assets_url("jquery/jquery-3.2.1.min.js")],
                                    ["url" => assets_url("bootstrap/js/bootstrap.min.js")],
                                    ["url" => assets_url("datatables/datatables.min.js")],
+                                   ["url" => assets_url("datatables/responsive/js/dataTables.responsive.min.js")],
+                                   ["url" => assets_url("datatables/responsive/js/responsive.bootstrap.min.js")],
                                    ["url" => assets_url("js/main.js")],
                                    ["url" => assets_url("js/register.js")],
                                  ],

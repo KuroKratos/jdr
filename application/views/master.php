@@ -8,7 +8,7 @@
     <div class="panel-heading" style="border-radius: 10px 10px 0 0;">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-3">
-          <p class="panel-title text-left" style="font-variant: small-caps; font-size: 22px; line-height: 22px;"><b><?= strtoupper($c['name']) ?></b></p>
+          <p class="panel-title text-left" style="font-variant: small-caps; font-size: 18px; line-height: 22px;"><b><?= strtoupper($c['name']) ?></b></p>
         </div>
         <div class="col-xs-6">
           <p class="panel-title class-race"><?= $c['race'] ?> <?= $c['class'] ?></p>

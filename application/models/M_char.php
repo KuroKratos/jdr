@@ -10,16 +10,19 @@ class M_Char extends CI_Model {
     $this->db = $this->load->database('default', TRUE, TRUE);
   }
 
+  // Returns an array listing every character's name
   public function charList() {
     $query = $this->db->select('name')->get('jdr_chars')->result_array();
     $list = array_column($query, 'name');
     return $list;
   }
 
+  // Returns an array of unique character's stats
   public function charDetails($char) {
     return $this->db->where("name",$char)->get("jdr_chars")->result_array();
   }
 
+  // Almost same as above but you can set columns you want
   public function getCharInfo($char_id, $columns = null) {
     if(!empty($columns) && is_array($columns)) {
       $this->db->select($columns);
@@ -27,10 +30,12 @@ class M_Char extends CI_Model {
     return $this->db->where("char_id",$char_id)->get("jdr_chars")->row_array();
   }
 
+  // Returns nested array of every character's stats
   public function allCharDetails() {
     return $this->db->join('wow_class cl','(ch.class = cl.name_m OR ch.class = cl.name_f)','left')->get("jdr_chars ch")->result_array();
   }
 
+  // Returns an array of character competences (with pre-built +/- button to edit the stat)
   public function getCharComp ($char_id, $need_id = 0) {
     $fields = ["cp.name", "concat((cp.val_base + coalesce(cc.val,0)),'%') as val"];
     if($need_id == 1) {
@@ -53,8 +58,10 @@ class M_Char extends CI_Model {
     return $this->db->get("competence cp")->result_array();
   }
 
+  // Returns an array of an unique character's skills (with pre-built <<edit>> button)
   public function getCharSkill ($char_id, $need_id = 0) {
-    $fields = ["name", "effect", "worth"];
+    $btn_edit = "concat('<div class=\"btn-group\"><button class=\"btn btn-primary btn-xs\" onclick=\"edit_skill(',skill_id,')\"><i class=\"fa fa-edit\"></i></button><button class=\"btn btn-danger btn-xs\" onclick=\"prompt_delete_skill(',skill_id,')\"><i class=\"fa fa-remove\"></i></button></div>') as edit";
+    $fields = [$btn_edit,"name", "effect", "worth"];
     if($need_id == 1) {
       $fields[] = "skill_id";
     }
@@ -64,6 +71,7 @@ class M_Char extends CI_Model {
     return $this->db->get("skill")->result_array();
   }
 
+  // Adds or remove 5% to a character's competence depending on $sign (if not set, creates the table row)
   public function updateComp ($char_id, $comp_id, $sign) {
     if ($this->db->select("count(*) as count")->where('char_id',$char_id)->where('comp_id', $comp_id)->get('char_comp')->row()->count > 0) {
       $this->db->where('char_id', $char_id);
@@ -80,6 +88,37 @@ class M_Char extends CI_Model {
     }
   }
 
+  // Adds a skill into the character's skill table
+  public function addSkill($char, $name, $cost, $desc) {
+    $this->db->set('char_id', $char);
+    $this->db->set('name',    $name);
+    $this->db->set('worth',   $cost);
+    $this->db->set('effect',  $desc);
+    $this->db->insert('skill');
+  }
+
+  // Updates a skill in the character's skill table
+  public function editSkill($id, $name, $cost, $desc) {
+    $this->db->set('name',    $name);
+    $this->db->set('worth',   $cost);
+    $this->db->set('effect',  $desc);
+    $this->db->where('skill_id',$id);
+    //echo $this->db->get_compiled_insert("skill");
+    $this->db->update('skill');
+  }
+
+  // Deletes skill identified by $skill_id
+  public function deleteSkill ($skill_id) {
+    $this->db->where('skill_id',$skill_id);
+    $this->db->delete('skill');
+  }
+
+  // Returns info array of a specific skill
+  public function getSkillInfo ($skill_id) {
+    return $this->db->where('skill_id',$skill_id)->get('skill')->row_array();
+  }
+
+  // Updates a character's statistic, identified by $column
   public function updateChar ($char_id, $column, $value) {
     $this->db->set($column,$value)->where('char_id',$char_id)->update('jdr_chars');
   }

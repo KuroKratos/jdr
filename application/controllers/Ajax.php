@@ -31,6 +31,15 @@ class Ajax extends MY_Controller {
     }
   }
 
+  public function getSkillInfo ($skill_id = null) {
+    $post = filter_input_array(INPUT_POST) ?? ["skill_id" => $skill_id];
+    if(!empty($post['skill_id'])) {
+      $this->load->model('m_char');
+      $skill = $this->m_char->getSkillInfo($post['skill_id']);
+      echo json_encode($skill, JSON_PRETTY_PRINT);
+    }
+  }
+
   public function changeCompVal ($char_id = null, $comp_id = null, $sign = null) {
     if(!empty($char_id) && !empty($comp_id) && !empty($sign)) {
       $this->load->model('m_char');
@@ -47,6 +56,27 @@ class Ajax extends MY_Controller {
       $this->load->model('m_char');
       $info = $this->m_char->getCharInfo($post['char_id'], $post['columns'] ?? null);
       echo json_encode($info, JSON_PRETTY_PRINT);
+    }
+  }
+
+  public function addEditSkill() {
+    $post = filter_input_array(INPUT_POST);
+    if(!empty($post['char_id']) && !empty($post['name']) && !empty($post['id']) && $post['id'] == '-1') {
+      echo "NEW SKILL";
+      $this->load->model('m_char');
+      $this->m_char->addSkill($post['char_id'], $post['name'], $post['cost'], $post['desc']);
+    } else {
+      echo "UPDATE SKILL";
+      $this->load->model('m_char');
+      $this->m_char->editSkill($post['id'], $post['name'], $post['cost'], $post['desc']);
+    }
+  }
+
+  public function deleteSkill($skill_id = null) {
+    $post = filter_input_array(INPUT_POST) ?? ["skill_id" => $skill_id];
+    if(!empty($post['skill_id'])) {
+      $this->load->model('m_char');
+      $this->m_char->deleteSkill($post['skill_id']);
     }
   }
 

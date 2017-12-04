@@ -115,7 +115,7 @@
           </div>
           <div class="panel-body">
 
-            <div class="row" style="margin-bottom: 38px;">
+            <div class="row" style="margin-bottom: 47px;">
 
               <div class="col-xs-4">
                 <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">FORC</div>
@@ -140,7 +140,7 @@
 
             </div>
 
-            <div class="row" style="margin-bottom: 38px;">
+            <div class="row" style="margin-bottom: 47px;">
 
               <div class="col-xs-4">
                 <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">DEXT</div>
@@ -165,7 +165,7 @@
 
             </div>
 
-            <div class="row" style="margin-bottom: 38px;">
+            <div class="row" style="margin-bottom: 47px;">
 
               <div class="col-xs-4">
                 <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">CHAN</div>
@@ -208,6 +208,7 @@
       <div class="col-md-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
+            <button class="btn btn-success btn-xs pull-right" onclick="open_modal('add_edit_skill')"><i class="fa fa-plus"></i></button>
             <h4 class="panel-title">Dons de <?= $c['name'] ?></h4>
           </div>
           <div class="panel-body">
@@ -217,6 +218,7 @@
                   <th>Don</th>
                   <th>Coût</th>
                   <th>Effet</th>
+                  <th style="width:5px;">Modif.</th>
                 </tr>
               </thead>
             </table>
@@ -256,7 +258,50 @@
   </div>
 </div>
 
+<div class="modal fade" id="add_edit_skill" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"><h4 class="modal-title">Ajouter un don</h4></div>
+      <div class="modal-body">
+        <input type="hidden" id="skill_id" value="-1">
+        <div class="row">
+          <div class="col-sm-6"><label>Nom du don</label><input type="text" class="form-control"  id="skill_name"></div>
+          <div class="col-sm-6"><label>Coût du don</label><input type="text" class="form-control" id="skill_cost"></div>
+        </div>
+        <hr>
+        <label>Description du don</label><input type="text" class="form-control" id="skill_desc">
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group btn-group-justified">
+          <a href="#" class="btn btn-danger  btn-lg" onclick="reset_skill_modal()" data-dismiss="modal"><i class="fa fa-remove"></i> Annuler</a>
+          <a href="#" class="btn btn-success btn-lg" onclick="add_edit_skill()"                        ><i class="fa fa-save"  ></i> Valider</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="delete_skill" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"><h4 class="modal-title">Supprimer un don</h4></div>
+      <div class="modal-body nowrap">
+        <p class="nowrap">Supprimer le don <i id="delete_skill_name"></i> ?</p>
+        <input type="hidden" value="" id="delete_skill_confirm">
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group btn-group-justified">
+          <a href="#" class="btn btn-danger  btn-lg" onclick="reset_skill_modal()" data-dismiss="modal"><i class="fa fa-remove"></i> NON</a>
+          <a href="#" class="btn btn-success btn-lg" onclick="delete_skill()"                        ><i class="fa fa-check"  ></i> OUI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
+  var skill_table;
+
   $(document).ready(function () {
 
     $('.progress .progress-bar').css("width",
@@ -291,19 +336,36 @@
     if( $.fn.DataTable.isDataTable('#skill_table') ) {
       $('#skill_table').dataTable().fnDestroy();
     }
-    $("#skill_table").DataTable({
-      ajax:           "<?= base_url("/Ajax/getCharSkill/".$c['char_id']) ?>",
-      info:           false,
-      filter:         false,
-      paging:         false,
-      scroller:       false,
-      scrollCollapse: false,
-      columns: [
-        {data: "name"},
-        {data: "worth"},
-        {data: "effect"}
-      ]
-    });
+
+    skill_table = $("#skill_table").DataTable({
+                                                ajax:           "<?= base_url("/Ajax/getCharSkill/".$c['char_id']) ?>",
+                                                info:           false,
+                                                filter:         false,
+                                                paging:         false,
+                                                scroller:       false,
+                                                scrollCollapse: false,
+                                                sort:           false,
+                                                autoWidth:      false,
+                                                responsive: {
+                                                  details:    {
+                                                                display: $.fn.dataTable.Responsive.display.modal( {
+                                                                  header: function ( row ) {
+                                                                    var data = row.data();
+                                                                    return 'Details for '+data[0]+' '+data[1];
+                                                                  }
+                                                                }),
+                                                                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                                                                  tableClass: 'table'
+                                                                })
+                                                              }
+                                                            },
+                                                columns:  [
+                                                            {data: "name"},
+                                                            {data: "worth"},
+                                                            {data: "effect"},
+                                                            {data: "edit"}
+                                                          ]
+                                              });
 
     $.each(global, function (index, value) {
       $('#'+index).val(value);
@@ -322,6 +384,113 @@
     );
 
   });
+
+  function edit_skill (id) {
+    $.ajax({
+      data: {
+        skill_id: id
+      },
+      type: "POST",
+      dataType: "JSON",
+      async: false,
+      url: "<?= base_url("/Ajax/getSkillInfo") ?>",
+      success: function(data){
+        $('#skill_id').val(data.skill_id);
+        $('#skill_name').val(data.name);
+        $('#skill_cost').val(data.worth);
+        $('#skill_desc').val(data.effect);
+        open_modal('add_edit_skill');
+      },
+      error: function(e, d, l){
+        console.log(e);
+      }
+    });
+  }
+
+  function open_modal(id) {
+    $('.modal').modal('hide');
+    $('#'+id).modal('show');
+  }
+
+  function reset_skill_modal () {
+    $('#skill_id').val('-1');
+    $('#skill_name').val('');
+    $('#skill_cost').val('');
+    $('#skill_desc').val('');
+    close_modal("add_edit_skill");
+  }
+
+  function close_modal(id = null) {
+    if(id == null) {
+      $('.modal').modal('hide');
+    }
+    else {
+      $("#"+id).modal('hide');
+    }
+  }
+
+  function prompt_delete_skill (id) {
+    $.ajax({
+      data: {
+        skill_id: id
+      },
+      type: "POST",
+      dataType: "JSON",
+      async: false,
+      url: "<?= base_url("/Ajax/getSkillInfo") ?>",
+      success: function(data){
+        console.log(data);
+        $('#delete_skill_name').html(data.name);
+        $('#delete_skill_confirm').val(id);
+        open_modal("delete_skill");
+      },
+      error: function(e, d, l){
+        console.log(e);
+      }
+    });
+  }
+
+  function delete_skill () {
+    $.ajax({
+      data: {
+        skill_id: $('#delete_skill_confirm').val()
+      },
+      type: "POST",
+      async: false,
+      url: "<?= base_url("/Ajax/deleteSkill") ?>",
+      success: function(data){
+        close_modal();
+        skill_table.ajax.reload();
+      },
+      error: function(e, d, l){
+        console.log(e);
+      }
+    });
+  }
+
+  function add_edit_skill() {
+    if($('#skill_name').val() != '' && $('#skill_desc').val() != '' && $('#skill_cost').val() != '') {
+      $.ajax({
+        data: {
+          char_id: global.char_id,
+          id:      $('#skill_id').val(),
+          name:    $('#skill_name').val(),
+          desc:    $('#skill_desc').val(),
+          cost:    $('#skill_cost').val()
+        },
+        type: "POST",
+        async: false,
+        url: "<?= base_url("/Ajax/addEditSkill") ?>",
+        success: function(data){
+          skill_table.ajax.reload();
+          reset_skill_modal();
+        },
+        error: function(e, d, l){
+          console.log(e);
+        }
+      });
+    }
+  }
 
   function refresh_stats() {
     $.ajax({
