@@ -58,7 +58,7 @@ class M_Char extends CI_Model {
     return $this->db->get("competence cp")->result_array();
   }
 
-  // Returns an array of an unique character's skills (with pre-built <<edit>> button)
+  // Returns an array of an unique character's skills (with pre-built <<edit>> and <<delete>> buttons)
   public function getCharSkill ($char_id, $need_id = 0) {
     $btn_edit = "concat('<div class=\"btn-group\"><button class=\"btn btn-primary btn-xs\" onclick=\"edit_skill(',skill_id,')\"><i class=\"fa fa-edit\"></i></button><button class=\"btn btn-danger btn-xs\" onclick=\"prompt_delete_skill(',skill_id,')\"><i class=\"fa fa-remove\"></i></button></div>') as edit";
     $fields = [$btn_edit,"name", "effect", "worth"];
@@ -69,6 +69,19 @@ class M_Char extends CI_Model {
     $this->db->where("char_id",$char_id);
     $this->db->order_by("name");
     return $this->db->get("skill")->result_array();
+  }
+
+  // Returns an array of an unique character's items
+  public function getCharInventory ($char_id, $need_id = 0) {
+    $btn_edit = "concat('<div class=\"btn-group\"><button class=\"btn btn-primary btn-xs\" onclick=\"edit_item(',item_id,')\"><i class=\"fa fa-edit\"></i></button><button class=\"btn btn-danger btn-xs\" onclick=\"prompt_delete_item(',item_id,')\"><i class=\"fa fa-remove\"></i></button></div>') as edit";
+    $fields = ["quantity","name", "description", $btn_edit];
+    if($need_id == 1) {
+      $fields[] = "item_id";
+    }
+    $this->db->select($fields);
+    $this->db->where("char_id",$char_id);
+    $this->db->order_by("name");
+    return $this->db->get("inventory")->result_array();
   }
 
   // Adds or remove 5% to a character's competence depending on $sign (if not set, creates the table row)
@@ -97,6 +110,15 @@ class M_Char extends CI_Model {
     $this->db->insert('skill');
   }
 
+  // Adds an item into the character's inventory table
+  public function addItem($char, $name, $qty, $desc) {
+    $this->db->set('char_id',      $char);
+    $this->db->set('name',         $name);
+    $this->db->set('quantity',     $qty);
+    $this->db->set('description',  $desc);
+    $this->db->insert('inventory');
+  }
+
   // Updates a skill in the character's skill table
   public function editSkill($id, $name, $cost, $desc) {
     $this->db->set('name',    $name);
@@ -107,15 +129,36 @@ class M_Char extends CI_Model {
     $this->db->update('skill');
   }
 
+  // Updates a item in the character's inventory table
+  public function editItem($id, $name, $qty, $desc) {
+    $this->db->set('name',        $name);
+    $this->db->set('quantity',    $qty);
+    $this->db->set('description', $desc);
+    $this->db->where('item_id',   $id);
+    //echo $this->db->get_compiled_insert("skill");
+    $this->db->update('inventory');
+  }
+
   // Deletes skill identified by $skill_id
   public function deleteSkill ($skill_id) {
     $this->db->where('skill_id',$skill_id);
     $this->db->delete('skill');
   }
 
+  // Deletes item identified by $item_id
+  public function deleteItem ($item_id) {
+    $this->db->where('item_id',$item_id);
+    $this->db->delete('inventory');
+  }
+
   // Returns info array of a specific skill
   public function getSkillInfo ($skill_id) {
     return $this->db->where('skill_id',$skill_id)->get('skill')->row_array();
+  }
+
+  // Returns info array of a specific item
+  public function getItemInfo ($item_id) {
+    return $this->db->where('item_id',$item_id)->get('inventory')->row_array();
   }
 
   // Updates a character's statistic, identified by $column

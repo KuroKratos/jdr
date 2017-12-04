@@ -246,11 +246,21 @@
       <div class="col-md-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
-			<span class='pull-right'><kbd>Ctrl</kbd> + <kbd>S</kbd> ou cliquer <i class="fa fa-arrow-right"></i> <button class='btn btn-default btn-xs' id="save_inventory"><i class="fa fa-save"></i></button></span>
+            <button class="btn btn-success btn-xs pull-right" onclick="open_modal('add_edit_item')"><i class="fa fa-plus"></i></button>
             <h4 class="panel-title">Inventaire</h4>
           </div>
-          <div class="panel-body" style="height: 40vh;">
-            <textarea id="inventory" class="form-control" style="width: 100%; min-height: 100%; resize: none;" rows="8"></textarea>
+          <div class="panel-body" style="max-height: 40vh; padding: 0;">
+            <!--<textarea id="inventory" class="form-control" style="width: 100%; min-height: 100%; resize: none;" rows="8"></textarea>-->
+            <table class='table table-striped table-hover table-condensed table-bordered' id='inv_table' cellspacing='0' width='100%' style="margin: -1px 0 -1px 0 !important; border-radius: 0 0 3px 3px">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Nom</th>
+                  <th>Desc.</th>
+                  <th style="width:30px;"></th>
+                </tr>
+              </thead>
+            </table>
           </div>
         </div>
       </div>
@@ -265,8 +275,8 @@
       <div class="modal-body">
         <input type="hidden" id="skill_id" value="-1">
         <div class="row">
-          <div class="col-sm-6"><label>Nom du don</label><input type="text" class="form-control"  id="skill_name"></div>
-          <div class="col-sm-6"><label>Coût du don</label><input type="text" class="form-control" id="skill_cost"></div>
+          <div class="col-sm-8"><label>Nom du don</label><input type="text" class="form-control"  id="skill_name"></div>
+          <div class="col-sm-4"><label>Coût du don</label><input type="text" class="form-control" id="skill_cost"></div>
         </div>
         <hr>
         <label>Description du don</label><input type="text" class="form-control" id="skill_desc">
@@ -275,6 +285,29 @@
         <div class="btn-group btn-group-justified">
           <a href="#" class="btn btn-danger  btn-lg" onclick="reset_skill_modal()" data-dismiss="modal"><i class="fa fa-remove"></i> Annuler</a>
           <a href="#" class="btn btn-success btn-lg" onclick="add_edit_skill()"                        ><i class="fa fa-save"  ></i> Valider</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="add_edit_item" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"><h4 class="modal-title">Ajouter / Modifier un objet</h4></div>
+      <div class="modal-body">
+        <input type="hidden" id="item_id" value="-1">
+        <div class="row">
+          <div class="col-sm-8"><label>Nom de l'objet</label><input type="text" class="form-control"  id="item_name"></div>
+          <div class="col-sm-4"><label>Quantité</label><input type="text" class="form-control" id="item_qty"></div>
+        </div>
+        <hr>
+        <label>Description / Effets</label><input type="text" class="form-control" id="item_desc">
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group btn-group-justified">
+          <a href="#" class="btn btn-danger  btn-lg" onclick="reset_item_modal()" data-dismiss="modal"><i class="fa fa-remove"></i> Annuler</a>
+          <a href="#" class="btn btn-success btn-lg" onclick="add_edit_item()"                        ><i class="fa fa-save"  ></i> Valider</a>
         </div>
       </div>
     </div>
@@ -292,7 +325,25 @@
       <div class="modal-footer">
         <div class="btn-group btn-group-justified">
           <a href="#" class="btn btn-danger  btn-lg" onclick="reset_skill_modal()" data-dismiss="modal"><i class="fa fa-remove"></i> NON</a>
-          <a href="#" class="btn btn-success btn-lg" onclick="delete_skill()"                        ><i class="fa fa-check"  ></i> OUI</a>
+          <a href="#" class="btn btn-success btn-lg" onclick="delete_skill()"                         ><i class="fa fa-check"  ></i> OUI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="delete_item" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"><h4 class="modal-title">Supprimer un objet</h4></div>
+      <div class="modal-body nowrap">
+        <p class="nowrap">Supprimer l'objet <b><i id="delete_item_name"></i></b> ?</p>
+        <input type="hidden" value="" id="delete_item_confirm">
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group btn-group-justified">
+          <a href="#" class="btn btn-danger  btn-lg" onclick="reset_skill_modal()" data-dismiss="modal"><i class="fa fa-remove"></i> NON</a>
+          <a href="#" class="btn btn-success btn-lg" onclick="delete_item()"                          ><i class="fa fa-check"  ></i> OUI</a>
         </div>
       </div>
     </div>
@@ -301,15 +352,18 @@
 
 <script type="text/javascript">
   var skill_table;
+  var item_table;
 
   $(document).ready(function () {
 
+    // Progress bars animation
     $('.progress .progress-bar').css("width",
       function() {
         return ( ( parseInt($(this).attr("aria-valuenow")) / parseInt($(this).attr("aria-valuemax")) ) * 100 )  + "%";
       }
     );
 
+    // Catch ENTER pressed in caracteristics inputs
     $('.char_val').keyup(function (k) {
       if (k.keyCode == 13) {
         var input = $(this);
@@ -317,13 +371,12 @@
       }
     });
 
+    // Prevents the deletion of the '%' character in stats inputs
     $('.carac').keydown(function () {
       var field = $(this);
       var oldval   = field.val();
-
       setTimeout( function () {
         var true_val = field.val().substring(0, field.val().length - 1);
-
         if(field.val().slice(-1) != '%' || isNaN(true_val) || parseInt(true_val) < 0 || parseInt(true_val) > 100) {
           field.val(oldval);
           field[0].setSelectionRange(oldval.length-1, oldval.length-1);
@@ -331,52 +384,89 @@
       }, 1);
     });
 
-    var tbl_height = $(window).height() - 210;
-
+    // Destroys any datatable, just in case
     if( $.fn.DataTable.isDataTable('#skill_table') ) {
       $('#skill_table').dataTable().fnDestroy();
     }
+    if( $.fn.DataTable.isDataTable('#inv_table') ) {
+      $('#inv_table').dataTable().fnDestroy();
+    }
 
+    // Generates skills datatable
     skill_table = $("#skill_table").DataTable({
-                                                ajax:           "<?= base_url("/Ajax/getCharSkill/".$c['char_id']) ?>",
-                                                info:           false,
-                                                filter:         false,
-                                                paging:         false,
-                                                scroller:       false,
-                                                scrollCollapse: false,
-                                                sort:           false,
-                                                autoWidth:      false,
-                                                responsive: {
-                                                  details:    {
-                                                                display: $.fn.dataTable.Responsive.display.modal( {
-                                                                  header: function ( row ) {
-                                                                    var data = row.data();
-                                                                    return 'Details for '+data[0]+' '+data[1];
-                                                                  }
-                                                                }),
-                                                                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-                                                                  tableClass: 'table'
-                                                                })
-                                                              }
-                                                            },
-                                                columns:  [
-                                                            {data: "name"},
-                                                            {data: "worth"},
-                                                            {data: "effect"},
-                                                            {data: "edit"}
-                                                          ]
-                                              });
+      ajax:           "<?= base_url("/Ajax/getCharSkill/".$c['char_id']) ?>",
+      info:           false,
+      filter:         false,
+      paging:         false,
+      scroller:       false,
+      scrollCollapse: false,
+      sort:           false,
+      autoWidth:      false,
+      responsive: {
+        details:    {
+                      display: $.fn.dataTable.Responsive.display.modal( {
+                        header: function ( row ) {
+                          var data = row.data();
+                          return 'Details for '+data[0]+' '+data[1];
+                        }
+                      }),
+                      renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                        tableClass: 'table'
+                      })
+                    }
+                  },
+      columns:  [
+                  {data: "name"},
+                  {data: "worth"},
+                  {data: "effect"},
+                  {data: "edit"}
+                ]
+    });
 
+    // Generates inventory datatable
+    item_table = $("#inv_table").DataTable({
+      ajax:           "<?= base_url("/Ajax/getCharInventory/".$c['char_id']) ?>",
+      info:           false,
+      filter:         false,
+      paging:         false,
+      scroller:       false,
+      scrollCollapse: false,
+      sort:           true,
+      autoWidth:      false,
+      responsive: {
+        details:    {
+                      display: $.fn.dataTable.Responsive.display.modal( {
+                        header: function ( row ) {
+                          var data = row.data();
+                          return 'Details for '+data[0]+' '+data[1];
+                        }
+                      }),
+                      renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                        tableClass: 'table'
+                      })
+                    }
+                  },
+      columns:  [
+                  {data: "quantity"},
+                  {data: "name"},
+                  {data: "description"},
+                  {data: "edit"}
+                ]
+    });
+
+    // Set stats values into inputs
     $.each(global, function (index, value) {
       $('#'+index).val(value);
     });
 
+    // Set '%' character at the end of stats inputs
     $('.carac').each(function (index) {
       if($(this).attr('id') != "gold") {
         $(this).val($(this).val() + '%');
       }
     });
 
+    // Refresh GM-set stats every 3 seconds (currently Level and Light/Dark bar)
     refresh_stats();
     setInterval(
       function () { refresh_stats(); },
@@ -385,6 +475,7 @@
 
   });
 
+  // Update skill (id, name, description, cost)
   function edit_skill (id) {
     $.ajax({
       data: {
@@ -407,17 +498,51 @@
     });
   }
 
+  // Update item (id, name, description, quantity)
+  function edit_item (id) {
+    $.ajax({
+      data: {
+        item_id: id
+      },
+      type: "POST",
+      dataType: "JSON",
+      async: false,
+      url: "<?= base_url("/Ajax/getItemInfo") ?>",
+      success: function(data){
+        $('#item_id').val(data.item_id);
+        $('#item_name').val(data.name);
+        $('#item_qty').val(data.quantity);
+        $('#item_desc').val(data.description);
+        open_modal('add_edit_item');
+      },
+      error: function(e, d, l){
+        console.log(e);
+      }
+    });
+  }
+
+  // Open any modal and closes any other
   function open_modal(id) {
     $('.modal').modal('hide');
     $('#'+id).modal('show');
   }
 
+  // Clear inputs of add_edit_skill modal
   function reset_skill_modal () {
     $('#skill_id').val('-1');
     $('#skill_name').val('');
     $('#skill_cost').val('');
     $('#skill_desc').val('');
     close_modal("add_edit_skill");
+  }
+
+  // Clear inputs of add_edit_item modal
+  function reset_item_modal () {
+    $('#item_id').val('-1');
+    $('#item_name').val('');
+    $('#item_qty').val('');
+    $('#item_desc').val('');
+    close_modal("add_edit_item");
   }
 
   function close_modal(id = null) {
@@ -450,6 +575,27 @@
     });
   }
 
+  function prompt_delete_item (id) {
+    $.ajax({
+      data: {
+        item_id: id
+      },
+      type: "POST",
+      dataType: "JSON",
+      async: false,
+      url: "<?= base_url("/Ajax/getItemInfo") ?>",
+      success: function(data){
+        console.log(data);
+        $('#delete_item_name').html(data.name);
+        $('#delete_item_confirm').val(id);
+        open_modal("delete_item");
+      },
+      error: function(e, d, l){
+        console.log(e);
+      }
+    });
+  }
+
   function delete_skill () {
     $.ajax({
       data: {
@@ -461,6 +607,24 @@
       success: function(data){
         close_modal();
         skill_table.ajax.reload();
+      },
+      error: function(e, d, l){
+        console.log(e);
+      }
+    });
+  }
+
+  function delete_item () {
+    $.ajax({
+      data: {
+        item_id: $('#delete_item_confirm').val()
+      },
+      type: "POST",
+      async: false,
+      url: "<?= base_url("/Ajax/deleteItem") ?>",
+      success: function(data){
+        close_modal();
+        item_table.ajax.reload();
       },
       error: function(e, d, l){
         console.log(e);
@@ -484,6 +648,30 @@
         success: function(data){
           skill_table.ajax.reload();
           reset_skill_modal();
+        },
+        error: function(e, d, l){
+          console.log(e);
+        }
+      });
+    }
+  }
+
+  function add_edit_item() {
+  if($('#item_name').val() != '' && $('#item_desc').val() != '' && $('#item_qty').val() != '') {
+      $.ajax({
+        data: {
+          char_id: global.char_id,
+          id:      $('#item_id').val(),
+          name:    $('#item_name').val(),
+          desc:    $('#item_desc').val(),
+          qty:     $('#item_qty').val()
+        },
+        type: "POST",
+        async: false,
+        url: "<?= base_url("/Ajax/addEditItem") ?>",
+        success: function(data){
+          item_table.ajax.reload();
+          reset_item_modal();
         },
         error: function(e, d, l){
           console.log(e);

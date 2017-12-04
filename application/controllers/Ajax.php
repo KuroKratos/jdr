@@ -31,12 +31,30 @@ class Ajax extends MY_Controller {
     }
   }
 
+  public function getCharInventory ($char_id = null, $need_id = 0) {
+    $post = filter_input_array(INPUT_POST) ?? ["char_id" => $char_id];
+    if(!empty($post['char_id'])) {
+      $this->load->model('m_char');
+      $comp = $this->m_char->getCharInventory($post['char_id'], $need_id);
+      echo json_encode(["data" => $comp], JSON_PRETTY_PRINT);
+    }
+  }
+
   public function getSkillInfo ($skill_id = null) {
     $post = filter_input_array(INPUT_POST) ?? ["skill_id" => $skill_id];
     if(!empty($post['skill_id'])) {
       $this->load->model('m_char');
       $skill = $this->m_char->getSkillInfo($post['skill_id']);
       echo json_encode($skill, JSON_PRETTY_PRINT);
+    }
+  }
+
+  public function getItemInfo ($item_id = null) {
+    $post = filter_input_array(INPUT_POST) ?? ["item_id" => $item_id];
+    if(!empty($post['item_id'])) {
+      $this->load->model('m_char');
+      $item = $this->m_char->getItemInfo($post['item_id']);
+      echo json_encode($item, JSON_PRETTY_PRINT);
     }
   }
 
@@ -72,11 +90,32 @@ class Ajax extends MY_Controller {
     }
   }
 
+  public function addEditItem() {
+    $post = filter_input_array(INPUT_POST);
+    if(!empty($post['char_id']) && !empty($post['name']) && !empty($post['id']) && $post['id'] == '-1') {
+      echo "NEW ITEM";
+      $this->load->model('m_char');
+      $this->m_char->addItem($post['char_id'], $post['name'], $post['qty'], $post['desc']);
+    } else {
+      echo "UPDATE ITEM";
+      $this->load->model('m_char');
+      $this->m_char->editItem($post['id'], $post['name'], $post['qty'], $post['desc']);
+    }
+  }
+
   public function deleteSkill($skill_id = null) {
     $post = filter_input_array(INPUT_POST) ?? ["skill_id" => $skill_id];
     if(!empty($post['skill_id'])) {
       $this->load->model('m_char');
       $this->m_char->deleteSkill($post['skill_id']);
+    }
+  }
+
+  public function deleteItem($item_id = null) {
+    $post = filter_input_array(INPUT_POST) ?? ["item_id" => $item_id];
+    if(!empty($post['item_id'])) {
+      $this->load->model('m_char');
+      $this->m_char->deleteItem($post['item_id']);
     }
   }
 
