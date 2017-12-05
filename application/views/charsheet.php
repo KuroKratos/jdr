@@ -4,7 +4,7 @@
   global = <?= json_encode($c) ?>;
 </script>
 
-<div class="row">
+<div class="row" id="charsheet">
 
   <div class="col-md-7 col-lg-9">
     <div class="row">
@@ -22,8 +22,7 @@
                     <label>Points de Vie</label>
                   </div>
                   <div class="col-xs-6 pull-right text-right">
-                    <input type="text" id="hp_cur" class="input-underline char_val" style="width: 30%; text-align: center;"> /
-                    <input type="text" id="hp_max" class="input-underline char_val" style="width: 30%; text-align: center;">
+                    <input type="text" id="hp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important;"><span class="hp_pp_slash">/</span><input type="text" id="hp_max" class="input-underline char_val" style="border-left: none !important; width: 30%; text-align: center;">
                   </div>
                 </div>
                 <div class="row">
@@ -45,8 +44,7 @@
                     <label>Points de Mana</label>
                   </div>
                   <div class="col-xs-6 pull-right text-right">
-                    <input type="text" id="pp_cur" class="input-underline char_val" style="width: 30%; text-align: center;"> /
-                    <input type="text" id="pp_max" class="input-underline char_val" style="width: 30%; text-align: center;">
+                    <input type="text" id="pp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important;"><span class="hp_pp_slash">/</span><input type="text" id="pp_max" class="input-underline char_val" style="width: 30%; text-align: center; border-left: none !important;">
                   </div>
                 </div>
                 <div class="row">
@@ -82,11 +80,9 @@
               <div class="col-sm-6"><label class="char">Race</label><input   type="text" id="race"  class="input-underline char_val" disabled></div>
               <div class="col-sm-6"><label class="char">Classe</label><input type="text" id="class" class="input-underline char_val" disabled></div>
             </div>
-            <hr>
-            <div class="row">
+            <div class="row" style="margin-top:15px; margin-bottom: 15px;">
               <div class="col-sm-12"><label>Réputations :    </label><input type="text" id="traits"  class="input-underline char_val" style="width: 100%; margin: 0;"></div>
             </div>
-            <hr>
             <div class="col-xs-9 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">PENCHANT LUMIÈRE / OMBRE</div>
             <div class="col-xs-3 text-righto" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_ali_<?= $c['char_id'] ?>">
               <input type="text" class="input-underline text-center carac char_val" value="<?= $c['alignement'] ?>" style="width: 100%; text-align: center !important;" id="alignement" disabled>
@@ -94,10 +90,10 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="progress progress-striped" style="/*box-shadow: 0px 0px 10px #000000;*/ margin-top:12px; margin-bottom: 10px; border: 1px solid #888888;">
-                  <div class="progress-bar progress-bar-warning" id="bar_light" role="progressbar" style="width:<?= $c['alignement'] ?>%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;">
+                  <div class="progress-bar progress-bar-warning" id="bar_light" role="progressbar" style="font-size: large; width:<?= $c['alignement'] ?>%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;">
                     <b>Lumière</b>
                   </div>
-                  <div class="progress-bar progress-bar-success" id="bar_dark"  role="progressbar" style="width:<?= (100 - $c['alignement']) ?>%; background-color: #000033; text-align: center; line-height:33px;">
+                  <div class="progress-bar progress-bar-success" id="bar_dark"  role="progressbar" style="font-size: large; width:<?= (100 - $c['alignement']) ?>%; background-color: #000033; text-align: center; line-height:33px;">
                     <b>Ombre</b>
                   </div>
                 </div>
@@ -115,7 +111,7 @@
           </div>
           <div class="panel-body">
 
-            <div class="row" style="margin-bottom: 47px;">
+            <div class="row" style="margin-bottom: 10px;">
 
               <div class="col-xs-4">
                 <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">FORC</div>
@@ -140,7 +136,7 @@
 
             </div>
 
-            <div class="row" style="margin-bottom: 47px;">
+            <div class="row" style="margin-bottom: 10px;">
 
               <div class="col-xs-4">
                 <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">DEXT</div>
@@ -165,7 +161,7 @@
 
             </div>
 
-            <div class="row" style="margin-bottom: 47px;">
+            <div class="row" style="margin-bottom: 10px;">
 
               <div class="col-xs-4">
                 <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">CHAN</div>
@@ -191,7 +187,7 @@
 
               <div class="col-xs-4">
                 <div class="col-xs-12 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_gld_<?= $c['char_id'] ?>">
-                  <input type="text" class="input-underline text-center char_val" value="<?= $c['gold'] ?>" style="width: 65%; text-align: center !important;" id="gold"> <span style="color: black;">PO</span>
+                  <input type="text" class="input-underline text-center char_val" value="<?= $c['gold'] ?>" style="width: 100%; text-align: center !important;" id="gold"> <span class="po_label">PO</span>
                 </div>
               </div>
 
@@ -211,7 +207,7 @@
             <button class="btn btn-success btn-xs pull-right" onclick="open_modal('add_edit_skill')"><i class="fa fa-plus"></i></button>
             <h4 class="panel-title">Dons de <?= $c['name'] ?></h4>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" style="padding:0;">
             <table class='table table-striped table-hover table-condensed' id='skill_table' cellspacing='0' width='100%'>
               <thead>
                 <tr>
