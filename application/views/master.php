@@ -1,19 +1,19 @@
 <?php foreach ($characters as $c) { ?>
 
-<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-4 col-lg-offset-0">
+<div class="col-sm-6 col-lg-4">
 
   <div class="panel panel-default" style="background-color: <?= $c['color'] ?>; box-shadow: 0 0 5px black; border-color: #888888; border-radius: 10px;">
 
     <!-- NAME + CLASS & RACE + LEVEL-->
     <div class="panel-heading" style="border-radius: 10px 10px 0 0;">
       <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-3">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
           <p class="panel-title text-left" style="font-variant: small-caps; font-size: 18px; line-height: 22px;"><b><?= strtoupper($c['name']) ?></b></p>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-6 hidden-xs hidden-sm hidden-md hidden-lg">
           <p class="panel-title class-race"><?= $c['race'] ?> <?= $c['class'] ?></p>
         </div>
-        <div class="col-xs-6 col-lg-3">
+        <div class="col-xs-6 col-lg-6">
           <p class="panel-title text-right" id="c_lvl_<?= $c['char_id'] ?>">Niveau <input type="text" class="input-underline text-center carac char_val" value="<?= $c['level'] ?>" style="width: 30px; text-align: center !important;" id="level-<?= $c['char_id'] ?>"></p>
         </div>
         <div class="clearfix"></div>
@@ -21,57 +21,61 @@
     </div>
 
 
-    <div class="panel-body" style="border-radius: 0 0 10px 10px">
+    <div class="panel-body" style="border-radius: 0 0 10px 10px; padding-top: 10px;">
 
       <!-- HP & PP PROGRESS BARS -->
       <div class="row">
         <div class="col-xs-6">
-          <div class="progress progress-striped skill-bar hp-bar">
+          <div class="progress progress-striped skill-bar hp-bar" style="height:20px; margin-bottom: 10px;">
             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?= $c['hp_cur'] ?>" aria-valuemin="0" aria-valuemax="<?= $c['hp_max'] ?>" id="c_hp_<?= $c['char_id'] ?>"></div>
-            <span class="skill"><span class="lbl">HP</span><i class="val" id="c_hp_txt_<?= $c['char_id'] ?>"><?= ($c['hp_cur'] . "/" . $c['hp_max']) ?></i></span>
+            <span class="skill" style="line-height:18px; font-size:18px !important;"><span class="lbl">HP</span><i class="val" id="c_hp_txt_<?= $c['char_id'] ?>"><?= ($c['hp_cur'] . "/" . $c['hp_max']) ?></i></span>
           </div>
         </div>
         <div class="col-xs-6">
-          <div class="progress progress-striped skill-bar pp-bar">
-            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<?= $c['pp_cur'] ?>" aria-valuemin="0" aria-valuemax="<?= $c['pp_max'] ?>" id="c_pp_<?= $c['char_id'] ?>"></div>
-            <span class="skill"><span class="lbl">PP</span><i class="val" id="c_pp_txt_<?= $c['char_id'] ?>"><?= ($c['pp_cur'] . "/" . $c['pp_max']) ?></i></span>
+          <div class="progress progress-striped skill-bar pp-bar" style="height:20px; margin-bottom: 10px;">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<?= $c['pp_cur'] ?>" aria-valuemin="0" aria-valuemax="<?= $c['pp_max'] ?>" id="c_pp_<?= $c['char_id'] ?>"></div>
+            <span class="skill" style="line-height:17px; font-size:18px !important;"><span class="lbl">PP</span><i class="val" id="c_pp_txt_<?= $c['char_id'] ?>"><?= ($c['pp_cur'] . "/" . $c['pp_max']) ?></i></span>
           </div>
         </div>
       </div>
 
       <!-- MAIN STATS, 1 PANEL/EACH -->
 
-      <fieldset class="char-stats">
+      <fieldset class="char-stats" style="padding:0 !important; margin: 0 !important; border: none !important; background: none; box-shadow: none;">
         <div class="row">
           <div class="col-xs-3">
             <div class="panel panel-default">
               <div class="panel-body">
-                <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">FORC</div>
-                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_str_<?= $c['char_id'] ?>"><?= $c['strength'] ?></div>
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">FOR</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">FORC</div>
+                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_str_<?= $c['char_id'] ?>"><?= $c['strength'] ?></div>
               </div>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="panel panel-default">
               <div class="panel-body">
-                <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">DEXT</div>
-                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_dex_<?= $c['char_id'] ?>"><?= $c['dexterity'] ?></div>
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">DEX</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">DEXT</div>
+                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_dex_<?= $c['char_id'] ?>"><?= $c['dexterity'] ?></div>
               </div>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="panel panel-default">
               <div class="panel-body">
-                <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">CHAN</div>
-                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_luk_<?= $c['char_id'] ?>"><?= $c['luck'] ?></div>
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">CHN</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">CHAN</div>
+                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_luk_<?= $c['char_id'] ?>"><?= $c['luck'] ?></div>
               </div>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="panel panel-default">
               <div class="panel-body">
-                <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">COUR</div>
-                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_con_<?= $c['char_id'] ?>"><?= $c['constitution'] ?></div>
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">COU</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">COUR</div>
+                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_con_<?= $c['char_id'] ?>"><?= $c['constitution'] ?></div>
               </div>
             </div>
           </div>
@@ -81,32 +85,36 @@
               <div class="col-xs-3">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">INTEL</div>
-                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_int_<?= $c['char_id'] ?>"><?= $c['intelligence'] ?></div>
+                    <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">INT</div>
+                    <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">INTL</div>
+                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: 5px;" id="c_int_<?= $c['char_id'] ?>"><?= $c['intelligence'] ?></div>
                   </div>
                 </div>
               </div>
               <div class="col-xs-3">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">CHAR</div>
-                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_cha_<?= $c['char_id'] ?>"><?= $c['charisma'] ?></div>
+                    <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">CHR</div>
+                    <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">CHAR</div>
+                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_cha_<?= $c['char_id'] ?>"><?= $c['charisma'] ?></div>
                   </div>
                 </div>
               </div>
               <div class="col-xs-3">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">PERC</div>
-                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_per_<?= $c['char_id'] ?>"><?= $c['perception'] ?></div>
+                    <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">PER</div>
+                    <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">PERC</div>
+                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_per_<?= $c['char_id'] ?>"><?= $c['perception'] ?></div>
                   </div>
                 </div>
               </div>
               <div class="col-xs-3">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">CONN</div>
-                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_edu_<?= $c['char_id'] ?>"><?= $c['education'] ?></div>
+                    <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">CON</div>
+                    <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">CONN</div>
+                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_edu_<?= $c['char_id'] ?>"><?= $c['education'] ?></div>
                   </div>
                 </div>
               </div>
@@ -115,7 +123,7 @@
 
       <!-- COMPETENCES & ABILITIES BTN + Gold -->
       <div class="">
-        <div class="col-xs-8 fieldset" style="width:65%;">
+        <div class="col-xs-12 col-md-7 fieldset" style="padding:0 !important; margin: 0 !important; border: none !important; background: none; box-shadow: none;">
           <div class="row">
             <div class="col-xs-12">
               <div class="panel panel-default" style="margin-bottom: 15px;">
@@ -142,9 +150,9 @@
           </div>
         </div>
 
-        <div class="col-xs-4 fieldset pull-right">
+        <div class="col-xs-12 col-md-4 fieldset pull-right" style="padding:0 !important; margin: 0 !important; border: none !important; background: none; box-shadow: none;">
           <div class="row">
-          <div class="col-xs-12">
+          <div class="col-sm-6 col-md-12">
             <div class="panel panel-default" style="margin-bottom: 15px;">
               <div class="panel-body" style="padding: 5px; border-radius: 5px;">
                 <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">DONS</div>
@@ -152,7 +160,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xs-12">
+          <div class="col-sm-6 col-md-12">
             <div class="panel panel-default" style="margin-bottom: 15px;">
               <div class="panel-body" style="padding: 5px; border-radius: 5px;">
                 <div class="col-xs-5 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">ARGENT</div>

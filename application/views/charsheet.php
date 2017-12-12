@@ -6,55 +6,57 @@
 
 <div class="row" id="charsheet">
 
-  <div class="col-md-7 col-lg-9">
+  <div class="col-sm-6 col-md-7 col-lg-9">
     <div class="row">
       <div class="col-xs-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <span class="pull-right">( <img src="<?= assets_url('images/enter_key.png') ?>" class="img-responsive" style="height: 20px; display: inline"> pour enregistrer )</span>
-            <h4 class="panel-title">Vie et Mana</h4>
+            <h4 class="panel-title"><a data-toggle="collapse" href="#collapse0" class="pull-left"><i class="fa fa-eye"></i></a>&nbsp;&nbsp;Vie et Mana</h4>
           </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="row">
-                  <div class="col-xs-6 pull-left">
-                    <label>Points de Vie</label>
+          <div class="panel-collapse collapse in" id="collapse0">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="row">
+                    <div class="col-xs-6 pull-left">
+                      <label>Points de Vie</label>
+                    </div>
+                    <div class="col-xs-6 pull-right text-right">
+                      <input type="text" id="hp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important;"><span class="hp_pp_slash">/</span><input type="text" id="hp_max" class="input-underline char_val" style="border-left: none !important; width: 30%; text-align: center;">
+                    </div>
                   </div>
-                  <div class="col-xs-6 pull-right text-right">
-                    <input type="text" id="hp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important;"><span class="hp_pp_slash">/</span><input type="text" id="hp_max" class="input-underline char_val" style="border-left: none !important; width: 30%; text-align: center;">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div class="progress progress-striped skill-bar hp-bar" style="margin-bottom: 0; margin-top: 10px;">
-                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?= $c['hp_cur'] ?>" aria-valuemin="0" aria-valuemax="<?= $c['hp_max'] ?>" id="hp_bar"></div>
-                      <span class="skill">
-                        <span class="lbl">PV</span>
-                        <i class="val" id="hp_lbl"><?= ($c['hp_cur'] . "/" . $c['hp_max']) ?></i>
-                      </span>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="progress progress-striped skill-bar hp-bar" style="margin-bottom: 0; margin-top: 10px;">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?= $c['hp_cur'] ?>" aria-valuemin="0" aria-valuemax="<?= $c['hp_max'] ?>" id="hp_bar"></div>
+                        <span class="skill">
+                          <span class="lbl">PV</span>
+                          <i class="val" id="hp_lbl"><?= ($c['hp_cur'] . "/" . $c['hp_max']) ?></i>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <hr class="visible-xs visible-sm">
-                <div class="row">
-                  <div class="col-xs-6 pull-left">
-                    <label>Points de Mana</label>
+                <div class="col-sm-12 col-md-6">
+                  <hr class="visible-xs visible-sm">
+                  <div class="row">
+                    <div class="col-xs-6 pull-left">
+                      <label>Points de Mana</label>
+                    </div>
+                    <div class="col-xs-6 pull-right text-right">
+                      <input type="text" id="pp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important;"><span class="hp_pp_slash">/</span><input type="text" id="pp_max" class="input-underline char_val" style="width: 30%; text-align: center; border-left: none !important;">
+                    </div>
                   </div>
-                  <div class="col-xs-6 pull-right text-right">
-                    <input type="text" id="pp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important;"><span class="hp_pp_slash">/</span><input type="text" id="pp_max" class="input-underline char_val" style="width: 30%; text-align: center; border-left: none !important;">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div class="progress progress-striped skill-bar pp-bar" style="margin-bottom: 0; margin-top: 10px;">
-                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<?= $c['pp_cur'] ?>" aria-valuemin="0" aria-valuemax="<?= $c['pp_max'] ?>" id="pp_bar"></div>
-                      <span class="skill">
-                        <span class="lbl">PM</span>
-                        <i class="val" id="pp_lbl"><?= ($c['pp_cur'] . "/" . $c['pp_max']) ?></i>
-                      </span>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="progress progress-striped skill-bar pp-bar" style="margin-bottom: 0; margin-top: 10px;">
+                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<?= $c['pp_cur'] ?>" aria-valuemin="0" aria-valuemax="<?= $c['pp_max'] ?>" id="pp_bar"></div>
+                        <span class="skill">
+                          <span class="lbl">PM</span>
+                          <i class="val" id="pp_lbl"><?= ($c['pp_cur'] . "/" . $c['pp_max']) ?></i>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -66,35 +68,37 @@
     </div>
     <div class="row">
       <div class="col-md-12 col-lg-6">
-        <div class="panel panel-primary" style="min-height: 194px;">
+        <div class="panel panel-primary">
           <div class="panel-heading">
             <span class="pull-right">( <img src="<?= assets_url('images/enter_key.png') ?>" class="img-responsive" style="height: 20px; display: inline"> pour enregistrer )</span>
-            <h4 class="panel-title">Personnage</h4>
+            <h4 class="panel-title"><a data-toggle="collapse" href="#collapse2" class="pull-left"><i class="fa fa-eye"></i></a>&nbsp;&nbsp;Personnage</h4>
           </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-sm-6"><label class="char">Nom</label><input    type="text" id="name"  class="input-underline char_val" disabled></div>
-              <div class="col-sm-6"><label class="char">Niveau</label><input type="text" id="level" class="input-underline char_val" disabled></div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6"><label class="char">Race</label><input   type="text" id="race"  class="input-underline char_val" disabled></div>
-              <div class="col-sm-6"><label class="char">Classe</label><input type="text" id="class" class="input-underline char_val" disabled></div>
-            </div>
-            <div class="row" style="margin-top:15px; margin-bottom: 15px;">
-              <div class="col-sm-12"><label>Réputations :    </label><input type="text" id="traits"  class="input-underline char_val" style="width: 100%; margin: 0;"></div>
-            </div>
-            <div class="col-xs-9 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">PENCHANT LUMIÈRE / OMBRE</div>
-            <div class="col-xs-3 text-righto" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_ali_<?= $c['char_id'] ?>">
-              <input type="text" class="input-underline text-center carac char_val" value="<?= $c['alignement'] ?>" style="width: 100%; text-align: center !important;" id="alignement" disabled>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="progress progress-striped" style="/*box-shadow: 0px 0px 10px #000000;*/ margin-top:12px; margin-bottom: 10px; border: 1px solid #888888;">
-                  <div class="progress-bar progress-bar-warning" id="bar_light" role="progressbar" style="font-size: large; width:<?= $c['alignement'] ?>%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;">
-                    <b>Lumière</b>
-                  </div>
-                  <div class="progress-bar progress-bar-success" id="bar_dark"  role="progressbar" style="font-size: large; width:<?= (100 - $c['alignement']) ?>%; background-color: #000033; text-align: center; line-height:33px;">
-                    <b>Ombre</b>
+          <div class="panel-collapse collapse in" id="collapse2">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-6"><label class="char">Nom</label><input    type="text" id="name"  class="input-underline char_val" disabled></div>
+                <div class="col-sm-6"><label class="char">Niveau</label><input type="text" id="level" class="input-underline char_val" disabled></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6"><label class="char">Race</label><input   type="text" id="race"  class="input-underline char_val" disabled></div>
+                <div class="col-sm-6"><label class="char">Classe</label><input type="text" id="class" class="input-underline char_val" disabled></div>
+              </div>
+              <div class="row" style="margin-top:15px; margin-bottom: 15px;">
+                <div class="col-sm-12"><label>Réputations :    </label><input type="text" id="traits"  class="input-underline char_val" style="width: 100%; margin: 0;"></div>
+              </div>
+              <div class="col-xs-9 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">PENCHANT LUMIÈRE / OMBRE</div>
+              <div class="col-xs-3 text-righto" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_ali_<?= $c['char_id'] ?>">
+                <input type="text" class="input-underline text-center carac char_val" value="<?= $c['alignement'] ?>" style="width: 100%; text-align: center !important;" id="alignement" disabled>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="progress progress-striped" style="/*box-shadow: 0px 0px 10px #000000;*/ margin-top:12px; margin-bottom: 10px; border: 1px solid #888888;">
+                    <div class="progress-bar progress-bar-warning" id="bar_light" role="progressbar" style="font-size: large; width:<?= $c['alignement'] ?>%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;">
+                      <b>Lumière</b>
+                    </div>
+                    <div class="progress-bar progress-bar-success" id="bar_dark"  role="progressbar" style="font-size: large; width:<?= (100 - $c['alignement']) ?>%; background-color: #000033; text-align: center; line-height:33px;">
+                      <b>Ombre</b>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -200,40 +204,21 @@
       </div>
     </div>
 
+    
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-5 col-lg-3 pull-right">
     <div class="row">
       <div class="col-md-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <button class="btn btn-success btn-xs pull-right" onclick="open_modal('add_edit_skill')"><i class="fa fa-plus"></i></button>
-            <h4 class="panel-title">Dons de <?= $c['name'] ?></h4>
+            <span class='pull-right'><kbd>Ctrl</kbd> + <kbd>S</kbd> ou cliquer <i class="fa fa-arrow-right"></i> <button class='btn btn-default btn-xs' id="save_story"><i class="fa fa-save"></i></button></span>
+            <h4 class="panel-title"><a data-toggle="collapse" href="#collapse1" class="pull-left"><i class="fa fa-eye"></i></a>&nbsp;&nbsp;Histoire</h4>
           </div>
-          <div class="panel-body" style="padding:0;">
-            <table class='table table-striped table-hover table-condensed' id='skill_table' cellspacing='0' width='100%'>
-              <thead>
-                <tr>
-                  <th>Don</th>
-                  <th>Coût</th>
-                  <th>Effet</th>
-                  <th style="width:5px;">Modif.</th>
-                </tr>
-              </thead>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-5 col-lg-3 pull-right">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-primary" style="min-height: 194px;">
-          <div class="panel-heading">
-			<span class='pull-right'><kbd>Ctrl</kbd> + <kbd>S</kbd> ou cliquer <i class="fa fa-arrow-right"></i> <button class='btn btn-default btn-xs' id="save_story"><i class="fa fa-save"></i></button></span>
-            <h4 class="panel-title">Histoire</h4>
-          </div>
-          <div class="panel-body">
-            <textarea id="story" class="form-control" style="width: 100%; min-height: 100%; resize: none;" rows="8"></textarea>
+          <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+              <textarea id="story" class="form-control" style="width: 100%; min-height: 100%; resize: none;" rows="8"></textarea>
+            </div>
           </div>
         </div>
       </div>
@@ -245,7 +230,7 @@
             <button class="btn btn-success btn-xs pull-right" onclick="open_modal('add_edit_item')"><i class="fa fa-plus"></i></button>
             <h4 class="panel-title">Inventaire</h4>
           </div>
-          <div class="panel-body" style="max-height: 40vh; padding: 0;">
+          <div class="panel-body" style="padding: 0;">
             <!--<textarea id="inventory" class="form-control" style="width: 100%; min-height: 100%; resize: none;" rows="8"></textarea>-->
             <table class='table table-striped table-hover table-condensed table-bordered' id='inv_table' cellspacing='0' width='100%' style="margin: -1px 0 -1px 0 !important; border-radius: 0 0 3px 3px">
               <thead>
@@ -262,7 +247,34 @@
       </div>
     </div>
   </div>
+  
+  <div class="clearfix"></div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <button class="btn btn-success btn-xs pull-right" onclick="open_modal('add_edit_skill')"><i class="fa fa-plus"></i></button>
+          <h4 class="panel-title">Dons de <?= $c['name'] ?></h4>
+        </div>
+        <div class="panel-body" style="padding:0;">
+          <table class='table table-striped table-hover table-condensed' id='skill_table' cellspacing='0' width='100%'>
+            <thead>
+              <tr>
+                <th>Don</th>
+                <th>Coût</th>
+                <th>Effet</th>
+                <th style="width:5px;">Modif.</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 
 <div class="modal fade" id="add_edit_skill" role="dialog">
   <div class="modal-dialog">
