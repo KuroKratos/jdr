@@ -128,3 +128,68 @@ function get_char_skill (char_id, char_name) {
   $('#skill_modal').modal('show');
   $('#skill_modal_dlg').addClass("modal-lg");
 }
+
+// Update item (id, name, description, quantity)
+  function edit_item (id) {
+    $.ajax({
+      data: {
+        item_id: id
+      },
+      type: "POST",
+      dataType: "JSON",
+      async: false,
+      url: base_url + "/Ajax/getItemInfo",
+      success: function(data){
+        $('#item_id').val(data.item_id);
+        $('#item_name').val(data.name);
+        $('#item_qty').val(data.quantity);
+        $('#item_desc').val(data.description);
+        open_modal('add_edit_item');
+      },
+      error: function(e, d, l){
+        console.log(e);
+      }
+    });
+  }
+
+  // Open any modal and closes any other
+  function open_modal(id) {
+    $('.modal').modal('hide');
+    $('#'+id).modal('show');
+  }
+
+function load_inventory_dt(char_id, panel) {
+  // Generates inventory datatable
+  item_table = $("#inv_table").DataTable({
+    ajax:           base_url + "/Ajax/getCharInventory/" + char_id,
+    info:           false,
+    filter:         false,
+    paging:         false,
+    scroller:       false,
+    scrollCollapse: false,
+    sort:           true,
+    autoWidth:      false,
+    responsive: {
+      details:    {
+                    display: $.fn.dataTable.Responsive.display.modal( {
+                      header: function ( row ) {
+                        var data = row.data();
+                        return 'Details for '+data[0]+' '+data[1];
+                      }
+                    }),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                      tableClass: 'table'
+                    })
+                  }
+                },
+    columns:  [
+                {data: "quantity"},
+                {data: "name"},
+                {data: "description"},
+                {data: "edit"}
+              ],
+    initComplete: function () {
+      setTimeout( function () { panel.resize( { "height" : $('#inv_table').outerHeight()+37 } ); console.log($('#inv_table').outerHeight()); } , 1000);
+    }
+  });
+}

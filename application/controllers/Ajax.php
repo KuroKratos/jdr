@@ -31,9 +31,14 @@ class Ajax extends MY_Controller {
     }
   }
 
+  public function inventoryPanel($char_id) {
+    $params = ["char_id" => $char_id];
+    $this->load->view('panel/inventory', $params);
+  }
+
   public function getCharInventory ($char_id = null, $need_id = 0) {
     $post = filter_input_array(INPUT_POST) ?? ["char_id" => $char_id];
-    if(!empty($post['char_id'])) {
+    if(isset($post['char_id'])) {
       $this->load->model('m_char');
       $comp = $this->m_char->getCharInventory($post['char_id'], $need_id);
       echo json_encode(["data" => $comp], JSON_PRETTY_PRINT);

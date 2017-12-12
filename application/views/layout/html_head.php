@@ -22,6 +22,10 @@
       }
     }
     ?>
+
+    <script type="text/javascript">
+      var base_url = "<?= base_url(); ?>";
+    </script>
     
     <title><?= !empty($title) ? "$title - " : "" ?><?= site_name() ?></title>
   </head>

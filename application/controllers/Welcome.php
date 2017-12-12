@@ -17,6 +17,7 @@ class Welcome extends MY_Controller {
                                    ["url" => assets_url("font-awesome/css/font-awesome.min.css"),                   "media" => "screen"],
                                    ["url" => assets_url("datatables/datatables.min.css"),                           "media" => "screen"],
                                    ["url" => assets_url("datatables/responsive/css/responsive.dataTables.min.css"), "media" => "screen"],
+                                   ["url" => assets_url("jspanel/dist/jspanel.css"),                                "media" => "screen"],
                                    ["url" => assets_url("datatables/responsive/css/responsive.bootstrap.min.css"),  "media" => "screen"],
                                    ["url" => assets_url("style.css"),                                               "media" => "screen"],
                                  ],
@@ -26,6 +27,11 @@ class Welcome extends MY_Controller {
                                    ["url" => assets_url("datatables/datatables.min.js")],
                                    ["url" => assets_url("datatables/responsive/js/dataTables.responsive.min.js")],
                                    ["url" => assets_url("datatables/responsive/js/responsive.bootstrap.min.js")],
+                                   ["url" => assets_url("jspanel/dist/jspanel.js")],
+                                   ["url" => assets_url("jspanel/dist/extensions/contextmenu/jspanel.contextmenu.js")],
+                                   ["url" => assets_url("jspanel/dist/extensions/hint/jspanel.hint.js")],
+                                   ["url" => assets_url("jspanel/dist/extensions/modal/jspanel.modal.js")],
+                                   ["url" => assets_url("jspanel/dist/extensions/tooltip/jspanel.tooltip.js")],
                                    ["url" => assets_url("js/main.js")],
                                    ["url" => assets_url("js/register.js")],
                                  ],
@@ -66,6 +72,18 @@ class Welcome extends MY_Controller {
     }
     else {
       $this->loadView(["master"], $this->params);
+    }
+  }
+
+  public function test() {
+    $this->params["characters"] = $this->m_char->allCharDetails();
+    $this->params["title"]     = "TEST";
+    $post = filter_input_array(INPUT_POST);
+    if(!empty($post['ajax']) && $post['ajax'] == 1) {
+      $this->load->view("test", $this->params);
+    }
+    else {
+      $this->loadView(["test"], $this->params);
     }
   }
 }
