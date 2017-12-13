@@ -1,7 +1,6 @@
 <?php foreach ($characters as $c) { ?>
 
 <div class="col-sm-6 col-lg-4">
-
   <div class="panel panel-default" style="background-color: <?= $c['color'] ?>; box-shadow: 0 0 5px black; border-color: #888888; border-radius: 10px;">
 
     <!-- NAME + CLASS & RACE + LEVEL-->
@@ -40,84 +39,82 @@
       </div>
 
       <!-- MAIN STATS, 1 PANEL/EACH -->
-
       <fieldset class="char-stats" style="padding:0 !important; margin: 0 !important; border: none !important; background: none; box-shadow: none;">
         <div class="row">
           <div class="col-xs-3">
             <div class="panel panel-default">
               <div class="panel-body">
-                <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">FOR</div>
-                <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">FORC</div>
-                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_str_<?= $c['char_id'] ?>"><?= $c['strength'] ?></div>
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"      style="font-weight: bold; font-size: 14px; padding: 5px;">FOR</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"    style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">FORC</div>
+                <div class="col-xs-6 text-right text-info char_stat_val" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_str_<?= $c['char_id'] ?>"><?= $c['strength'] ?></div>
               </div>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="panel panel-default">
               <div class="panel-body">
-                <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">DEX</div>
-                <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">DEXT</div>
-                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_dex_<?= $c['char_id'] ?>"><?= $c['dexterity'] ?></div>
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"      style="font-weight: bold; font-size: 14px; padding: 5px;">DEX</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"    style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">DEXT</div>
+                <div class="col-xs-6 text-right text-info char_stat_val" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_dex_<?= $c['char_id'] ?>"><?= $c['dexterity'] ?></div>
               </div>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="panel panel-default">
               <div class="panel-body">
-                <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">CHN</div>
-                <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">CHAN</div>
-                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_luk_<?= $c['char_id'] ?>"><?= $c['luck'] ?></div>
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"      style="font-weight: bold; font-size: 14px; padding: 5px;">CHN</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"    style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">CHAN</div>
+                <div class="col-xs-6 text-right text-info char_stat_val" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_luk_<?= $c['char_id'] ?>"><?= $c['luck'] ?></div>
               </div>
             </div>
           </div>
           <div class="col-xs-3">
             <div class="panel panel-default">
               <div class="panel-body">
-                <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">COU</div>
-                <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">COUR</div>
-                <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_con_<?= $c['char_id'] ?>"><?= $c['constitution'] ?></div>
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"      style="font-weight: bold; font-size: 14px; padding: 5px;">COU</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"    style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">COUR</div>
+                <div class="col-xs-6 text-right text-info char_stat_val" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_con_<?= $c['char_id'] ?>"><?= $c['constitution'] ?></div>
               </div>
             </div>
           </div>
         </div>
-
         <div class="row">
-              <div class="col-xs-3">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">INT</div>
-                    <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">INTL</div>
-                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: 5px;" id="c_int_<?= $c['char_id'] ?>"><?= $c['intelligence'] ?></div>
-                  </div>
-                </div>
+          <div class="col-xs-3">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"      style="font-weight: bold; font-size: 14px; padding: 5px;">INT</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"    style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">INTL</div>
+                <div class="col-xs-6 text-right text-info char_stat_val" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: 5px;" id="c_int_<?= $c['char_id'] ?>"><?= $c['intelligence'] ?></div>
               </div>
-              <div class="col-xs-3">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">CHR</div>
-                    <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">CHAR</div>
-                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_cha_<?= $c['char_id'] ?>"><?= $c['charisma'] ?></div>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"      style="font-weight: bold; font-size: 14px; padding: 5px;">CHR</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"    style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">CHAR</div>
+                <div class="col-xs-6 text-right text-info char_stat_val" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_cha_<?= $c['char_id'] ?>"><?= $c['charisma'] ?></div>
               </div>
-              <div class="col-xs-3">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">PER</div>
-                    <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">PERC</div>
-                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_per_<?= $c['char_id'] ?>"><?= $c['perception'] ?></div>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"      style="font-weight: bold; font-size: 14px; padding: 5px;">PER</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"    style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">PERC</div>
+                <div class="col-xs-6 text-right text-info char_stat_val" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_per_<?= $c['char_id'] ?>"><?= $c['perception'] ?></div>
               </div>
-              <div class="col-xs-3">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <div class="col-xs-5 text-left hidden-sm hidden-xs"             style="font-weight: bold; font-size: 14px; padding: 5px;">CON</div>
-                    <div class="col-xs-4 text-left visible-sm visible-xs"            style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">CONN</div>
-                    <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_edu_<?= $c['char_id'] ?>"><?= $c['education'] ?></div>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="col-xs-5 text-left hidden-sm hidden-xs"      style="font-weight: bold; font-size: 14px; padding: 5px;">CON</div>
+                <div class="col-xs-4 text-left visible-sm visible-xs"    style="font-weight: bold; font-size: 8px; line-height:20px; padding: 5px 0 5px 5px;">CONN</div>
+                <div class="col-xs-6 text-right text-info char_stat_val" style="font-weight: bold; font-size: 14px; padding: 5px; float:right; margin-right: -4px;" id="c_edu_<?= $c['char_id'] ?>"><?= $c['education'] ?></div>
               </div>
+            </div>
+          </div>
         </div>
       </fieldset>
 
@@ -149,7 +146,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-xs-12 col-md-4 fieldset pull-right" style="padding:0 !important; margin: 0 !important; border: none !important; background: none; box-shadow: none;">
           <div class="row">
           <div class="col-sm-6 col-md-12">
@@ -170,29 +166,23 @@
           </div>
           </div>
         </div>
-
       </div>
-
+      
     </div>
-
   </div>
-
 </div>
-
-<script type="text/javascript">
-   $(document).ready(function() {
-      $('.progress .progress-bar').css("width",
-        function() {
-          return ( ( parseInt($(this).attr("aria-valuenow")) / parseInt($(this).attr("aria-valuemax")) ) * 100 )  + "%";
-        }
-      );
-    });
-</script>
 
 <?php } ?>
 
 <script type="text/javascript">
-   $(document).ready(function() {
+
+  $(document).ready(function() {
+    $('.progress .progress-bar').css("width",
+      function() {
+        return ( ( parseInt($(this).attr("aria-valuenow")) / parseInt($(this).attr("aria-valuemax")) ) * 100 )  + "%";
+      }
+    );
+    
     get_all_char_info();
     setInterval(
       function () { get_all_char_info(); },
@@ -201,44 +191,44 @@
   });
 
   $('.char_val').keyup(function (k) {
-      if (k.keyCode == 13) {
-        var input = $(this);
-        save_char_carac(input);
+    if (k.keyCode == 13) {
+      var input = $(this);
+      save_char_carac(input);
+    }
+  });
+
+  function save_char_carac (input) {
+    var old_bg = input.css('background-color');
+    var char   = input.attr('id').split('-')[1];
+    var val    = input.val().replace('%','');
+
+    $.ajax({
+      data: {
+        char_id: char,
+        column:  input.attr('id').split('-')[0],
+        value:   val
+      },
+      type: "POST",
+      async: false,
+      url: '<?= base_url('/Ajax/updateChar') ?>',
+      success: function(data){
+        input.css('background-color',"lightgreen");
+        setTimeout( function () {
+          input.css('background-color', old_bg);
+        }, 500);
+        input.blur();
+
+        if(input.attr('id').match('align')) {
+          $('#bar_light_' + char).css('width',val+'%');
+          $('#bar_dark_'  + char).css('width',(100 - val)+'%');
+        }
+
+      },
+      error: function(e, d, l){
+        console.log(e);
       }
     });
-
-    function save_char_carac (input) {
-      var old_bg = input.css('background-color');
-      var char   = input.attr('id').split('-')[1];
-      var val    = input.val().replace('%','');
-      
-      $.ajax({
-        data: {
-          char_id: char,
-          column:  input.attr('id').split('-')[0],
-          value:   val
-        },
-        type: "POST",
-        async: false,
-        url: '<?= base_url('/Ajax/updateChar') ?>',
-        success: function(data){
-          input.css('background-color',"lightgreen");
-          setTimeout( function () {
-            input.css('background-color', old_bg);
-          }, 500);
-          input.blur();
-
-          if(input.attr('id').match('align')) {
-            $('#bar_light_' + char).css('width',val+'%');
-            $('#bar_dark_'  + char).css('width',(100 - val)+'%');
-          }
-
-        },
-        error: function(e, d, l){
-          console.log(e);
-        }
-      });
-    }
+  }
 </script>
 
 <?php
