@@ -148,3 +148,23 @@ function panel($name, $class = "primary", $body_html = null, $header_html = null
   // PANEL END
   echo "</div>";
 }
+
+function char_stat_block ($label, $id, $value, $gold = null) {
+
+  $text_class = $gold ? "text-warning" : "text-info";
+
+  echo "<div class='col-xs-3'>";
+  echo "  <div class='panel panel-default'>";
+  echo "    <div class='panel-body'>";
+  echo "      <table style='width: 100%;'>";
+  echo "        <tr>";
+  echo "          <td style='text-align: center; font-weight: bold; width: 50%;'>$label</td>";
+  echo "          <td style='text-align: center; padding: 5px;'>";
+  echo "            <span class='text-right $text_class char_stat_val' style='font-weight: bold; font-size: 14px;' id='$id'>$value</span>";
+  echo "          </td>";
+  echo "        </tr>";
+  echo "      </table>";
+  echo "    </div>";
+  echo "  </div>";
+  echo "</div>";
+}
