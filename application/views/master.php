@@ -1,5 +1,5 @@
 <?php foreach ($characters as $c) { ?>
-<div class="col-sm-6 col-md-6 col-lg-4 char_summary">
+<div class="col-sm-6 col-md-6 col-lg-3 char_summary">
   <div class="panel panel-default" style="background-color: #00000055; box-shadow: 0 0 5px black; border-color: white; border-radius: 0px;">
     <!-- NAME + CLASS & RACE + LEVEL-->
     <div class="panel-heading" style="border-radius: 0; border-color: white; background-color: <?= $c['color'] ?>; padding: 5px;">
@@ -56,7 +56,9 @@
                 <table style="width: 100%">
                   <tr>
                     <td style='text-align: center; font-weight: bold; width: 50%;'>ALIGN</td>
-                    <td style='text-align: center; padding: 5px; font-weight: bold;'><input type="text" class="input-underline carac char_val text-info" id="alignement-<?= $c['char_id'] ?>" value="<?= $c['alignement'] ?>%" style="border-color: white"></td>
+                    <td style='text-align: center; padding: 5px; font-weight: bold;'>
+                      <input type="text" class="input-underline carac char_val text-info" id="alignement-<?= $c['char_id'] ?>" value="<?= $c['alignement'] ?>%" style="border-color: white; width: 100%;">
+                    </td>
                   </tr>
                 </table>
               </div>
