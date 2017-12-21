@@ -63,6 +63,20 @@ class Welcome extends MY_Controller {
     }
   }
 
+  public function charsheet_mini($char = null) {
+    if(!empty($char)) {
+      $this->params["character"] = $this->m_char->charDetails(urldecode($char));
+      $this->params["title"]     = urldecode($char);
+      $post = filter_input_array(INPUT_POST);
+      if(!empty($post['ajax']) && $post['ajax'] == 1) {
+        $this->load->view("charsheet_mini", $this->params);
+      }
+      else {
+        $this->loadView(["charsheet_mini"], $this->params);
+      }
+    }
+  }
+
   public function master() {
     $this->params["characters"] = $this->m_char->allCharDetails();
     $this->params["title"]     = "Panel MJ";

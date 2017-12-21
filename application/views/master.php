@@ -1,5 +1,4 @@
 <?php foreach ($characters as $c) { ?>
-
 <div class="col-sm-6 col-md-6 col-lg-4 char_summary">
   <div class="panel panel-default" style="background-color: #00000055; box-shadow: 0 0 5px black; border-color: white; border-radius: 0px;">
     <!-- NAME + CLASS & RACE + LEVEL-->
@@ -35,18 +34,17 @@
       </div>
       <!-- MAIN STATS, 1 PANEL/EACH -->
       <fieldset class="char-stats" style="padding:0 !important; margin: 0 !important; border: none !important; background: none; box-shadow: none;">
-
         <div class="row">
-          <?php char_stat_block('FORC','c_str_'.$c['char_id'], $c['strength']); ?>
+          <?php char_stat_block('FORC','c_str_'.$c['char_id'], $c['strength']);  ?>
           <?php char_stat_block('DEXT','c_dex_'.$c['char_id'], $c['dexterity']); ?>
-          <?php char_stat_block('CHAN','c_luk_'.$c['char_id'], $c['luck']); ?>
+          <?php char_stat_block('CHAN','c_luk_'.$c['char_id'], $c['luck']);      ?>
           <?php char_stat_block('CONN','c_edu_'.$c['char_id'], $c['education']); ?>
         </div>
         <div class="row">
           <?php char_stat_block('INTL','c_int_'.$c['char_id'], $c['intelligence']); ?>
-          <?php char_stat_block('CHAR','c_cha_'.$c['char_id'], $c['charisma']); ?>
-          <?php char_stat_block('PERC','c_per_'.$c['char_id'], $c['perception']); ?>
-          <?php char_stat_block('GOLD','c_po_' .$c['char_id'], $c['gold'], true); ?>
+          <?php char_stat_block('CHAR','c_cha_'.$c['char_id'], $c['charisma']);     ?>
+          <?php char_stat_block('PERC','c_per_'.$c['char_id'], $c['perception']);   ?>
+          <?php char_stat_block('GOLD','c_po_' .$c['char_id'], $c['gold'], true);   ?>
         </div>
       </fieldset>
       <!-- COMPETENCES & ABILITIES BTN + Gold -->

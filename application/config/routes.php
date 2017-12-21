@@ -61,5 +61,6 @@ $route['info']      = 'welcome/info';
 $route['home']      = 'welcome/index';
 
 $route['charsheet/(:any)'] = "welcome/charsheet/$1" ;
+$route['charsheet/(:any)/mini'] = "welcome/charsheet_mini/$1" ;
 $route['master'] = "welcome/master" ;
 $route['test'] = "welcome/test" ;

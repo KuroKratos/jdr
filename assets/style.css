@@ -26,6 +26,22 @@ kbd {
   padding-right: 5px;
 }
 
+.char_stats_panel {
+  padding-top: 5px;
+  padding-bottom: 0;
+  padding-right: 18px;
+}
+.char_stats_panel div {
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+#charsheet.mini .panel-primary {
+  width: 320px;
+  float: right;
+  margin: 5px;
+}
+
 .po_label {
   color: white;
   /* margin-left: -27px; */
