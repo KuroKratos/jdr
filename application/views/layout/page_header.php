@@ -21,6 +21,12 @@
           </ul>
         </li>
         <li><a href="<?= base_url("master") ?>"><i class="fa fa-user-circle-o"></i> Vue MJ</a></li>
+        <li class="dropdown show-on-hover">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-user-circle"></i> Simulation <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="simulation/battle"><i class="fa fa-caret-right"></i> Combat</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
