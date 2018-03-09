@@ -44,7 +44,8 @@
           <?php char_stat_block('INTL','c_int_'.$c['char_id'], $c['intelligence']); ?>
           <?php char_stat_block('CHAR','c_cha_'.$c['char_id'], $c['charisma']);     ?>
           <?php char_stat_block('PERC','c_per_'.$c['char_id'], $c['perception']);   ?>
-          <?php char_stat_block('GOLD','c_po_' .$c['char_id'], $c['gold'], true);   ?>
+          <?php char_stat_block('CONST','c_con_'.$c['char_id'], $c['constitution']);   ?>
+          <?php //char_stat_block('GOLD','c_po_' .$c['char_id'], $c['gold'], true);   ?>
         </div>
       </fieldset>
       <!-- COMPETENCES & ABILITIES BTN + Gold -->

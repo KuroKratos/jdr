@@ -23,7 +23,7 @@
                       <label>Points de Vie</label>
                     </div>
                     <div class="col-xs-6 pull-right text-right">
-                      <input type="text" id="hp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important;"><span class="hp_pp_slash">/</span><input type="text" id="hp_max" class="input-underline char_val" style="border-left: none !important; width: 30%; text-align: center;">
+                      <input type="text" id="hp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important; padding-top:1px;"><span class="hp_pp_slash">/</span><input type="text" id="hp_max" class="input-underline char_val" style="border-left: none !important; width: 30%; text-align: center;  padding-top:1px;">
                     </div>
                   </div>
                   <div class="row">
@@ -45,7 +45,7 @@
                       <label>Points de Mana</label>
                     </div>
                     <div class="col-xs-6 pull-right text-right">
-                      <input type="text" id="pp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important;"><span class="hp_pp_slash">/</span><input type="text" id="pp_max" class="input-underline char_val" style="width: 30%; text-align: center; border-left: none !important;">
+                      <input type="text" id="pp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important; padding-top:1px;"><span class="hp_pp_slash">/</span><input type="text" id="pp_max" class="input-underline char_val" style="width: 30%; text-align: center; border-left: none !important; padding-top:1px;">
                     </div>
                   </div>
                   <div class="row">
@@ -132,7 +132,7 @@
               </div>
 
               <div class="col-xs-4">
-                <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">COUR</div>
+                <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">ENDU</div>
                 <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_con_<?= $c['char_id'] ?>">
                   <input type="text" class="input-underline text-center carac char_val" value="<?= $c['constitution'] ?>%" style="width: 100%; text-align: center !important;" id="constitution">
                 </div>
@@ -230,7 +230,7 @@
             <button class="btn btn-success btn-xs pull-right" onclick="open_modal('add_edit_item')"><i class="fa fa-plus"></i></button>
             <h4 class="panel-title">Inventaire</h4>
           </div>
-          <div class="panel-body" style="padding: 0;">
+          <div class="panel-body" style="padding: 0; max-height: 346px; overflow-y: scroll; overflow-x: hidden;">
             <!--<textarea id="inventory" class="form-control" style="width: 100%; min-height: 100%; resize: none;" rows="8"></textarea>-->
             <table class='table table-striped table-hover table-condensed table-bordered' id='inv_table' cellspacing='0' width='100%' style="margin: -1px 0 -1px 0 !important; border-radius: 0 0 3px 3px">
               <thead>
