@@ -1,4 +1,4 @@
-<body <?= site_instance() === "test" ? "style='background: none !important;'" : "" ?>>
+<body <?= site_instance() === "test" ? "style='background: #000530 !important;'" : "" ?>>
 <nav class="navbar navbar-inverse navbar-fixed-top">
 
   <div class="container-fluid">
