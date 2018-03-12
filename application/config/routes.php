@@ -59,6 +59,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['staff']     = 'welcome/staff';
 $route['info']      = 'welcome/info';
 $route['home']      = 'welcome/index';
+$route['dashboard'] = 'welcome/dashboard';
 
 $route['charsheet/(:any)'] = "welcome/charsheet/$1" ;
 $route['charsheet/(:any)/mini'] = "welcome/charsheet_mini/$1" ;

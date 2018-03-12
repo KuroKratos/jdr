@@ -32,6 +32,7 @@ class Welcome extends MY_Controller {
                                    ["url" => assets_url("jspanel/dist/extensions/hint/jspanel.hint.js")],
                                    ["url" => assets_url("jspanel/dist/extensions/modal/jspanel.modal.js")],
                                    ["url" => assets_url("jspanel/dist/extensions/tooltip/jspanel.tooltip.js")],
+                                   ["url" => assets_url("js/roll.js")],
                                    ["url" => assets_url("js/main.js")],
                                    ["url" => assets_url("js/register.js")],
                                  ],
@@ -47,6 +48,10 @@ class Welcome extends MY_Controller {
     else {
       $this->loadView(["home"], $this->params);
     }
+  }
+
+  public function dashboard () {
+    $this->loadView(["dashboard"], $this->params);
   }
 
   public function charsheet($char = null) {
