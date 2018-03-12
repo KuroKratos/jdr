@@ -103,8 +103,9 @@
 
   $('#btn-start').click(function(){
     // VARIABLES INITIALIZATION
-    var roll_test,
+    var roll_test, td_roll,
         damage,
+        mob_target, mob_roll, mob_damage, td_mob_dmg,
         player_style, tr_style, 
         td_dmg, td_mob,
         turn = 1,
@@ -114,53 +115,130 @@
     // RESET DISPLAY DIV
     $('#sim_result').html('');
     // LOOP THROUGH BATTLE TURNS
+    table = "<table class='sim_table'>";
     while(parseInt(battle_data.mob.hp) > 0) {
+      // RANDOMLY SELECT TARGET
+      mob_target = Math.floor(Math.random()*Object.keys(battle_data.pj).length) + 1;
+      console.log(battle_data.pj);
+
       // INIT TURN TABLE
-      table  = "<table class='sim_table'><tr><td colspan='4'>TOUR n°" + turn + "</td></tr>";
+      //table  += "<table class='sim_table'><tr><td colspan='4'>TOUR n°" + turn + "</td></tr>";
+      table  += "<tr><td colspan='5' style='border:none; padding-top:10px;'>TOUR n°" + turn + "</td></tr>";
+
+      /* =============== */
+      /* PLAYERS ACTIONS */
+      /* =============== */
+
       // LOOP THROUGH BATTLE PLAYERS
       $.each(battle_data.pj, function (index, pj) {
+        
         // ROLL FOR HIT %
         roll_test    = Math.floor(Math.random() * 100) + 1;
         td_roll      = "Roll : " + roll_test.toString().padStart(3);
+
         // GENERATE PLAYER COLOR BG
         player_style = "background-color: #" + panel_color[index-1].slice(0,-2) + ";";
+
         // CRITICAL FAILURE
         if (roll_test >= 96) {
           damage   = 0;
           tr_style = "background-color: #dd0000; color:white";
           td_dmg   = 'CRIT !';
         }
+
         // CRITICAL SUCCESS
         else if (roll_test <= 5) {
           damage   = Math.floor((parseInt(pj.dice) + parseInt(pj.mod))*1.5);
           tr_style = "background-color: #ffdd00";
           td_dmg   = "Dégâts : " + damage.toString().padStart(3);
         }
+
         // SUCCESS
         else if(roll_test <= pj.percent) {
           damage   = (Math.floor(Math.random() * parseInt(pj.dice)) + 1) + parseInt(pj.mod);
           tr_style = "background-color: #aaffaa";
           td_dmg   = "Dégâts : " + damage.toString().padStart(3);
         }
+
         // FAILURE
         else {
           damage = 0;
           tr_style = "background-color: #ffaaaa";
           td_dmg   = "Échec";
         }
+
         // UPDATE FOE HP
         battle_data.mob.hp -= parseInt(damage);
-        td_mob = 'PV Ennemi : ' + battle_data.mob.hp.toString().padStart(3);
+        td_mob = 'PV Ennemi : ' + ( (battle_data.mob.hp > 0) ? battle_data.mob.hp.toString().padStart(3) : "<b>DEAD</b>" );
+
+        // IF CURRENT PLAYER IS TARGETED
+        if(mob_target == index) {
+          /* =============== */
+          /* MONSTER ACTIONS */
+          /* =============== */
+
+          // FOE HIT % ROLL
+          mob_roll = Math.floor(Math.random() * 100) + 1;
+
+          // FOE CRITICAL SUCCESS
+          if (mob_roll >= 96) {
+            mob_damage = 0;
+            td_mob_dmg = "<b style='color:red'>ECHEC CRIT.</b>";
+          }
+          // FOE CRITICAL FAILURE
+          if (mob_roll <= 5) {
+            mob_damage   = Math.floor((parseInt(battle_data.mob.dice) + parseInt(battle_data.mob.mod))*1.5);
+            td_mob_dmg   = "Dégâts mob : " + mob_damage.toString().padStart(3);
+          }
+          // FOE SUCCESS
+          else if(roll_test <= battle_data.mob.percent) {
+            mob_damage   = (Math.floor(Math.random() * parseInt(battle_data.mob.dice)) + 1) + parseInt(battle_data.mob.mod);
+            td_mob_dmg   = "Dégâts mob : " + mob_damage.toString().padStart(3);
+          }
+          // FOE FAILURE
+          else {
+            mob_damage = 0;
+            td_mob_dmg = "<b class='text-danger'>Échec</b>";
+          }
+
+          // APPLY DAMAGE TO PLAYER
+          battle_data.pj[mob_target].hp -= mob_damage;
+        }
+        else {
+          td_mob_dmg = "";
+        }
+
         // BUILD PLAYER ACTION ROW
-        table += "<tr style='"+tr_style+"'><td style='"+player_style+"'>Joueur "+index+"</td><td>"+td_roll+"</td><td>"+td_dmg+"</td><td>"+td_mob+"</td></tr>";
+        table += "<tr style='"+tr_style+"'><td style='"+player_style+"'>Joueur "+index+" ("+pj.hp+" HP) </td><td>"+td_roll+"</td><td>"+td_dmg+"</td><td>"+td_mob+"</td><td>"+td_mob_dmg+"</td></tr>";
+
+
+        // WHEN PJ IS DEAD
+        if (battle_data.pj[index].hp <= 0) {
+          console.log(battle_data.pj[index].hp);
+          return false;
+        }
+
+        // WHEN FOE IS DEAD
+        else if (battle_data.mob.hp <= 0) {
+          console.log(battle_data.mob.hp <= 0);
+          return false;
+        }
+        else {
+          return true;
+        }
+
+
       });
+
       // CLOSE TURN TABLE
-      table += "</table>";
+      //table += "</table>";
       // DISPLAY TURN TABLE
-      log(table);
+      //log(table);
       // NEXT TURN
       turn++;
     }
+    table += "</table>";
+    log(table);
   });
 
   function log (string, br = false) {
