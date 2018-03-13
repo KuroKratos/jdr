@@ -14,71 +14,56 @@
   }
 </style>
 
-<div class="well well-lg col-lg-4 pull-right" id="roll-result" style="font-weight:bold; font-size: 14px;">
-<table class="table table-striped table-condensed table-hover">
-  <thead>
-    <th>Time</th>
-    <th>Roll</th>
-    <th>Detail</th>
-    <th>Result</th>
-  </thead>
-  <tbody id='roll_result'>
-  </tbody>
-</table>
+<div class="col-lg-4 pull-right">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><div class="panel-title">Jets de dés</div></div>
+    <div class="panel-body" id="roll_result_wrapper" style="font-weight:bold; font-size: 14px; height: 75vh !important; overflow-y: auto; margin:0 !important; padding: 0 !important;">
+      <table class="table table-striped table-condensed table-hover">
+        <thead>
+          <th>Time</th>
+          <th style='text-align:center;'>Roll</th>
+          <th style='text-align:center;'>Detail</th>
+          <th style='text-align:right;'>Result</th>
+        </thead>
+        <tbody id='roll_result'>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer form-inline text-right">
+      <!-- COMMON ROLLS -->
+      <button class="btn btn-default btn-sm common-dice" id="1d6"  >d6</button>
+      <button class="btn btn-default btn-sm common-dice" id="1d10" >d10</button>
+      <button class="btn btn-default btn-sm common-dice" id="1d100">d100</button>
+
+      <!-- CUSTOM ROLL -->
+      <input type="text" class="form-control input-sm" value="1d8+2" id="txt_custom_dice">
+      <button class="btn btn-default btn-sm" id="btn_custom_dice">Roll</button>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
-
-function roll (RollString = null, ReturnFormat = 'json') {
-  var ret;
-  if (RollString !== null) {
-    url = "https://rolz.org/api/?"+RollString+"."+ReturnFormat;
-    
-    $.ajax({
-      datatype: ReturnFormat,
-      async: false,
-      url: url,
-      success: function(data){
-        ret = data;
-      },
-      error: function(e, d, l){
-        console.log(e);
-      }
-    });
-    
-    return ret;
-  }
-}
-
-function datetime (unix_timestamp) {
-  // Create a new JavaScript Date object based on the timestamp
-  // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-  var date = new Date(unix_timestamp*1000);
-  // Hours part from the timestamp
-  var hours = date.getHours();
-  // Minutes part from the timestamp
-  var minutes = "0" + date.getMinutes();
-  // Seconds part from the timestamp
-  var seconds = "0" + date.getSeconds();
-
-  // Will display time in 10:30:23 format
-  var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-  
-  return formattedTime;
-}
-
 $(document).ready(function () {
-  var MyRoll = {}, ResultLine;
-  
-  MyRoll = roll("1d8%2B2","json");
-  
-  ResultLine  = "<tr>";
-  ResultLine += "<td>" + datetime(MyRoll.timestamp) + "</td>";
-  ResultLine += "<td>" + MyRoll.illustration + "</td>";
-  ResultLine += "<td>" + MyRoll.details + "</td>";
-  ResultLine += "<td>" + MyRoll.result + "</td>";
-  ResultLine += "</tr>";
-  
-  $('#roll_result').append(ResultLine);
 });
+
+  $('#btn_custom_dice').click(function () {
+    var RollStr, RollResult;
+
+    RollStr = $('#txt_custom_dice').val().trim();
+    RollResult = diceRoll(RollStr);
+
+    appendRollToTable(RollResult,"roll_result");
+
+  });
+
+  $('.common-dice').click(function () {
+    var RollStr, RollResult;
+
+    RollStr = $(this).attr('id').trim();
+    RollResult = diceRoll(RollStr);
+
+    appendRollToTable(RollResult,"roll_result");
+
+  });
+
 </script>
