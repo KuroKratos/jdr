@@ -1,9 +1,9 @@
 <style type="text/css">
   .dc_dice_a {
-    color: #FF8888; 
+    color: #FF8888;
   }
   .dc_dice_d {
-    color: #00BB00; 
+    color: #00BB00;
   }
   .dc_number {
     color: #8888FF;
@@ -43,8 +43,7 @@
 </div>
 
 <script type="text/javascript">
-$(document).ready(function () {
-});
+  $(document).ready(function () {});
 
   $('#btn_custom_dice').click(function () {
     var RollStr, RollResult;

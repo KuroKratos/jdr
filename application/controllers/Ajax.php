@@ -131,4 +131,7 @@ class Ajax extends MY_Controller {
       $this->m_char->updateChar($post['char_id'], $post['column'], $post['value']);
     }
   }
+
 }
+
+?>
