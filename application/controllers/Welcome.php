@@ -1,43 +1,62 @@
-<?php defined("BASEPATH") or exit("No direct script access allowed");
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+<?php
+namespace JDR;
 
 class Welcome extends MY_Controller {
-  
+
   private $params;
 
   public function __construct() {
     parent::__construct();
     $this->load->model("m_char");
     $this->params = [
-                      "title" => "Accueil",
-                      "css"   => [
-                                   ["url" => assets_url("bootstrap/css/bootstrap.min.css"),                         "media" => "screen"],
-                                   ["url" => assets_url("font-awesome/css/font-awesome.min.css"),                   "media" => "screen"],
-                                   ["url" => assets_url("datatables/datatables.min.css"),                           "media" => "screen"],
-                                   ["url" => assets_url("datatables/responsive/css/responsive.dataTables.min.css"), "media" => "screen"],
-                                   ["url" => assets_url("jspanel/dist/jspanel.css"),                                "media" => "screen"],
-                                   ["url" => assets_url("datatables/responsive/css/responsive.bootstrap.min.css"),  "media" => "screen"],
-                                   ["url" => assets_url("style.css"),                                               "media" => "screen"],
-                                 ],
-                      "js"  =>   [
-                                   ["url" => assets_url("jquery/jquery-3.2.1.min.js")],
-                                   ["url" => assets_url("bootstrap/js/bootstrap.min.js")],
-                                   ["url" => assets_url("datatables/datatables.min.js")],
-                                   ["url" => assets_url("datatables/responsive/js/dataTables.responsive.min.js")],
-                                   ["url" => assets_url("datatables/responsive/js/responsive.bootstrap.min.js")],
-                                   ["url" => assets_url("jspanel/dist/jspanel.js")],
-                                   ["url" => assets_url("jspanel/dist/extensions/contextmenu/jspanel.contextmenu.js")],
-                                   ["url" => assets_url("jspanel/dist/extensions/hint/jspanel.hint.js")],
-                                   ["url" => assets_url("jspanel/dist/extensions/modal/jspanel.modal.js")],
-                                   ["url" => assets_url("jspanel/dist/extensions/tooltip/jspanel.tooltip.js")],
-                                   ["url" => assets_url("js/roll.js")],
-                                   ["url" => assets_url("js/main.js")],
-                                   ["url" => assets_url("js/register.js")],
-                                 ],
-                      "char"  => $this->m_char->charList(),
-              ];
+      "title" => "Accueil",
+      "css"   => [
+        [
+          "url"   => assets_url("bootstrap/css/bootstrap.min.css"),
+          "media" => "screen",
+        ],
+        [
+          "url"   => assets_url("font-awesome/css/font-awesome.min.css"),
+          "media" => "screen",
+        ],
+        [
+          "url"   => assets_url("datatables/datatables.min.css"),
+          "media" => "screen",
+        ],
+        [
+          "url"   => assets_url("datatables/responsive/css/responsive.dataTables.min.css"),
+          "media" => "screen",
+        ],
+        [
+          "url"   => assets_url("jspanel/dist/jspanel.css"),
+          "media" => "screen",
+        ],
+        [
+          "url"   => assets_url("datatables/responsive/css/responsive.bootstrap.min.css"),
+          "media" => "screen",
+        ],
+        [
+          "url"   => assets_url("style.css"),
+          "media" => "screen",
+        ],
+      ],
+      "js"    => [
+        ["url" => assets_url("jquery/jquery-3.2.1.min.js")],
+        ["url" => assets_url("bootstrap/js/bootstrap.min.js")],
+        ["url" => assets_url("datatables/datatables.min.js")],
+        ["url" => assets_url("datatables/responsive/js/dataTables.responsive.min.js")],
+        ["url" => assets_url("datatables/responsive/js/responsive.bootstrap.min.js")],
+        ["url" => assets_url("jspanel/dist/jspanel.js")],
+        ["url" => assets_url("jspanel/dist/extensions/contextmenu/jspanel.contextmenu.js")],
+        ["url" => assets_url("jspanel/dist/extensions/hint/jspanel.hint.js")],
+        ["url" => assets_url("jspanel/dist/extensions/modal/jspanel.modal.js")],
+        ["url" => assets_url("jspanel/dist/extensions/tooltip/jspanel.tooltip.js")],
+        ["url" => assets_url("js/roll.js")],
+        ["url" => assets_url("js/main.js")],
+        ["url" => assets_url("js/register.js")],
+      ],
+      "char"  => $this->m_char->charList(),
+    ];
   }
 
   public function index() {
@@ -68,7 +87,7 @@ class Welcome extends MY_Controller {
     }
   }
 
-  public function charsheet_mini($char = null) {
+  public function charsheetMini($char = null) {
     if(!empty($char)) {
       $this->params["character"] = $this->m_char->charDetails(urldecode($char));
       $this->params["title"]     = urldecode($char);
@@ -95,14 +114,24 @@ class Welcome extends MY_Controller {
   }
 
   public function test() {
-    $this->params["characters"] = $this->m_char->allCharDetails();
-    $this->params["title"]     = "TEST";
-    $post = filter_input_array(INPUT_POST);
-    if(!empty($post['ajax']) && $post['ajax'] == 1) {
-      $this->load->view("test", $this->params);
+    $results = [];
+    $weight  = [];
+    $this->load->model("m_ennemy");
+
+    for($i = 0; $i < 200; $i++) {
+      $results[] = $this->m_ennemy->ennemyRandom(1);
     }
-    else {
-      $this->loadView(["test"], $this->params);
+
+    foreach($results as $key => $row) {
+      $weight[$key] = $row['FACTEUR'];
     }
+
+    array_multisort($weight, SORT_DESC, $results);
+
+    echo "<table border='1' style='border-collapse: collapse;'>";
+    foreach($results as $data) {
+      echo "<tr><td>{$data['REGION']}</td><td>{$data['MONSTRE']}</td><td>{$data['FACTEUR']}</td></tr>";
+    }
+    echo "</table>";
   }
 }

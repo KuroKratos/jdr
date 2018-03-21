@@ -3,7 +3,7 @@
 class Rest extends MY_Controller {
 
   public function getRoll ($param) {
-    $param_enc = urlencode($param);
+    $param_enc = ($param);
     $service_url = 'https://rolz.org/api/?'.($param_enc);
     $curl = curl_init($service_url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

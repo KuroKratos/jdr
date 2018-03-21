@@ -55,13 +55,26 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// Custom
+// main pages
 $route['staff']     = 'welcome/staff';
 $route['info']      = 'welcome/info';
 $route['home']      = 'welcome/index';
 $route['dashboard'] = 'welcome/dashboard';
+$route['master']    = "welcome/master" ;
+$route['test']      = "welcome/test" ;
 
+// character sheet
 $route['charsheet/(:any)'] = "welcome/charsheet/$1" ;
 $route['charsheet/(:any)/mini'] = "welcome/charsheet_mini/$1" ;
-$route['master'] = "welcome/master" ;
-$route['test'] = "welcome/test" ;
+
+// ajax controllers
+$ajax_controllers = [
+                      "ennemy",
+                      "character",
+                      "skill",
+                      "inventory"
+                    ];
+foreach($ajax_controllers as $c) {
+  $route[$c.'/(:any)/(:num)'] = "ajax/$c/$c$1/$2";
+  $route[$c.'/(:any)'] = "ajax/$c/$c$1";
+}
