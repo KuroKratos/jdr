@@ -20,7 +20,7 @@
 </style>
 
 <div class="row">
-  <?php for ($id = 1; $id <= 5; $id++) { ?>
+  <?php for($id = 1; $id <= 5; $id++) { ?>
     <div class="col-sm-2">
       <div class="panel panel-default" style="background-color: #00000055; box-shadow: 0 0 5px black; border-color: white; border-radius: 0px;" id="panel_<?=$id?>">
         <div class="panel-heading"><p class="panel-title">Personnage <?=$id?> <input type="checkbox" id="active_<?=$id?>" class="pull-right active-chk"></p></div>

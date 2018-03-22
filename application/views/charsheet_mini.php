@@ -9,7 +9,7 @@
 <!-- ##### -- PANEL PV & PM  --##### -->
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <span class="pull-right">( <img src="<?= assets_url('images/enter_key.png') ?>" class="img-responsive" style="height: 20px; display: inline"> pour enregistrer )</span>
+      <span class="pull-right">( <img src="<?= assets_url("images/enter_key.png") ?>" class="img-responsive" style="height: 20px; display: inline"> pour enregistrer )</span>
       <h4 class="panel-title"><a data-toggle="collapse" href="#collapse0" class="pull-left"><i class="fa fa-eye"></i></a>&nbsp;&nbsp;Vie et Mana</h4>
     </div>
     <div class="panel-collapse collapse in" id="collapse0">
@@ -28,7 +28,7 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="progress progress-striped skill-bar hp-bar" style="height: 15px; margin-bottom: 0; border: 1px solid white; border-radius: 0;">
-                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?= $c['hp_cur'] ?>" aria-valuemin="0" aria-valuemax="<?= $c['hp_max'] ?>" id="hp_bar"></div>
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?= $c["hp_cur"] ?>" aria-valuemin="0" aria-valuemax="<?= $c["hp_max"] ?>" id="hp_bar"></div>
                 </div>
               </div>
             </div>
@@ -46,7 +46,7 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="progress progress-striped skill-bar pp-bar" style="height: 15px; margin-bottom: 0; border: 1px solid white; border-radius: 0;">
-                  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<?= $c['pp_cur'] ?>" aria-valuemin="0" aria-valuemax="<?= $c['pp_max'] ?>" id="pp_bar"></div>
+                  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<?= $c["pp_cur"] ?>" aria-valuemin="0" aria-valuemax="<?= $c["pp_max"] ?>" id="pp_bar"></div>
                 </div>
               </div>
             </div>
@@ -61,14 +61,14 @@
                 <label>ALIGNEMENT</label>
               </div>
               <div class="col-xs-3 text-right pull-right">
-                <input type="text" class="input-underline text-center carac char_val" value="<?= $c['alignement'] ?>" style="width: 100%; text-align: center !important;" id="alignement" disabled>
+                <input type="text" class="input-underline text-center carac char_val" value="<?= $c["alignement"] ?>" style="width: 100%; text-align: center !important;" id="alignement" disabled>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12">
                 <div class="progress progress-striped" style="height: 15px; margin-bottom: 0; border: 1px solid white; border-radius: 0;">
-                  <div class="progress-bar progress-bar-warning" id="bar_light" role="progressbar" style="font-size: large; width:<?= $c['alignement'] ?>%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;"></div>
-                  <div class="progress-bar progress-bar-success" id="bar_dark"  role="progressbar" style="font-size: large; width:<?= (100 - $c['alignement']) ?>%; background-color: #000033; text-align: center; line-height:33px; border-left:2px solid white;"></div>
+                  <div class="progress-bar progress-bar-warning" id="bar_light" role="progressbar" style="font-size: large; width:<?= $c["alignement"] ?>%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;"></div>
+                  <div class="progress-bar progress-bar-success" id="bar_dark"  role="progressbar" style="font-size: large; width:<?= (100 - $c["alignement"]) ?>%; background-color: #000033; text-align: center; line-height:33px; border-left:2px solid white;"></div>
                 </div>
               </div>
             </div>
@@ -81,70 +81,70 @@
 <!-- ##### -- PANEL CARACTÉRISTIQUES PERSONNAGE  --##### -->
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <span class="pull-right">( <img src="<?= assets_url('images/enter_key.png') ?>" class="img-responsive" style="height: 20px; display: inline"> pour enregistrer )</span>
+      <span class="pull-right">( <img src="<?= assets_url("images/enter_key.png") ?>" class="img-responsive" style="height: 20px; display: inline"> pour enregistrer )</span>
       <h4 class="panel-title">Caractéristiques</h4>
     </div>
     <div class="panel-body char_stats_panel">
       <div class="row" style="margin-bottom: 10px;">
         <div class="col-xs-4">
           <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">FORC</div>
-          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_str_<?= $c['char_id'] ?>">
-            <input type="text" class="input-underline text-center carac char_val" value="<?= $c['strength'] ?>%" style="width: 100%; text-align: center !important;" id="strength">
+          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_str_<?= $c["char_id"] ?>">
+            <input type="text" class="input-underline text-center carac char_val" value="<?= $c["strength"] ?>%" style="width: 100%; text-align: center !important;" id="strength">
           </div>
         </div>
         <div class="col-xs-4">
           <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">INTEL</div>
-          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_int_<?= $c['char_id'] ?>">
-            <input type="text" class="input-underline text-center carac char_val" value="<?= $c['intelligence'] ?>%" style="width: 100%; text-align: center !important;" id="intelligence">
+          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_int_<?= $c["char_id"] ?>">
+            <input type="text" class="input-underline text-center carac char_val" value="<?= $c["intelligence"] ?>%" style="width: 100%; text-align: center !important;" id="intelligence">
           </div>
         </div>
         <div class="col-xs-4">
           <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">COUR</div>
-          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_con_<?= $c['char_id'] ?>">
-            <input type="text" class="input-underline text-center carac char_val" value="<?= $c['constitution'] ?>%" style="width: 100%; text-align: center !important;" id="constitution">
+          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_con_<?= $c["char_id"] ?>">
+            <input type="text" class="input-underline text-center carac char_val" value="<?= $c["constitution"] ?>%" style="width: 100%; text-align: center !important;" id="constitution">
           </div>
         </div>
       </div>
       <div class="row" style="margin-bottom: 10px;">
         <div class="col-xs-4">
           <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">DEXT</div>
-          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_dex_<?= $c['char_id'] ?>">
-            <input type="text" class="input-underline text-center carac char_val" value="<?= $c['dexterity'] ?>%" style="width: 100%; text-align: center !important;" id="dexterity">
+          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_dex_<?= $c["char_id"] ?>">
+            <input type="text" class="input-underline text-center carac char_val" value="<?= $c["dexterity"] ?>%" style="width: 100%; text-align: center !important;" id="dexterity">
           </div>
         </div>
         <div class="col-xs-4">
           <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">CONN</div>
-          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_edu_<?= $c['char_id'] ?>">
-            <input type="text" class="input-underline text-center carac char_val" value="<?= $c['education'] ?>%" style="width: 100%; text-align: center !important;" id="education">
+          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_edu_<?= $c["char_id"] ?>">
+            <input type="text" class="input-underline text-center carac char_val" value="<?= $c["education"] ?>%" style="width: 100%; text-align: center !important;" id="education">
           </div>
         </div>
         <div class="col-xs-4">
           <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">CHAR</div>
-          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_cha_<?= $c['char_id'] ?>">
-            <input type="text" class="input-underline text-center carac char_val" value="<?= $c['charisma'] ?>%" style="width: 100%; text-align: center !important;" id="charisma">
+          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_cha_<?= $c["char_id"] ?>">
+            <input type="text" class="input-underline text-center carac char_val" value="<?= $c["charisma"] ?>%" style="width: 100%; text-align: center !important;" id="charisma">
           </div>
         </div>
       </div>
       <div class="row" style="margin-bottom: 10px;">
         <div class="col-xs-4">
           <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">CHAN</div>
-          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_luk_<?= $c['char_id'] ?>">
-            <input type="text" class="input-underline text-center carac char_val" value="<?= $c['luck'] ?>%" style="width: 100%; text-align: center !important;" id="luck">
+          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_luk_<?= $c["char_id"] ?>">
+            <input type="text" class="input-underline text-center carac char_val" value="<?= $c["luck"] ?>%" style="width: 100%; text-align: center !important;" id="luck">
           </div>
         </div>
         <div class="col-xs-4"></div>
         <div class="col-xs-4">
           <div class="col-xs-6 text-left"            style="font-weight: bold; font-size: 14px; padding: 5px;">PERC</div>
-          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_per_<?= $c['char_id'] ?>">
-            <input type="text" class="input-underline text-center carac char_val" value="<?= $c['perception'] ?>%" style="width: 100%; text-align: center !important;" id="perception">
+          <div class="col-xs-6 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_per_<?= $c["char_id"] ?>">
+            <input type="text" class="input-underline text-center carac char_val" value="<?= $c["perception"] ?>%" style="width: 100%; text-align: center !important;" id="perception">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-4"></div>
         <div class="col-xs-4">
-          <div class="col-xs-12 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px !important;" id="c_gld_<?= $c['char_id'] ?>">
-            <input type="text" class="input-underline text-center char_val" value="<?= $c['gold'] ?>" style="width: 100%; text-align: center !important;" id="gold"> <span class="po_label">PO</span>
+          <div class="col-xs-12 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px !important;" id="c_gld_<?= $c["char_id"] ?>">
+            <input type="text" class="input-underline text-center char_val" value="<?= $c["gold"] ?>" style="width: 100%; text-align: center !important;" id="gold"> <span class="po_label">PO</span>
           </div>
         </div>
         <div class="col-xs-4"></div>
@@ -176,7 +176,7 @@
   <div class="panel panel-primary">
     <div class="panel-heading">
       <button class="btn btn-success btn-xs pull-right" onclick="open_modal('add_edit_skill')"><i class="fa fa-plus"></i></button>
-      <h4 class="panel-title">Dons de <?= $c['name'] ?></h4>
+      <h4 class="panel-title">Dons de <?= $c["name"] ?></h4>
     </div>
     <div class="panel-body" style="padding:0;">
       <table class='table table-striped table-hover table-condensed' id='skill_table' cellspacing='0' width='100%'>
@@ -320,7 +320,7 @@
 
     // Generates skills datatable
     skill_table = $("#skill_table").DataTable({
-      ajax:           "<?= base_url("/Ajax/getCharSkill/".$c['char_id']) ?>",
+      ajax:           "<?= base_url("/Ajax/getCharSkill/".$c["char_id"]) ?>",
       info:           false,
       filter:         false,
       paging:         false,
@@ -349,7 +349,7 @@
 
     // Generates inventory datatable
     item_table = $("#inv_table").DataTable({
-      ajax:           "<?= base_url("/Ajax/getCharInventory/".$c['char_id']) ?>",
+      ajax:           "<?= base_url("/Ajax/getCharInventory/".$c["char_id"]) ?>",
       info:           false,
       filter:         false,
       paging:         false,
@@ -606,7 +606,7 @@
   function refresh_stats() {
     $.ajax({
       data: {
-        char_id: '<?= $c['char_id'] ?>',
+        char_id: '<?= $c["char_id"] ?>',
         columns: ['alignement','level']
       },
       type: "POST",
@@ -666,7 +666,7 @@ function save_char_carac (input) {
     },
     type: "POST",
     async: false,
-    url: '<?= base_url('/Ajax/updateChar') ?>',
+    url: '<?= base_url("/Ajax/updateChar") ?>',
     success: function(data){
       input.css('background-color',"lightgreen");
       setTimeout( function () {
@@ -690,20 +690,20 @@ function save_char_carac (input) {
 }
 
 $('#save_story').click(function () {
-	var input = $('#story');
-	save_char_carac (input);
+  var input = $('#story');
+  save_char_carac (input);
 });
 
 $('#save_inventory').click(function () {
-	var input = $('#inventory');
-	save_char_carac (input);
+  var input = $('#inventory');
+  save_char_carac (input);
 });
 
 $('#inventory').bind('keydown', function(e) {
   if(e.ctrlKey && (e.which == 83)) {
     e.preventDefault();
-	var input = $('#inventory');
-	save_char_carac (input);
+  var input = $('#inventory');
+  save_char_carac (input);
     return false;
   }
   
@@ -712,8 +712,8 @@ $('#inventory').bind('keydown', function(e) {
 $('#story').bind('keydown', function(e) {
   if(e.ctrlKey && (e.which == 83)) {
     e.preventDefault();
-	var input = $('#story');
-	save_char_carac (input);
+  var input = $('#story');
+  save_char_carac (input);
     return false;
   }
 });  
