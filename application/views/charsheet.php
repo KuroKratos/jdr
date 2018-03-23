@@ -10,7 +10,7 @@
       <div class="col-12 char_panel">
         <div class="card text-white ">
           <div class="card-header"> <span class="float-right">( <img src="../assets/images/enter_key.png" class="img-fluid" style="height: 20px; display: inline"> pour enregistrer )</span>
-            <h4 class="card-title"><a data-toggle="collapse" href="#collapse0" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Vie et Mana</h4>
+            <p class=""><a data-toggle="collapse" href="#collapse0" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Vie et Mana</p>
           </div>
           <div class="panel-collapse collapse show" id="collapse0">
             <div class="card-body">
@@ -21,8 +21,8 @@
                       <label>Points de Vie</label>
                     </div>
                     <div class="col-6 float-right text-right">
-                      <input type="text" id="hp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important; padding-top:1px;"><span class="hp_pp_slash">/</span>
-                      <input type="text" id="hp_max" class="input-underline char_val" style="border-left: none !important; width: 30%; text-align: center;  padding-top:1px;">
+                      <input type="text" id="hp_cur" class="char_val" style="width: 30%; text-align: center; border-right: none !important; padding-top:1px;"><span class="hp_pp_slash">/</span>
+                      <input type="text" id="hp_max" class="char_val" style="border-left: none !important; width: 30%; text-align: center;  padding-top:1px;">
                     </div>
                   </div>
                   <div class="row">
@@ -43,8 +43,8 @@
                       <label>Points de Mana</label>
                     </div>
                     <div class="col-6 float-right text-right">
-                      <input type="text" id="pp_cur" class="input-underline char_val" style="width: 30%; text-align: center; border-right: none !important; padding-top:1px;"><span class="hp_pp_slash">/</span>
-                      <input type="text" id="pp_max" class="input-underline char_val"
+                      <input type="text" id="pp_cur" class="char_val" style="width: 30%; text-align: center; border-right: none !important; padding-top:1px;"><span class="hp_pp_slash">/</span>
+                      <input type="text" id="pp_max" class="char_val"
                              style="width: 30%; text-align: center; border-left: none !important; padding-top:1px;">
                     </div>
                   </div>
@@ -67,52 +67,58 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-xl-6 char_panel">
-        <div class="card text-white ">
+        <div class="card text-white md-form" style="margin-top: 0;">
           <div class="card-header"> <span class="float-right">( <img src="../assets/images/enter_key.png" class="img-fluid" style="height: 20px; display: inline"> pour enregistrer )</span>
-            <h4 class="card-title"><a data-toggle="collapse" href="#collapse2" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Personnage</h4>
+            <p class=""><a data-toggle="collapse" href="#collapse2" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Personnage</p>
           </div>
           <div class="panel-collapse collapse show" id="collapse2">
             <div class="card-body">
               <div class="row">
                 <div class="col-md-6">
-                  <label class="char">Nom</label>
-                  <input type="text" id="name" class="input-underline char_val" disabled>
+                  <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">NOM</div>
+                  <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">
+                    <input type="text" id="name" class="char_val" style="width: 100%; text-align: center !important;" disabled>
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label class="char">Niveau</label>
-                  <input type="text" id="level" class="input-underline char_val" disabled>
+                  <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">NIVEAU</div>
+                  <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">
+                    <input type="text" id="level" class="char_val" style="width: 100%; text-align: center !important;" disabled>
+                  </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <label class="char">Race</label>
-                  <input type="text" id="race" class="input-underline char_val" disabled>
+                  <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">RACE</div>
+                  <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">
+                    <input type="text" id="race" class="char_val" style="width: 100%; text-align: center !important;" disabled>
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label class="char">Classe</label>
-                  <input type="text" id="class" class="input-underline char_val" disabled>
+                  <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">CLASSE</div>
+                  <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">
+                    <input type="text" id="class" class="char_val" style="width: 100%; text-align: center !important;" disabled>
+                  </div>
                 </div>
               </div>
               <div class="row" style="margin-top:15px; margin-bottom: 15px;">
                 <div class="col-md-12">
-                  <label>R&#xE9;putations :</label>
-                  <input type="text" id="traits" class="input-underline char_val" style="width: 100%; margin: 0;">
-                </div>
-              </div>
-              <div class="col-9 text-left" style="font-weight: bold; font-size: 14px; padding: 5px;">PENCHANT LUMI&#xC8;RE / OMBRE</div>
-              <div class="col-3 text-righto" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_ali">
-                <input type="text" class="input-underline text-center carac char_val" value="50" style="width: 100%; text-align: center !important;" id="alignement" disabled>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="progress progress-striped" style="/*box-shadow: 0px 0px 10px #000000;*/ margin-top:12px; margin-bottom: 10px; border: 1px solid #888888;">
-                    <div class="progress-bar progress-bar-warning" id="bar_light" role="progressbar" style="font-size: large; width:50%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;"> <b>Lumi&#xE8;re</b>
-                    </div>
-                    <div class="progress-bar progress-bar-success" id="bar_dark" role="progressbar" style="font-size: large; width:50%; background-color: #000033; text-align: center; line-height:33px;"> <b>Ombre</b>
-                    </div>
+                  <div class="col-12 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">RÉPUTATIONS</div>
+                  <div class="col-12 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">
+                    <input type="text" id="traits" class="char_val" style="width: 100%; text-align: center !important;" disabled>
                   </div>
                 </div>
               </div>
+              <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">PENCHANT OMBRE / LUMIÈRE</div>
+              <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">
+                <input type="text" id="alignement" class="char_val" style="width: 100%; text-align: center !important;" disabled>
+              </div>
+                <div class="progress progress-striped" style="/*box-shadow: 0px 0px 10px #000000;*/ margin-top:12px; margin: 3px; border: 1px solid #888888;">
+                  <div class="progress-bar progress-bar-warning" id="bar_light" role="progressbar" style="font-size: large; width:50%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;"> <b>Lumi&#xE8;re</b>
+                  </div>
+                  <div class="progress-bar progress-bar-success" id="bar_dark" role="progressbar" style="font-size: large; width:50%; background-color: #000033; text-align: center; line-height:33px;"> <b>Ombre</b>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -133,13 +139,13 @@
               <div class="col-4">
                 <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">INTEL</div>
                 <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_int">
-                  <input type="text" class="input-underline text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="intelligence">
+                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="intelligence">
                 </div>
               </div>
               <div class="col-4">
                 <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">ENDU</div>
                 <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_con">
-                  <input type="text" class="input-underline text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="constitution">
+                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="constitution">
                 </div>
               </div>
             </div>
@@ -147,19 +153,19 @@
               <div class="col-4">
                 <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">DEXT</div>
                 <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_dex">
-                  <input type="text" class="input-underline text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="dexterity">
+                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="dexterity">
                 </div>
               </div>
               <div class="col-4">
                 <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">CONN</div>
                 <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_edu">
-                  <input type="text" class="input-underline text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="education">
+                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="education">
                 </div>
               </div>
               <div class="col-4">
                 <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">CHAR</div>
                 <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_cha">
-                  <input type="text" class="input-underline text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="charisma">
+                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="charisma">
                 </div>
               </div>
             </div>
@@ -167,14 +173,14 @@
               <div class="col-4">
                 <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">CHAN</div>
                 <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_luk">
-                  <input type="text" class="input-underline text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="luck">
+                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="luck">
                 </div>
               </div>
               <div class="col-4"></div>
               <div class="col-4">
                 <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">PERC</div>
                 <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_per">
-                  <input type="text" class="input-underline text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="perception">
+                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="perception">
                 </div>
               </div>
             </div>
@@ -182,7 +188,7 @@
               <div class="col-4"></div>
               <div class="col-4">
                 <div class="col-12 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_gld">
-                  <input type="text" class="input-underline text-center char_val" value="0" style="width: 100%; text-align: center !important;" id="gold"> <span class="po_label">PO</span>
+                  <input type="text" class="text-center char_val" value="0" style="width: 100%; text-align: center !important;" id="gold"> <span class="po_label">PO</span>
                 </div>
               </div>
               <div class="col-4"></div>
@@ -202,7 +208,7 @@
       <div class="col-lg-12 char_panel">
         <div class="card text-white ">
           <div class="card-header"> <span class="float-right"><kbd>Ctrl</kbd> + <kbd>S</kbd> ou cliquer <i class="fa fa-arrow-right"></i> <button class="btn btn-secondary btn-xs" id="save_story"><i class="fa fa-save"></i></button></span>
-            <h4 class="card-title"><a data-toggle="collapse" href="#collapse1" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Histoire</h4>
+            <p class=""><a data-toggle="collapse" href="#collapse1" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Histoire</p>
           </div>
           <div id="collapse1" class="panel-collapse collapse">
             <div class="card-body">
@@ -218,7 +224,7 @@
           <div class="card-header">
             <button class="btn btn-success btn-xs float-right" onclick="open_modal('add_edit_item')"><i class="fa fa-plus"></i>
             </button>
-            <h4 class="card-title">Inventaire</h4>
+            <p class="">Inventaire</p>
           </div>
           <div class="card-body" style="padding: 0; max-height: 346px; overflow-y: scroll; overflow-x: hidden;">
             <table class="table table-striped table-hover table-sm table-bordered" id="inv_table" cellspacing="0" width="100%" style="margin: -1px 0 -1px 0 !important; border-radius: 0 0 3px 3px">
@@ -240,9 +246,9 @@
   <div class="col-lg-12 char_panel">
     <div class="card text-white ">
       <div class="card-header">
-        <button class="btn btn-success btn-xs float-right" onclick="open_modal( & apos; add_edit_skill & apos; )"><i class="fa fa-plus"></i>
+        <button class="btn btn-success btn-xs float-right" onclick="open_modal('add_edit_skill')"><i class="fa fa-plus"></i>
         </button>
-        <h4 class="card-title">Dons de <span class="name">---</span></h4>
+        <p class="">Dons de <span class="name">---</span></p>
       </div>
       <div class="card-body" style="padding:0;">
         <table class="table table-striped table-hover table-sm" id="skill_table" cellspacing="0" width="100%">
@@ -263,7 +269,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Ajouter un don</h4>
+        <p class="modal-title">Ajouter un don</p>
       </div>
       <div class="modal-body">
         <input type="hidden" id="skill_id" value="-1">
@@ -294,7 +300,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Ajouter / Modifier un objet</h4>
+        <p class="modal-title">Ajouter / Modifier un objet</p>
       </div>
       <div class="modal-body">
         <input type="hidden" id="item_id" value="-1">
@@ -325,7 +331,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Supprimer un don</h4>
+        <p class="modal-title">Supprimer un don</p>
       </div>
       <div class="modal-body nowrap">
         <p class="nowrap">Supprimer le don <i id="delete_skill_name"></i> ?</p>
@@ -344,7 +350,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Supprimer un objet</h4>
+        <p class="modal-title">Supprimer un objet</p>
       </div>
       <div class="modal-body nowrap">
         <p class="nowrap">Supprimer l&apos;objet <b><i id="delete_item_name"></i></b> ?</p>
