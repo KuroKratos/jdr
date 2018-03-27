@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-12 char_panel">
         <div class="card text-white ">
-          <div class="card-header"> <span class="float-right">( <img src="../assets/images/enter_key.png" class="img-fluid" style="height: 20px; display: inline"> pour enregistrer )</span>
+          <div class="card-header"> <span class="float-right"><kbd>&crarr;</kbd> pour enregistrer</span>
             <p class=""><a data-toggle="collapse" href="#collapse0" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Vie et Mana</p>
           </div>
           <div class="panel-collapse collapse show" id="collapse0">
@@ -27,8 +27,8 @@
                   </div>
                   <div class="row">
                     <div class="col-12">
-                      <div class="progress progress-striped skill-bar hp-bar" style="margin-bottom: 0; margin-top: 10px;">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="hp_bar"></div> <span class="skill">
+                      <div class="progress skill-bar hp-bar" style="margin: 3px; border: 1px solid black; height:25px;">
+                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="hp_bar"></div> <span class="skill">
                           <span class="lbl">PV</span>
                           <i class="val" id="hp_lbl"></i>
                         </span>
@@ -50,8 +50,8 @@
                   </div>
                   <div class="row">
                     <div class="col-12">
-                      <div class="progress progress-striped skill-bar pp-bar" style="margin-bottom: 0; margin-top: 10px;">
-                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="pp_bar"></div> <span class="skill">
+                      <div class="progress skill-bar pp-bar" style="margin: 3px; border: 1px solid black; height:25px;">
+                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="pp_bar"></div> <span class="skill">
                           <span class="lbl">PM</span>
                           <i class="val" id="pp_lbl"></i>
                         </span>
@@ -68,7 +68,7 @@
     <div class="row">
       <div class="col-lg-12 col-xl-6 char_panel">
         <div class="card text-white md-form" style="margin-top: 0;">
-          <div class="card-header"> <span class="float-right">( <img src="../assets/images/enter_key.png" class="img-fluid" style="height: 20px; display: inline"> pour enregistrer )</span>
+          <div class="card-header"> <span class="float-right"><kbd>&crarr;</kbd> pour enregistrer</span>
             <p class=""><a data-toggle="collapse" href="#collapse2" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Personnage</p>
           </div>
           <div class="panel-collapse collapse show" id="collapse2">
@@ -105,7 +105,7 @@
                 <div class="col-md-12">
                   <div class="col-12 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">RÉPUTATIONS</div>
                   <div class="col-12 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">
-                    <input type="text" id="traits" class="char_val" style="width: 100%; text-align: center !important;" disabled>
+                    <input type="text" id="traits" class="char_val" style="width: 100%; text-align: center !important;">
                   </div>
                 </div>
               </div>
@@ -113,10 +113,10 @@
               <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">
                 <input type="text" id="alignement" class="char_val" style="width: 100%; text-align: center !important;" disabled>
               </div>
-                <div class="progress progress-striped" style="/*box-shadow: 0px 0px 10px #000000;*/ margin-top:12px; margin: 3px; border: 1px solid #888888;">
-                  <div class="progress-bar progress-bar-warning" id="bar_light" role="progressbar" style="font-size: large; width:50%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;"> <b>Lumi&#xE8;re</b>
+                <div class="progress" style="margin: 3px; border: 1px solid black; height:25px;">
+                  <div class="progress-bar progress-bar-striped progress-bar-warning" id="bar_light" role="progressbar" style="font-size: large; width:50%; background-color: #eebb33; text-align: center; line-height:33px; text-shadow: 1px 1px 3px black;"> <b>Lumi&#xE8;re</b>
                   </div>
-                  <div class="progress-bar progress-bar-success" id="bar_dark" role="progressbar" style="font-size: large; width:50%; background-color: #000033; text-align: center; line-height:33px;"> <b>Ombre</b>
+                  <div class="progress-bar progress-bar-striped progress-bar-success" id="bar_dark" role="progressbar" style="font-size: large; width:50%; background-color: #000033; text-align: center; line-height:33px;"> <b>Ombre</b>
                   </div>
                 </div>
             </div>
@@ -125,7 +125,7 @@
       </div>
       <div class="col-lg-12 col-xl-6 char_panel">
         <div class="card text-white  md-form" style="margin-top:0;">
-          <div class="card-header"> <span class="float-right">( <img src="../assets/images/enter_key.png" class="img-fluid" style="height: 20px; display: inline"> pour enregistrer )</span>
+          <div class="card-header"> <span class="float-right"><kbd>&crarr;</kbd> pour enregistrer</span>
             <p class="">Caract&#xE9;ristiques</p>
           </div>
           <div class="card-body">
@@ -474,6 +474,10 @@
     $.each(char, function (index, value) {
       $('#' + index).val(value);
     });
+    
+    // Set HP & MP bars
+    change_bar_val(char.hp_cur, char.hp_max, 'hp');
+    change_bar_val(char.pp_cur, char.pp_max, 'pp');
 
     // Set '%' character at the end of stats inputs
     $('.carac').each(function (index) {

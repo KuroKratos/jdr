@@ -8,13 +8,13 @@ body {
   background-color: #aaaaaa;
 }
 
-.char_summary * {
-  border-radius: 0 !important;
+kbd {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  border-radius: .2rem !important;
 }
 
-kbd {
-  color: black;
-  background-color: white;
+.char_summary * {
+  border-radius: 0 !important;
 }
 .char-stats * {
   font-family: monospace;
@@ -266,8 +266,8 @@ ul.staff {
 .modal-body {
 }
 
-.btn, .card, kbd {
-  border-radius:0;
+.btn, .card, .progress {
+  border-radius:0 !important;
 }
 
 .btn-xs {
@@ -463,8 +463,8 @@ ul.staff {
 }
 .progress .skill {
   color:white;
-  font: normal 20px monospace;
-  line-height: 35px;
+  font: normal 16px monospace;
+  line-height: 23px;
   padding: 0;
   margin: 0;
   text-transform: uppercase;
@@ -494,9 +494,17 @@ ul.staff {
 
 .skill-bar {
   background-color: #ffd0d0;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  /*box-shadow: 0 0 5px rgba(0,0,0,0.5);*/
 }
 
 .char_panel {
   padding: 3px !important;
+}
+
+table.dataTable {
+  margin: 0 !important
+}
+
+.dataTables_wrapper.container-fluid {
+  padding: 0 !important;
 }
