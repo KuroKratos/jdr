@@ -1,5 +1,5 @@
   <body <?php echo (site_instance() === "_test_") ? "style='background: #000530 !important;'" : ""; ?>>
-    <nav class="navbar navbar-light bg-light fixed-top navbar-expand-md">
+    <nav class="navbar navbar-dark elegant-color fixed-top navbar-expand-md z-depth-3">
       <a class="navbar-brand" href="#"><?= site_name() ?></a>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">&#x2630;</button>
       <div class="collapse navbar-collapse" id="myNavbar">

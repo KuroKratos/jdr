@@ -13,6 +13,24 @@ kbd {
   border-radius: .2rem !important;
 }
 
+.common-dice {
+  padding: 0.5rem 0.8rem !important;
+}
+
+.dc_dice_a {
+  color: #FF8888;
+}
+.dc_dice_d {
+  color: #00BB00;
+}
+.dc_number {
+  color: #8888FF;
+}
+.dc_operator:before,
+.dc_operator:after {
+  content: "\00a0 ";
+}
+
 .char_summary * {
   border-radius: 0 !important;
 }
@@ -441,7 +459,7 @@ ul.staff {
 }
 
 .card-body {
-  padding: 0 !important;
+  /*padding: 0 !important;*/
   border-radius: 0px;
 
 }

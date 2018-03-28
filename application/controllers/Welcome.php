@@ -26,7 +26,9 @@ namespace {
     }
 
     public function dashboard () {
-      $this->loadView(["dashboard.html"], $this->params);
+      $this->params["characters"] = $this->m_char->allCharDetails();
+      $this->params["title"]      = "Dashboard";
+      $this->loadView(["dashboard"], $this->params);
     }
 
     public function charsheet($char=null) {
