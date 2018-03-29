@@ -28,10 +28,10 @@ function appendRollToTable (RollData, TableId) {
   }
 
   ResultLine  = "<tr>";
-  ResultLine += "<td style='text-align:left;'>" + datetime(RollData.timestamp) + "</td>";
+  ResultLine += "<td style='text-align:center;'>" + datetime(RollData.timestamp) + "</td>";
   ResultLine += "<td style='text-align:center;'>" + RollData.illustration + "</td>";
   ResultLine += "<td style='text-align:center;'>" + RollData.details + "</td>";
-  ResultLine += "<td style='text-align:right;' class='"+ResultClass+"'>" + RollData.result + "</td>";
+  ResultLine += "<td style='text-align:center;' class='"+ResultClass+"'>" + RollData.result + "</td>";
   ResultLine += "</tr>";
   $('#'+TableId).append(ResultLine);
 

@@ -28,6 +28,7 @@ namespace {
     public function dashboard () {
       $this->params["characters"] = $this->m_char->allCharDetails();
       $this->params["title"]      = "Dashboard";
+      $this->params["js"][]       = assets_url("js/dashboard.js");
       $this->loadView(["dashboard"], $this->params);
     }
 
@@ -35,6 +36,7 @@ namespace {
       if(!empty($char)) {
         $this->params["character"] = $this->m_char->charDetails(urldecode($char));
         $this->params["title"]     = urldecode($char);
+        $this->params["js"][]      = assets_url("js/charsheet.js");
         $post                      = filter_input_array(INPUT_POST);
         if(!empty($post["ajax"]) && (int)$post["ajax"] === 1) {
           $this->load->view("charsheet", $this->params);

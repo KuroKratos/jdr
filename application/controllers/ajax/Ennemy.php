@@ -24,7 +24,13 @@ namespace {
     public function ennemyRandom($region=null) {
       $post = filter_input_array(INPUT_POST) ?? ["region" => $region];
       $this->load->model("m_ennemy");
-      $info = $this->m_ennemy->ennemyRandom($post["region"]);
+      $info = $this->m_ennemy->ennemyRandom(($post["region"] < 0) ? null : $post["region"]);
+      echo json_encode($info, JSON_PRETTY_PRINT);
+    }
+
+    public function ennemyRegion () {
+      $this->load->model("m_ennemy");
+      $info = $this->m_ennemy->regionList();
       echo json_encode($info, JSON_PRETTY_PRINT);
     }
 

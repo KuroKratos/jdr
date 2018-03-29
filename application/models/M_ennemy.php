@@ -19,7 +19,7 @@ namespace {
     }
 
     public function ennemyRandom ($region=null) {
-      $this->db->select("r.name as REGION, b.name as MONSTRE, rb.weight as FACTEUR");
+      $this->db->select("r.name as region, b.name as name, rb.weight as rarity, b.*");
       $this->db->join("region r", "r.id = rb.region_id");
       $this->db->join("bestiary b", "rb.bestiary_id = b.id");
       $this->db->where("rb.weight >", 0);
@@ -30,6 +30,10 @@ namespace {
       $this->db->order_by(" LOG(1 - RAND()) / rb.weight desc");
       $this->db->limit(1);
       return $this->db->get("region_bestiary rb")->row_array();
+    }
+
+    public function regionList () {
+      return $this->db->get("region")->result_array();
     }
 
   }

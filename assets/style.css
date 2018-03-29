@@ -530,14 +530,24 @@ table.dataTable {
 
 .scrollbar-black::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: #dee2e6;
-  border-radius: 0px; }
+  background-color: #212121;
+  border-radius: 5px; }
 
 .scrollbar-black::-webkit-scrollbar {
   width: 5px;
-  background-color: #dee2e6; }
+  background-color: #212121; }
 
 .scrollbar-black::-webkit-scrollbar-thumb {
-  border-radius: 0px;
+  border-radius: 5px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: #212121; }
+  background-color: whitesmoke; }
+
+.table-dark.table-striped tbody tr.active {
+  border-left: 7px solid darkred;
+  border-right: 7px solid darkred;
+}
+
+.table-dark.table-striped tbody tr.active td {
+  font-weight: bold;
+  color: wheat;
+}
