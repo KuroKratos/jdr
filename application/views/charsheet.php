@@ -4,24 +4,26 @@
   char = <?= json_encode($c) ?>;
 </script>
 
-<div class="row" id="charsheet">
+<!-- CHARACTER SHEET -->
+<div class="row mt-2" id="charsheet">
   <div class="col-md-6 col-lg-7 col-xl-9">
-    <div class="row">
+
+  <!-- HEALTH AND MANA -->
+    <div class="row mb-4">
       <div class="col-12 char_panel">
-        <div class="card text-white ">
+        <div class="card z-depth-3 text-white elegant-color md-form mt-0">
           <div class="card-header"> <span class="float-right"><kbd>&crarr;</kbd> pour enregistrer</span>
             <p class=""><a data-toggle="collapse" href="#collapse0" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Vie et Mana</p>
           </div>
           <div class="panel-collapse collapse show" id="collapse0">
-            <div class="card-body">
+            <div class="card-body p-2">
               <div class="row">
                 <div class="col-md-12 col-lg-6">
-                  <div class="row">
-                    <div class="col-6 float-left">
-                      <label>Points de Vie</label>
-                    </div>
-                    <div class="col-6 float-right text-right">
-                      <input type="text" id="hp_cur" class="char_val" style="width: 30%; text-align: center; border-right: none !important; padding-top:1px;"><span class="hp_pp_slash">/</span>
+                  <div class="row px-2">
+                    <div class="col-8 float-left">Points de Vie</div>
+                    <div class="col-4 float-right text-right">
+                      <input type="text" id="hp_cur" class="char_val" style="width: 30%; text-align: center; border-right: none !important; padding-top:1px;">
+                      <span class="">/</span>
                       <input type="text" id="hp_max" class="char_val" style="border-left: none !important; width: 30%; text-align: center;  padding-top:1px;">
                     </div>
                   </div>
@@ -38,12 +40,11 @@
                 </div>
                 <div class="col-md-12 col-lg-6">
                   <hr class="d-block d-sm-none d-block d-md-none">
-                  <div class="row">
-                    <div class="col-6 float-left">
-                      <label>Points de Mana</label>
-                    </div>
-                    <div class="col-6 float-right text-right">
-                      <input type="text" id="pp_cur" class="char_val" style="width: 30%; text-align: center; border-right: none !important; padding-top:1px;"><span class="hp_pp_slash">/</span>
+                  <div class="row px-2">
+                    <div class="col-8 float-left">Points de Mana</div>
+                    <div class="col-4 float-right text-right">
+                      <input type="text" id="pp_cur" class="char_val" style="width: 30%; text-align: center; border-right: none !important; padding-top:1px;">
+                      <span class="">/</span>
                       <input type="text" id="pp_max" class="char_val"
                              style="width: 30%; text-align: center; border-left: none !important; padding-top:1px;">
                     </div>
@@ -65,14 +66,18 @@
         </div>
       </div>
     </div>
-    <div class="row">
+  <!-- /HEALTH AND MANA -->
+
+    <div class="row mb-4">
+
+    <!-- SUMMARY -->
       <div class="col-lg-12 col-xl-6 char_panel">
-        <div class="card text-white md-form" style="margin-top: 0;">
+        <div class="card z-depth-3 text-white elegant-color md-form" style="margin-top: 0;">
           <div class="card-header"> <span class="float-right"><kbd>&crarr;</kbd> pour enregistrer</span>
             <p class=""><a data-toggle="collapse" href="#collapse2" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Personnage</p>
           </div>
           <div class="panel-collapse collapse show" id="collapse2">
-            <div class="card-body">
+            <div class="card-body p-2">
               <div class="row">
                 <div class="col-md-6">
                   <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">NOM</div>
@@ -123,13 +128,16 @@
           </div>
         </div>
       </div>
+    <!-- /SUMMARY -->
+
+    <!-- CHARACTERISTICS -->
       <div class="col-lg-12 col-xl-6 char_panel">
-        <div class="card text-white  md-form" style="margin-top:0;">
+        <div class="card z-depth-3 text-white elegant-color md-form" style="margin-top:0;">
           <div class="card-header"> <span class="float-right"><kbd>&crarr;</kbd> pour enregistrer</span>
             <p class="">Caract&#xE9;ristiques</p>
           </div>
-          <div class="card-body">
-            <div class="row" style="margin-bottom: 10px;">
+          <div class="card-body p-2">
+            <div class="row mb-4 mt-3">
               <div class="col-4">
                 <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">FORC</div>
                 <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_str">
@@ -149,7 +157,7 @@
                 </div>
               </div>
             </div>
-            <div class="row" style="margin-bottom: 10px;">
+            <div class="row mb-4">
               <div class="col-4">
                 <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">DEXT</div>
                 <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_dex">
@@ -169,7 +177,7 @@
                 </div>
               </div>
             </div>
-            <div class="row" style="margin-bottom: 10px;">
+            <div class="row mb-4">
               <div class="col-4">
                 <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">CHAN</div>
                 <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_luk">
@@ -196,33 +204,40 @@
           </div>
         </div>
       </div>
+    <!-- /CHARACTERISTICS -->
+
     </div>
   </div>
-  <div class="col-12 col-md-6 col-lg-5 col-xl-3 float-right">
-    <div class="row">
+  <div class="col-xl-3 float-right mb-4">
+
+  <!-- STORY -->
+    <div class="row mb-4">
       <div class="col-lg-12 char_panel">
-        <div class="card text-white ">
+        <div class="card z-depth-3 text-white elegant-color">
           <div class="card-header"> <span class="float-right"><kbd>Ctrl</kbd> + <kbd>S</kbd> ou cliquer <i class="fa fa-arrow-right"></i> <button class="btn btn-secondary btn-xs" id="save_story"><i class="fa fa-save"></i></button></span>
             <p class=""><a data-toggle="collapse" href="#collapse1" class="float-left"><i class="fa fa-eye"></i></a>&#xA0;&#xA0;Histoire</p>
           </div>
           <div id="collapse1" class="panel-collapse collapse">
-            <div class="card-body">
+            <div class="card-body p-2">
               <textarea id="story" class="form-control" style="width: 100%; min-height: 100%; resize: none;" rows="8"></textarea>
             </div>
           </div>
         </div>
       </div>
     </div>
+  <!-- /STORY -->
+
+  <!-- INVENTORY -->
     <div class="row">
       <div class="col-lg-12 char_panel">
-        <div class="card text-white ">
+        <div class="card z-depth-3 text-white elegant-color">
           <div class="card-header">
             <button class="btn btn-success btn-xs float-right" onclick="open_modal('add_edit_item')"><i class="fa fa-plus"></i>
             </button>
             <p class="">Inventaire</p>
           </div>
-          <div class="card-body" style="padding: 0; max-height: 346px; overflow-y: scroll; overflow-x: hidden;">
-            <table class="table table-striped table-hover table-sm table-bordered" id="inv_table" cellspacing="0" width="100%" style="margin: -1px 0 -1px 0 !important; border-radius: 0 0 3px 3px">
+          <div class="card-body scrollbar-black" style="padding: 0; max-height: 313px; overflow-y: auto; overflow-x: hidden;">
+            <table class="table table-striped table-hover table-sm" id="inv_table" cellspacing="0" width="100%" style="margin: -1px 0 -1px 0 !important; border-radius: 0 0 3px 3px">
               <thead>
                 <tr>
                   <th></th>
@@ -236,16 +251,20 @@
         </div>
       </div>
     </div>
+  <!-- /INVENTORY -->
+
   </div>
   <div class="clearfix"></div>
+
+<!-- SKILLS -->
   <div class="col-lg-12 char_panel">
-    <div class="card text-white ">
+    <div class="card z-depth-3 text-white elegant-color">
       <div class="card-header">
         <button class="btn btn-success btn-xs float-right" onclick="open_modal('add_edit_skill')"><i class="fa fa-plus"></i>
         </button>
         <p class="">Dons de <span class="name">---</span></p>
       </div>
-      <div class="card-body" style="padding:0;">
+      <div class="card-body scrollbar-black" style="padding:0; overflow-y: auto; max-height: 280px; overflow-x: hidden;">
         <table class="table table-striped table-hover table-sm" id="skill_table" cellspacing="0" width="100%">
           <thead>
             <tr>
@@ -259,7 +278,12 @@
       </div>
     </div>
   </div>
+<!-- /SKILLS -->
+
 </div>
+<!-- /CHARACTER SHEET -->
+
+<!-- SKILL ADD/EDIT MODAL -->
 <div class="modal fade" id="add_edit_skill" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -291,6 +315,9 @@
     </div>
   </div>
 </div>
+<!-- /SKILL ADD/EDIT MODAL -->
+
+<!-- ITEM ADD/EDIT MODAL -->
 <div class="modal fade" id="add_edit_item" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -322,6 +349,9 @@
     </div>
   </div>
 </div>
+<!-- /ITEM ADD/EDIT MODAL -->
+
+<!-- SKILL DELETE MODAL -->
 <div class="modal fade" id="delete_skill" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -341,6 +371,9 @@
     </div>
   </div>
 </div>
+<!-- /SKILL DELETE MODAL -->
+
+<!-- ITEM DELETE MODAL -->
 <div class="modal fade" id="delete_item" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -360,6 +393,7 @@
     </div>
   </div>
 </div>
+<!-- /ITEM DELETE MODAL -->
 
 <script type="text/javascript">
   var skill_table;
@@ -405,7 +439,7 @@
 
     // Generates skills datatable
     skill_table = $("#skill_table").DataTable({
-      ajax: base_url + "/Ajax/getCharSkill/" + char.char_id,
+      ajax: base_url + "/skill/char/" + char.char_id,
       info: false,
       filter: false,
       paging: false,
@@ -436,7 +470,7 @@
 
     // Generates inventory datatable
     item_table = $("#inv_table").DataTable({
-      ajax: base_url + "/Ajax/getCharInventory/" + char.char_id,
+      ajax: base_url + "/inventory/char/" + char.char_id,
       info: false,
       filter: false,
       paging: false,
@@ -501,7 +535,7 @@
       type: "POST",
       dataType: "JSON",
       async: false,
-      url: base_url + "/Ajax/getSkillInfo",
+      url: base_url + "/skill/info",
       success: function (data) {
         $('#skill_id').val(data.skill_id);
         $('#skill_name').val(data.name);
@@ -524,7 +558,7 @@
       type: "POST",
       dataType: "JSON",
       async: false,
-      url: base_url + "/Ajax/getItemInfo",
+      url: base_url + "/inventory/info",
       success: function (data) {
         $('#item_id').val(data.item_id);
         $('#item_name').val(data.name);
@@ -578,7 +612,7 @@
       type: "POST",
       dataType: "JSON",
       async: false,
-      url: base_url + "/Ajax/getSkillInfo",
+      url: base_url + "/skill/info",
       success: function (data) {
         console.log(data);
         $('#delete_skill_name').html(data.name);
@@ -599,7 +633,7 @@
       type: "POST",
       dataType: "JSON",
       async: false,
-      url: base_url + "/Ajax/getItemInfo",
+      url: base_url + "/inventory/item",
       success: function (data) {
         console.log(data);
         $('#delete_item_name').html(data.name);
@@ -619,7 +653,7 @@
       },
       type: "POST",
       async: false,
-      url: base_url + "/Ajax/deleteSkill",
+      url: base_url + "/skill/delete",
       success: function (data) {
         close_modal();
         skill_table.ajax.reload();
@@ -637,7 +671,7 @@
       },
       type: "POST",
       async: false,
-      url: base_url + "/Ajax/deleteItem",
+      url: base_url + "/inventory/delete",
       success: function (data) {
         close_modal();
         item_table.ajax.reload();
@@ -660,7 +694,7 @@
         },
         type: "POST",
         async: false,
-        url: base_url + "/Ajax/addEditSkill",
+        url: base_url + "/skill/addEdit",
         success: function (data) {
           skill_table.ajax.reload();
           reset_skill_modal();
@@ -684,7 +718,7 @@
         },
         type: "POST",
         async: false,
-        url: base_url + "/Ajax/addEditItem",
+        url: base_url + "/inventory/AddEdit",
         success: function (data) {
           item_table.ajax.reload();
           reset_item_modal();
@@ -705,7 +739,7 @@
       type: "POST",
       dataType: "json",
       async: false,
-      url: base_url + "/Ajax/getCharInfo",
+      url: base_url + "character/info",
       success: function (data) {
         $('#alignement').val(data.alignement + '%');
         $('#level').val(data.level);
@@ -758,7 +792,7 @@
       },
       type: "POST",
       async: false,
-      url: base_url + "/Ajax/updateChar",
+      url: base_url + "/character/update",
       success: function (data) {
         input.css('background-color', "lightgreen");
         setTimeout(function () {

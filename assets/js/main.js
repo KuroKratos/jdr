@@ -27,7 +27,7 @@ $(document).ready(function() {
       $('#skill_modal_table').dataTable().fnDestroy();
     }
     $("#skill_modal_table").DataTable({
-      ajax:           "index.php/Ajax/getCharSkill/"+char_id,
+      ajax:           "index.php/skill/char/"+char_id,
       info:           false,
       filter:         false,
       paging:         true,
@@ -45,7 +45,7 @@ $(document).ready(function() {
 });
 
 function get_all_char_info() {
-  $.post('index.php/Ajax/getAllCharDetail',function (result) { console.log(result); fill_char_sheets(result); }, 'json');
+  $.post('index.php/character/all',function (result) { console.log(result); fill_char_sheets(result); }, 'json');
 }
 
 function fill_char_sheets(chars) {
@@ -70,7 +70,7 @@ function fill_char_sheets(chars) {
     $('#c_dst_'+c.char_id).html(c.fight_distance + '%');
 
     // MONEY
-    $('#c_gld_'+c.char_id).html(c.gold + ' PO');
+    $('#c_po_'+c.char_id).html(c.gold + ' PO');
 
     // HEALTH
     $('#c_hp_'+c.char_id).attr('aria-valuemax',c.hp_max);
@@ -138,7 +138,7 @@ function get_char_skill (char_id, char_name) {
       type: "POST",
       dataType: "JSON",
       async: false,
-      url: base_url + "/Ajax/getItemInfo",
+      url: base_url + "/inventory/item",
       success: function(data){
         $('#item_id').val(data.item_id);
         $('#item_name').val(data.name);
@@ -161,7 +161,7 @@ function get_char_skill (char_id, char_name) {
 function load_inventory_dt(char_id, panel) {
   // Generates inventory datatable
   item_table = $("#inv_table").DataTable({
-    ajax:           base_url + "/Ajax/getCharInventory/" + char_id,
+    ajax:           base_url + "/inventory/char/" + char_id,
     info:           false,
     filter:         false,
     paging:         false,
