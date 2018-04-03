@@ -158,14 +158,15 @@ namespace {
   function char_stat_block ($label, $id, $value, $gold=null) {
     $text_class = ($gold) ? "amber-text" : "text-info";
 
-    echo "<div class='col-4 px-1 mb-1'>";
+    echo "<div class='col-4 px-1 mb-2'>";
     echo "      <table style='width: 100%; border: 1px solid rgba(255,255,255,0.5); background-color: rgba(255,255,255,0.15);'>";
     echo "        <tr>";
     if($gold === null) {
-      echo "          <td style='text-align: center; font-weight: bold; width: 50%;'>$label</td>";
+      echo "          <td style='text-align: center; font-weight: bold; width: 30%; font-size:10px !important; line-height:11px;'>$label</td>";
     }
-    echo "          <td style='text-align: center; padding: 5px;'>";
-    echo "            <span class='text-right $text_class char_stat_val' style='font-weight: bold; font-size: 14px;' id='$id'>$value".($gold ? " PO" : "%")."</span>";
+
+    echo "          <td style='text-align: center; padding: 0px; font-size:10px !important;'>";
+    echo "            <span class='text-right $text_class char_stat_val' style='font-weight: bold; font-size: 10px !important;' id='$id'>$value".(($gold) ? "" : "")."</span>";
     echo "          </td>";
     echo "        </tr>";
     echo "      </table>";

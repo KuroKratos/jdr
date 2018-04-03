@@ -45,32 +45,32 @@ $(document).ready(function() {
 });
 
 function get_all_char_info() {
-  $.post('index.php/character/all',function (result) { console.log(result); fill_char_sheets(result); }, 'json');
+  $.post('index.php/character/all',function (result) { console.log(result); fill_char_sheets(result, false); }, 'json');
 }
 
-function fill_char_sheets(chars) {
+function fill_char_sheets(chars, suffix) {
   $.each(chars, function (index, c) {
 
     // LEVEL
     //$('#c_lvl_'+c.char_id).html('Niveau ' + c.level);
 
     // STATS
-    $('#c_str_'+c.char_id).html(c.strength     + '%');
-    $('#c_dex_'+c.char_id).html(c.dexterity    + '%');
-    $('#c_luk_'+c.char_id).html(c.luck         + '%');
-    $('#c_con_'+c.char_id).html(c.constitution + '%');
-    $('#c_cha_'+c.char_id).html(c.charisma     + '%');
-    $('#c_per_'+c.char_id).html(c.perception   + '%');
-    $('#c_edu_'+c.char_id).html(c.education    + '%');
-    $('#c_int_'+c.char_id).html(c.intelligence + '%');
+    $('#c_str_'+c.char_id).html(c.strength     + (suffix ? '%' : '') );
+    $('#c_dex_'+c.char_id).html(c.dexterity    + (suffix ? '%' : ''));
+    $('#c_luk_'+c.char_id).html(c.luck         + (suffix ? '%' : ''));
+    $('#c_con_'+c.char_id).html(c.constitution + (suffix ? '%' : ''));
+    $('#c_cha_'+c.char_id).html(c.charisma     + (suffix ? '%' : ''));
+    $('#c_per_'+c.char_id).html(c.perception   + (suffix ? '%' : ''));
+    $('#c_edu_'+c.char_id).html(c.education    + (suffix ? '%' : ''));
+    $('#c_int_'+c.char_id).html(c.intelligence + (suffix ? '%' : ''));
 
     // FIGHT
-    $('#c_wpn_'+c.char_id).html(c.fight_melee    + '%');
-    $('#c_hnd_'+c.char_id).html(c.fight_bare     + '%');
-    $('#c_dst_'+c.char_id).html(c.fight_distance + '%');
+    $('#c_wpn_'+c.char_id).html(c.fight_melee    + (suffix ? '%' : ''));
+    $('#c_hnd_'+c.char_id).html(c.fight_bare     + (suffix ? '%' : ''));
+    $('#c_dst_'+c.char_id).html(c.fight_distance + (suffix ? '%' : ''));
 
     // MONEY
-    $('#c_po_'+c.char_id).html(c.gold + ' PO');
+    $('#c_po_'+c.char_id).html(c.gold + (suffix ? ' PO' : ''));
 
     // HEALTH
     $('#c_hp_'+c.char_id).attr('aria-valuemax',c.hp_max);
