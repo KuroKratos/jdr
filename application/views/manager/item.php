@@ -8,7 +8,9 @@
         <div class="col-12 mb-2">
           <div class="col-3 float-left">Catégorie :</div>
           <div class="col-9 float-right">
-            <select class="form-control input-sm" id="txt_category" style="border-radius: 0; height: 31px; border: 0; width: 100%"></select>
+            <select class="form-control input-sm" id="txt_category" style="border-radius: 0; height: 31px; border: 0; width: 100%">
+              <option value="-1" >---</option>
+            </select>
           </div>
         </div>
         <div class="col-12 mb-2">
@@ -32,6 +34,7 @@
               </div>
               <div class="col-9 pl-0 float-left">
                 <select class="form-control input-sm" id="txt_stat_bonus" style="border-radius: 0; height: 31px; border: 0; width: 100%;">
+                  <option value="-1" >AUCUNE</option>
                   <option value="str">FORCE</option>
                   <option value="int">INTELLIGENCE</option>
                   <option value="dex">DEXTTÉRITÉ</option>

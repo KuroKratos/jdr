@@ -17,3 +17,28 @@ $(document).ready(function () {
     }
   });
 });
+
+function add_edit_item() {
+  $.ajax({
+    data: {
+      category: $('#txt_category').val(),
+      name: $('#txt_name').val().trim(),
+      description: $('#txt_description').val().trim(),
+      bonus_value: parseInt($('#nbr_stat_bonus').val()),
+      bonus_stat: $('#txt_stat_bonus').val()
+    },
+    type: "POST",
+    async: false,
+    url: base_url + 'item/addedit',
+    success: function(data){
+      $('#txt_category').val('-1');
+      $('#txt_name').val('');
+      $('#txt_description').val('');
+      $('#nbr_stat_bonus').val(0);
+      $('#txt_stat_bonus').val('-1');
+    },
+    error: function(e, d, l){
+      console.log(e);
+    }
+  });
+}
