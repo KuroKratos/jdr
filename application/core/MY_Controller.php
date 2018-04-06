@@ -22,7 +22,7 @@ namespace {
               $params["css"][] = assets_url("bootstrap4/css/bootstrap.min.css");
               $params["css"][] = assets_url("mdb/css/mdb.min.css");
 
-              $params["js"][] = assets_url("bootstrap4/js/bootstrap.min.js");
+              $params["js"][] = assets_url("bootstrap4/js/bootstrap.bundle.min.js");
               $params["js"][] = assets_url("mdb/js/mdb.min.js");
               break;
             case "dataTables":

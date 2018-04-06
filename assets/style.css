@@ -551,3 +551,20 @@ table.dataTable {
   font-weight: bold;
   color: wheat;
 }
+
+.btn-char {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-char i {
+  font-size: 12px !important;
+  line-height: 20px;
+}
+
+.card-char-title {
+  font-size: 12px !important;
+  color:white !important;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5), -1px -1px 4px rgba(0,0,0,0.5), 1px -1px 4px rgba(0,0,0,0.5), -1px 1px 4px rgba(0,0,0,0.5);
+  line-height: 20px;
+}

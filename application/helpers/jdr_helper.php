@@ -155,10 +155,10 @@ namespace {
     echo "</div>";
   }
 
-  function char_stat_block ($label, $id, $value, $gold=null) {
+  function char_stat_block ($title, $label, $id, $value, $gold=null, $mb=2) {
     $text_class = ($gold) ? "amber-text" : "text-info";
 
-    echo "<div class='col-4 px-1 mb-2'>";
+    echo "<div class='col-4 px-1 mb-".$mb."' data-toggle='tooltip' title='$title'>";
     echo "      <table style='width: 100%; border: 1px solid rgba(255,255,255,0.5); background-color: rgba(255,255,255,0.15);'>";
     echo "        <tr>";
     if($gold === null) {

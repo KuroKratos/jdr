@@ -12,14 +12,14 @@ namespace {
 
     // Returns an array listing every character's name
     public function charList() {
-      $query = $this->db->select("name")->get("jdr_chars")->result_array();
+      $query = $this->db->select("name")->get("character")->result_array();
       $list  = array_column($query, "name");
       return $list;
     }
 
     // Returns an array of unique character's stats
     public function charDetails($char) {
-      return $this->db->where("name", $char)->get("jdr_chars")->result_array();
+      return $this->db->where("name", $char)->get("character")->result_array();
     }
 
     // Almost same as above but you can set columns you want
@@ -28,12 +28,12 @@ namespace {
         $this->db->select($columns);
       }
 
-      return $this->db->where("char_id", $char_id)->get("jdr_chars")->row_array();
+      return $this->db->where("char_id", $char_id)->get("character")->row_array();
     }
 
     // Returns nested array of every character's stats
     public function allCharDetails() {
-      return $this->db->join("wow_class cl", "(ch.class = cl.name_m OR ch.class = cl.name_f)", "left")->get("jdr_chars ch")->result_array();
+      return $this->db->join("class cl", "(ch.class = cl.name_m OR ch.class = cl.name_f)", "left")->get("character ch")->result_array();
     }
 
     // Returns an array of character competences (with pre-built +/- button to edit the stat)
@@ -55,7 +55,7 @@ namespace {
 
       $this->db->select($fields);
       $this->db->join("char_comp cc", "(cc.comp_id = cp.comp_id and cc.char_id = {$this->db->escape($char_id)})", "left");
-      $this->db->join("jdr_chars ch", "(cc.char_id = ch.char_id and ch.char_id = {$this->db->escape($char_id)})", "left");
+      $this->db->join("character ch", "(cc.char_id = ch.char_id and ch.char_id = {$this->db->escape($char_id)})", "left");
       $this->db->order_by("cp.name");
       return $this->db->get("competence cp")->result_array();
     }
@@ -164,7 +164,7 @@ namespace {
 
     // Updates a character's statistic, identified by $column
     public function updateChar ($char_id, $column, $value) {
-      $this->db->set($column, $value)->where("char_id", $char_id)->update("jdr_chars");
+      $this->db->set($column, $value)->where("char_id", $char_id)->update("character");
     }
 
   }

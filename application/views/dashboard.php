@@ -1,12 +1,13 @@
 <!-- CHARACTERS SUMMARY -->
   <div class="col-lg-4 pull-left">
     <?php foreach($characters as $c) { ?>
-    <div class="col-6 float-left px-1">
+    <div class="col-6 float-left px-1 mb-2">
       <div class="card z-depth-3" style="border: 1px solid <?= $c["color"] ?>">
         <div class="card-body text-dark elegant-color-dark pl-2 pr-0 py-1" style="background-color: <?= $c["color"] ?> !important;">
-          <h6 class="card-title mb-0" style="font-size: 10px !important">
+          <h6 class="card-title mb-0 font-weight-bold card-char-title">
             <?= $c["name"] ?> (<?= $c["race"] ?> <?= $c["class"] ?>)
-            <span class="pull-right col-4 text-right">Nv. : <input type="text" class="input-underline carac char_val col-2" value="<?= $c["level"] ?>" id="level-<?= $c["char_id"] ?>"></span>
+            <button class="btn btn-xs btn-elegant float-right mr-1 p-0 btn-char" title="Sorts"      data-toggle="tooltip" data-modal="skill"     data-char="<?= $c["char_id"] ?>"><i class="fa fa-book"></i></button>
+            <button class="btn btn-xs btn-elegant float-right mr-1 p-0 btn-char" title="Inventaire" data-toggle="tooltip" data-modal="inventory" data-char="<?= $c["char_id"] ?>"><i class="fa fa-shopping-bag"></i></button>
           </h6>
         </div>
         <div class="card-body text-white elegant-color p-1">
@@ -14,20 +15,29 @@
           <div class="row mx-0">
             <div class="char-stats col-6 mt-1">
               <div class="row">
-                <?php char_stat_block("FO", "c_str_".$c["char_id"], $c["strength"]); ?>
-                <?php char_stat_block("DX", "c_dex_".$c["char_id"], $c["dexterity"]); ?>
-                <?php char_stat_block("IN", "c_int_".$c["char_id"], $c["intelligence"]); ?>
+                <?php char_stat_block("FORCE", "FO", "c_str_".$c["char_id"], $c["strength"]); ?>
+                <?php char_stat_block("DEXTÉRITÉ", "DX", "c_dex_".$c["char_id"], $c["dexterity"]); ?>
+                <?php char_stat_block("INTELLIGENCE", "IN", "c_int_".$c["char_id"], $c["intelligence"]); ?>
               </div>
               <div class="row">
-                <?php char_stat_block("CO", "c_con_".$c["char_id"], $c["constitution"]); ?>
-                <?php char_stat_block("CH", "c_luk_".$c["char_id"], $c["luck"]); ?>
-                <?php char_stat_block("CN", "c_edu_".$c["char_id"], $c["education"]); ?>
+                <?php char_stat_block("ENDURANCE", "EN", "c_con_".$c["char_id"], $c["constitution"]); ?>
+                <?php char_stat_block("CHANCE", "CH", "c_luk_".$c["char_id"], $c["luck"]); ?>
+                <?php char_stat_block("CONNAISSANCES", "CN", "c_edu_".$c["char_id"], $c["education"]); ?>
               </div>
               <div class="row">
-                <?php char_stat_block("CA", "c_cha_".$c["char_id"], $c["charisma"]); ?>
-                <?php char_stat_block("PR", "c_per_".$c["char_id"], $c["perception"]); ?>
-                <?php char_stat_block("PO", "c_po_".$c["char_id"], $c["gold"], true); ?>
+                <?php char_stat_block("CHARISME", "CA", "c_cha_".$c["char_id"], $c["charisma"], null, 1); ?>
+                <?php char_stat_block("PERCEPTION", "PR", "c_per_".$c["char_id"], $c["perception"], null, 1); ?>
+                <?php char_stat_block("PIÈCES D&#39;OR", "PO", "c_po_".$c["char_id"], $c["gold"], true, 1); ?>
               </div>
+                <table style="width: 100%">
+                  <tr>
+                    <td class="text-center" style='width: 50%; font-family: monospace; font-weight: bold;'>NIVEAU</td>
+                    <td style='text-align: center; padding: 5px; font-weight: bold;'>
+                      <input type="text" class="input-underline carac char_val text-info" id="level-<?= $c["char_id"] ?>" value="<?= $c["level"] ?>" style="border-color: white; width: 100%;">
+                    </td>
+                  </tr>
+                </table>
+                <!--<span class="col-12">Niveau. : <input type="text" class="input-underline carac char_val col-2" value="<?= $c["level"] ?>" id="level-<?= $c["char_id"] ?>"></span>-->
             </div>
             <div class="col-6 mt-1 px-1">
               <!-- HP BAR -->
@@ -143,3 +153,23 @@
     </div>
   </div>
 <!-- /DICE ROLLER -->
+
+
+<!-- INVENTORY MODAL -->
+<div class="modal fade" id="inventoryModal" tabindex="-1" role="dialog" aria-labelledby="inventoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content elegant-color-dark text-light">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Inventaire de <span id="inv_name"></span></h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-elegant" data-dismiss="modal"><i class="fa fa-times"></i> Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,9 @@
 $(document).ready(function () {
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+
   $('.progress .progress-bar').css("width",
     function() {
       return ( ( parseInt($(this).attr("aria-valuenow")) / parseInt($(this).attr("aria-valuemax")) ) * 100 )  + "%";
@@ -62,6 +67,12 @@ $('.char_val').keyup(function (k) {
     var input = $(this);
     save_char_carac(input);
   }
+});
+
+$('.btn-char').click(function () {
+  var modal = $(this).attr("data-modal")+"Modal";
+
+  $('#'+modal).modal("show");
 });
 
 function save_char_carac (input) {
