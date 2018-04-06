@@ -11,10 +11,15 @@
     <?php } ?>
             </ul>
           </li>
-          <li class="nav-item"><a href="<?= base_url("dashboard") ?>" class="nav-link"><i class="fa fa-user-circle-o"></i> Vue MJ</a></li>
-          <li class="dropdown show-on-hover nav-item"> <a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"><i class="fa fa-user-circle"></i> Simulation</a>
+          <li class="dropdown show-on-hover nav-item"> <a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"><i class="fa fa-user-circle-o"></i> Master</a>
             <ul class="dropdown-menu">
-              <li class="dropdown-item"><a href="simulation/battle"><i class="fa fa-caret-right"></i> Combat</a></li>
+              <li class="dropdown-item"><a href="<?= base_url("dashboard") ?>"><i class="fa fa-caret-right"></i> Dashboard</a></li>
+              <li class="dropdown-item"><a href="<?= base_url("manager/item") ?>"><i class="fa fa-caret-right"></i> Gestion Objets</a></li>
+            </ul>
+          </li>
+          <li class="dropdown show-on-hover nav-item"> <a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"><i class="fa fa-area-chart"></i> Simulation</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="<?= base_url("simulation/battle") ?>"><i class="fa fa-caret-right"></i> Combat</a></li>
             </ul>
           </li>
         </ul>
