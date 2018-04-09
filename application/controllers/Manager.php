@@ -16,6 +16,8 @@ namespace {
     }
 
     public function item () {
+      $this->load->model("m_item");
+      $this->params["categories"] = $this->m_item->getCategoryList();
       $this->params["characters"] = $this->m_char->allCharDetails();
       $this->params["title"]      = "Item Manager";
       $this->params["js"][]       = assets_url("js/item.js");

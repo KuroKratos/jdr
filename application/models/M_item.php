@@ -10,9 +10,58 @@ namespace {
       $this->db = $this->load->database("default", true, true);
     }
 
-    // Returns an array listing every item category
+/*
+    ===========================================================
+    SELECT FUNCTIONS (NO ACTION ON DATA)
+    ===========================================================
+*/
+
+    // Returns an array listing all items categories
     public function getCategoryList() {
       return $this->db->get("item_category")->result_array();
+    }
+
+    // Returns every item from specified category
+    public function getItemFromCategory($category) {
+      $this->db->where("category", $category);
+      return $this->db->get("item")->result_array();
+    }
+
+    // Returns information of an item with specified ID
+    public function getItemDetail($id) {
+      $this->db->select("c.name cat_name, i.*");
+      $this->db->join("item_category c", "c.id = i.category");
+      $this->db->where("i.id", $id);
+      return $this->db->get("item i")->row_array();
+    }
+
+/*
+    ===========================================================
+    INSERT / UPDATE FUNCTIONS (ADD OR ALTER DATA)
+    ===========================================================
+*/
+
+    // Insert a new item into the table
+    public function addNewItem($data) {
+      return $this->db->insert("item", $data);
+    }
+
+    // Edit an existing item from the table
+    public function editItem($data, $id) {
+      $this->db->where("id", $id);
+      return $this->db->update("item", $data);
+    }
+
+/*
+    ===========================================================
+    DELETE / TRUNCATE / DROP FUNCTIONS (REMOVES DATA)
+    ===========================================================
+*/
+
+    // Deletes an item from the table
+    public function deleteItem($id) {
+      $this->db->where("id", $id);
+      return $this->db->delete("item");
     }
 
   }
