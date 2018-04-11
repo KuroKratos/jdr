@@ -139,56 +139,61 @@
           <div class="card-body p-2">
             <div class="row mb-4 mt-3">
               <div class="col-4">
-                <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">FORC</div>
-                <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_str">
-                  <input type="text" class="carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="strength">
+                <div class="col-8 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">FORCE</div>
+                <div class="col-4 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_str">
+                  <input type="text" class="text-center carac char_val" value="" style="width: 100%; text-align: center !important;" id="strength">
                 </div>
               </div>
               <div class="col-4">
-                <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">INTEL</div>
-                <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_int">
-                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="intelligence">
+                <div class="col-8 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">INTELLIGENCE</div>
+                <div class="col-4 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_int">
+                  <input type="text" class="text-center carac char_val" value="" style="width: 100%; text-align: center !important;" id="intelligence">
                 </div>
               </div>
               <div class="col-4">
-                <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">ENDU</div>
-                <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_con">
-                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="constitution">
-                </div>
-              </div>
-            </div>
-            <div class="row mb-4">
-              <div class="col-4">
-                <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">DEXT</div>
-                <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_dex">
-                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="dexterity">
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">CONN</div>
-                <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_edu">
-                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="education">
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">CHAR</div>
-                <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_cha">
-                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="charisma">
+                <div class="col-8 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">ENDURANCE</div>
+                <div class="col-4 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_con">
+                  <input type="text" class="text-center carac char_val" value="" style="width: 100%; text-align: center !important;" id="constitution">
                 </div>
               </div>
             </div>
             <div class="row mb-4">
               <div class="col-4">
-                <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">CHAN</div>
-                <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_luk">
-                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="luck">
+                <div class="col-8 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">DEXTERITÉ</div>
+                <div class="col-4 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_dex">
+                  <input type="text" class="text-center carac char_val" value="" style="width: 100%; text-align: center !important;" id="dexterity">
                 </div>
               </div>
-              <div class="col-4"></div>
               <div class="col-4">
-                <div class="col-6 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">PERC</div>
-                <div class="col-6 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_per">
-                  <input type="text" class="text-center carac char_val" value="50%" style="width: 100%; text-align: center !important;" id="perception">
+                <div class="col-8 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">CONNAISSANCES</div>
+                <div class="col-4 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_edu">
+                  <input type="text" class="text-center carac char_val" value="" style="width: 100%; text-align: center !important;" id="education">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="col-8 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">CHARISME</div>
+                <div class="col-4 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_cha">
+                  <input type="text" class="text-center carac char_val" value="" style="width: 100%; text-align: center !important;" id="charisma">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-4">
+                <div class="col-8 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">CHANCE</div>
+                <div class="col-4 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_luk">
+                  <input type="text" class="text-center carac char_val" value="" style="width: 100%; text-align: center !important;" id="luck">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="col-8 pull-left text-center"           style="font-weight: bold; font-size: 14px; padding: 5px;">PERCEPTION</div>
+                <div class="col-4 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_per">
+                  <input type="text" class="text-center carac char_val" value="" style="width: 100%; text-align: center !important;" id="perception">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="col-8 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;">DÉFENSE</div>
+                <div class="col-4 pull-left text-center text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_def">
+                  <input type="text" class="text-center char_val" value="" style="width: 100%; text-align: center !important;" id="defense">
                 </div>
               </div>
             </div>
@@ -196,7 +201,7 @@
               <div class="col-4"></div>
               <div class="col-4">
                 <div class="col-12 text-right text-info" style="font-weight: bold; font-size: 14px; padding: 5px;" id="c_gld">
-                  <input type="text" class="text-center char_val" value="0" style="width: 100%; text-align: center !important;" id="gold"> <span class="po_label">PO</span>
+                  <input type="text" class="text-center char_val" value="0" style="width: 100%; text-align: center !important;" id="gold"> <span class="po_label text-warning">PO</span>
                 </div>
               </div>
               <div class="col-4"></div>

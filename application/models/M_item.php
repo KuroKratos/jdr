@@ -35,6 +35,14 @@ namespace {
       return $this->db->get("item i")->row_array();
     }
 
+    // Returns every items in table
+    public function getItemList() {
+      $this->db->select("c.name category, i.id id, i.name name");
+      $this->db->join("item_category c", "i.category = c.id");
+      $this->db->order_by("i.category");
+      return $this->db->get("item i")->result_array();
+    }
+
 /*
     ===========================================================
     INSERT / UPDATE FUNCTIONS (ADD OR ALTER DATA)

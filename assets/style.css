@@ -568,3 +568,7 @@ table.dataTable {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5), -1px -1px 4px rgba(0,0,0,0.5), 1px -1px 4px rgba(0,0,0,0.5), -1px 1px 4px rgba(0,0,0,0.5);
   line-height: 20px;
 }
+
+code {
+  font-size: 100%;
+}

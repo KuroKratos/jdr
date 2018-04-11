@@ -112,7 +112,7 @@ $(document).ready(function () {
 
   // Set '%' character at the end of stats inputs
   $('.carac').each(function (index) {
-    if ($(this).attr('id') != "gold") {
+    if ($(this).attr('id') != "gold" && $(this).attr('id') != "defense") {
       $(this).val($(this).val() + '%');
     }
   });
