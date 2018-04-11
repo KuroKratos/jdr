@@ -51,6 +51,15 @@ namespace {
       }
     }
 
+    public function itemSearch($search=null) {
+      $postVal = filter_input_array(INPUT_POST) ?? ["search" => $search];
+      if(!empty($postVal["search"])) {
+        $this->load->model("m_item");
+        echo json_encode($this->m_item->searchItem($postVal["search"]));
+        //echo $this->m_item->searchItem($postVal["search"]);
+      }
+    }
+
   }
 
 }

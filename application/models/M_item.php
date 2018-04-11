@@ -43,6 +43,18 @@ namespace {
       return $this->db->get("item i")->result_array();
     }
 
+    public function searchItem($search) {
+      $this->db->select("c.name cat_name, i.*");
+      $this->db->like("i.name", $search);
+      $this->db->or_like("c.name", $search);
+      $this->db->or_like("i.id", $search);
+      $this->db->or_like("i.description", $search);
+      $this->db->or_like("i.bonus_stat", $search);
+      $this->db->join("item_category c", "c.id = i.category");
+      return $this->db->get("item i")->result_array();
+      //return $this->db->get_compiled_select("item i");
+    }
+
 /*
     ===========================================================
     INSERT / UPDATE FUNCTIONS (ADD OR ALTER DATA)

@@ -76,6 +76,7 @@ $ajax_controllers = [
 ];
 
 foreach($ajax_controllers as $c) {
+  $route[$c."/(:any)/(:any)"] = "ajax/$c/$c$1/$2";
   $route[$c."/(:any)/(:num)"] = "ajax/$c/$c$1/$2";
   $route[$c."/(:any)"]        = "ajax/$c/$c$1";
 }
