@@ -19,7 +19,9 @@ namespace {
 
     // Returns an array of unique character's stats
     public function charDetails($char) {
-      return $this->db->where("name", $char)->get("character")->result_array();
+      $this->db->select("*, CASE `ch`.`sex` WHEN 'M' THEN `cl`.`name_m` WHEN 'F' THEN `cl`.`name_f` ELSE `cl`.`name_m` END AS `class_name`");
+      $this->db->join("class cl", "ch.class = cl.id", "left");
+      return $this->db->where("name", $char)->get("character ch")->result_array();
     }
 
     // Almost same as above but you can set columns you want
@@ -33,7 +35,10 @@ namespace {
 
     // Returns nested array of every character's stats
     public function allCharDetails() {
-      return $this->db->join("class cl", "(ch.class = cl.name_m OR ch.class = cl.name_f)", "left")->get("character ch")->result_array();
+      $this->db->select("cl.color as color, ch.*, CASE `ch`.`sex` WHEN 'M' THEN `cl`.`name_m` WHEN 'F' THEN `cl`.`name_f` ELSE `cl`.`name_m` END AS `class_name`");
+      $this->db->join("class cl", "ch.class = cl.id", "left");
+      // //return $this->db->get_compiled_select("character ch");
+      return $this->db->get("character ch")->result_array();
     }
 
     // Returns an array of character competences (with pre-built +/- button to edit the stat)
@@ -75,17 +80,13 @@ namespace {
     }
 
     // Returns an array of an unique character's items
-    public function getCharInventory ($char_id, $need_id=0) {
-      $btn_edit = "concat('<div class=\"btn-group\"><button class=\"btn btn-primary btn-xs\" onclick=\"edit_item(',item_id,')\"><i class=\"fa fa-edit\"></i></button><button class=\"btn btn-danger btn-xs\" onclick=\"prompt_delete_item(',item_id,')\"><i class=\"fa fa-remove\"></i></button></div>') as edit";
-      $fields   = ["quantity", "name", "description", $btn_edit];
-      if((int)$need_id === 1) {
-        $fields[] = "item_id";
-      }
-
-      $this->db->select($fields);
+    public function getCharInventory ($char_id) {
+      $this->db->select("i.*,c.*,cat.name as category_name");
+      $this->db->join("item i", "i.id = c.item_id");
+      $this->db->join("item_category cat", "cat.id = i.category");
       $this->db->where("char_id", $char_id);
-      $this->db->order_by("name");
-      return $this->db->get("inventory")->result_array();
+      $this->db->order_by("i.name");
+      return $this->db->get("char_inventory c")->result_array();
     }
 
     // Adds or remove 5% to a character's competence depending on $sign (if not set, creates the table row)

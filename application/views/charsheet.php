@@ -102,7 +102,7 @@
                 <div class="col-md-6">
                   <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">CLASSE</div>
                   <div class="col-6 pull-left text-center" style="font-weight: bold; font-size: 14px; padding: 5px;">
-                    <input type="text" id="class" class="char_val" style="width: 100%; text-align: center !important;" disabled>
+                    <input type="text" id="class_name" class="char_val" style="width: 100%; text-align: center !important;" disabled>
                   </div>
                 </div>
               </div>
@@ -242,15 +242,15 @@
             <p class="">Inventaire</p>
           </div>
           <div class="card-body scrollbar-black" style="padding: 0; max-height: 313px; overflow-y: auto; overflow-x: hidden;">
-            <table class="table table-striped table-hover table-sm" id="inv_table" cellspacing="0" width="100%" style="margin: -1px 0 -1px 0 !important; border-radius: 0 0 3px 3px">
+            <table class="table table-striped table-hover table-sm table-dark mb-0" id="inv_table" cellspacing="0" width="100%" style="margin: -1px 0 -1px 0 !important; border-radius: 0 0 3px 3px">
               <thead>
                 <tr>
-                  <th></th>
+                  <th>#</th>
                   <th>Nom</th>
-                  <th>Desc</th>
-                  <th style="width:30px;"></th>
+                  <th>Bonus</th>
                 </tr>
               </thead>
+              <tbody></tbody>
             </table>
           </div>
         </div>
@@ -270,7 +270,7 @@
         <p class="">Dons de <span class="name">---</span></p>
       </div>
       <div class="card-body scrollbar-black" style="padding:0; overflow-y: auto; max-height: 280px; overflow-x: hidden;">
-        <table class="table table-striped table-hover table-sm" id="skill_table" cellspacing="0" width="100%">
+        <table class="table table-striped table-hover table-sm table-dark mb-0" id="skill_table" cellspacing="0" width="100%">
           <thead>
             <tr>
               <th>Don</th>

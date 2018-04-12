@@ -5,7 +5,7 @@
       <div class="card z-depth-3" style="border: 1px solid <?= $c["color"] ?>">
         <div class="card-body text-dark elegant-color-dark pl-2 pr-0 py-1" style="background-color: <?= $c["color"] ?> !important;">
           <h6 class="card-title mb-0 font-weight-bold card-char-title">
-            <?= $c["name"] ?> (<?= $c["race"] ?> <?= $c["class"] ?>)
+            <?= $c["name"] ?> (<?= $c["race"] ?> <?= $c["class_name"] ?>)
             <button class="btn btn-xs btn-elegant float-right mr-1 p-0 btn-char" title="Sorts"      data-toggle="tooltip" data-modal="skill"     data-char="<?= $c["char_id"] ?>"><i class="fa fa-book"></i></button>
             <button class="btn btn-xs btn-elegant float-right mr-1 p-0 btn-char" title="Inventaire" data-toggle="tooltip" data-modal="inventory" data-char="<?= $c["char_id"] ?>"><i class="fa fa-shopping-bag"></i></button>
           </h6>

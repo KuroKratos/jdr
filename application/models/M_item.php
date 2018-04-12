@@ -52,7 +52,6 @@ namespace {
       $this->db->or_like("i.bonus_stat", $search);
       $this->db->join("item_category c", "c.id = i.category");
       return $this->db->get("item i")->result_array();
-      //return $this->db->get_compiled_select("item i");
     }
 
 /*

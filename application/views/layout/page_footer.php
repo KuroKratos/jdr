@@ -9,6 +9,4 @@
         }
       }
 ?>
-  <script type='text/javascript' src='<?= assets_url("js/roll.js") ?>'></script>
-  <script type='text/javascript' src='<?= assets_url("js/main.js") ?>'></script>
 </html>

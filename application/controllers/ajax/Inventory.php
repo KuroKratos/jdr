@@ -12,8 +12,8 @@ namespace {
       $post = filter_input_array(INPUT_POST) ?? ["char_id" => $char_id];
       if(isset($post["char_id"])) {
         $this->load->model("m_char");
-        $comp = $this->m_char->getCharInventory($post["char_id"], $need_id);
-        echo json_encode(["data" => $comp], JSON_PRETTY_PRINT);
+        $inv = $this->m_char->getCharInventory($post["char_id"], $need_id);
+        echo json_encode($inv, JSON_PRETTY_PRINT);
       }
     }
 
