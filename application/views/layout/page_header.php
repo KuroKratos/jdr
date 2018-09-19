@@ -25,4 +25,4 @@
         </ul>
       </div>
     </nav>
-    <div class="container-fluid" style="padding-top: 80px;">
+    <div class="container-fluid" style="padding-top: 65px;">

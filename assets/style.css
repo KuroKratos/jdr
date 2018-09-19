@@ -31,6 +31,10 @@ kbd {
   content: "\00a0 ";
 }
 
+.char_val {
+  width: 100%; text-align: center !important;
+}
+
 .char_summary * {
   border-radius: 0 !important;
 }
@@ -134,16 +138,23 @@ tr.even:hover {
 
 #hp_cur, #pp_cur {
   border-right: none !important;
+  width: 30%;
+  text-align: center;
+  border-right: none !important;
+  padding-top:1px;
 }
 
-#hp_max, #pp_max {
+#hp_max, #pp_max, #alignement {
   border-left: none !important;
+  text-align: center;
+  width: 30%;
+  padding-top:1px;
 }
 
 #charsheet hr {
   border-color: white !important;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -9px;
+  margin-right: -9px;
 }
 
 #charsheet .text-info, fieldset .text-info {
@@ -468,12 +479,10 @@ ul.staff {
 /* PROGRESS BARS                                            */
 /* ======================================================== */
 
-.hp-bar {
-
-}
-
-.pp-bar {
-
+.resource-bar {
+  margin: 3px;
+  border: 1px solid black;
+  height:25px !important;
 }
 
 .progress {
@@ -516,9 +525,57 @@ ul.staff {
   /*box-shadow: 0 0 5px rgba(0,0,0,0.5);*/
 }
 
-/*.char_panel {
-  padding: 3px !important;
-}*/
+#bar_light {
+  font: normal 16px monospace; 
+  width:50%; 
+  background-color: #eebb33; 
+  text-align: center; 
+  line-height:23px; 
+  text-shadow: 1px 1px 3px black;
+}
+
+#bar_dark {
+  font: normal 16px monospace; 
+  width:50%;
+  background-color: #000033;
+  text-align: center;
+  line-height:33px;
+}
+
+#story {
+  width: 100%;
+  min-height: 100%;
+  resize: none;
+}
+
+#inventory {
+  padding: 0;
+  max-height: 313px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#inventory table {
+  margin: -1px 0 -1px 0 !important;
+  border-radius: 0 0 3px 3px
+}
+
+#skills {
+  padding:0;
+  overflow-y: auto;
+  max-height: 280px;
+  overflow-x: hidden;
+}
+
+#orientation {
+  margin: 3px;
+  border: 1px solid black;
+  height:25px !important;
+}
+
+.th-modif-btn {
+  width:30px;
+}
 
 table.dataTable {
   margin: 0 !important
@@ -567,4 +624,10 @@ table.dataTable {
   color:white !important;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5), -1px -1px 4px rgba(0,0,0,0.5), 1px -1px 4px rgba(0,0,0,0.5), -1px 1px 4px rgba(0,0,0,0.5);
   line-height: 20px;
+}
+
+.char-label {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px;
 }

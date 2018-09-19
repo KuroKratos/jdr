@@ -102,9 +102,13 @@ $(document).ready(function () {
   });
 
   // Set stats values into inputs
+  console.log(char);
   $.each(char, function (index, value) {
     $('#' + index).val(value);
+    $('#' + index).html(value);
   });
+
+  $('.name').html(char.name);
 
   // Set HP & MP bars
   change_bar_val(char.hp_cur, char.hp_max, 'hp');
