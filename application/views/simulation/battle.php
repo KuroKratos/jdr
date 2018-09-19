@@ -22,26 +22,76 @@
 <div class="row">
   <?php for($id = 1; $id <= 5; $id++) { ?>
     <div class="col-sm-2">
-      <div class="panel panel-default" style="background-color: #00000055; box-shadow: 0 0 5px black; border-color: white; border-radius: 0px;" id="panel_<?=$id?>">
-        <div class="panel-heading"><p class="panel-title">Personnage <?=$id?> <input type="checkbox" id="active_<?=$id?>" class="pull-right active-chk"></p></div>
-        <div class="panel-body form-horizontal" style="color: white;">
-          <div class="form-group"><label class="control-label col-sm-7" for="percent" style="text-align: left;">Points de Vie  </label><div class="col-sm-5"><input type="text" class="form-control" id="hp_<?=$id?>"      value="200"></div></div>
-          <div class="form-group"><label class="control-label col-sm-7" for="percent" style="text-align: left;">Stat de toucher</label><div class="col-sm-5"><input type="text" class="form-control" id="percent_<?=$id?>" value="80" ></div></div>
-          <div class="form-group"><label class="control-label col-sm-7" for="percent" style="text-align: left;">Dé d'attaque   </label><div class="col-sm-5"><input type="text" class="form-control" id="dice_<?=$id?>"    value="8"  ></div></div>
-          <div class="form-group"><label class="control-label col-sm-7" for="percent" style="text-align: left;">Mod d'attaque  </label><div class="col-sm-5"><input type="text" class="form-control" id="mod_<?=$id?>"     value="2"  ></div></div>
+      <div class="card" style="background-color: #00000055; box-shadow: 0 0 5px black; border-color: white; border-radius: 0px;" id="panel_<?=$id?>">
+        <div class="card-header"><p class="card-title text-light">Personnage <?=$id?> <input type="checkbox" id="active_<?=$id?>" class="pull-right active-chk"></p></div>
+        <div class="card-body form-horizontal p-1" style="color: white;">
+
+          <div class="row">
+            <div class="col-7 float-left">Points de Vie  </div>
+            <div class="col-5 float-right mb-1">
+              <input type="text" class="form-control" id="hp_<?=$id?>" value="200">
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-7 float-left">Stat de toucher</label>
+            <div class="col-5 float-right mb-1">
+              <input type="text" class="form-control" id="percent_<?=$id?>" value="80" >
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-7 float-left">Dé</label>
+            <div class="col-5 float-right mb-1">
+              <input type="text" class="form-control" id="dice_<?=$id?>" value="8" >
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-7 float-left">Mod dé</label>
+            <div class="col-5 float-right mb-1">
+              <input type="text" class="form-control" id="mod_<?=$id?>" value="2" >
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   <?php } ?>
 
   <div class="col-sm-2">
-    <div class="panel panel-default" style="background-color: #FF000055; box-shadow: 0 0 5px black; border-color: white; border-radius: 0px;" id="panel_mob">
-      <div class="panel-heading"><p class="panel-title">Ennemi</p></div>
-      <div class="panel-body form-horizontal" style="color: white;">
-        <div class="form-group"><label class="control-label col-sm-7" for="percent" style="text-align: left;">Points de Vie  </label><div class="col-sm-5"><input type="text" class="form-control" id="hp_mob"      value="200"></div></div>
-        <div class="form-group"><label class="control-label col-sm-7" for="percent" style="text-align: left;">Stat de toucher</label><div class="col-sm-5"><input type="text" class="form-control" id="percent_mob" value="80" ></div></div>
-        <div class="form-group"><label class="control-label col-sm-7" for="percent" style="text-align: left;">Dé d'attaque   </label><div class="col-sm-5"><input type="text" class="form-control" id="dice_mob"    value="8"  ></div></div>
-        <div class="form-group"><label class="control-label col-sm-7" for="percent" style="text-align: left;">Mod d'attaque  </label><div class="col-sm-5"><input type="text" class="form-control" id="mod_mob"     value="2"  ></div></div>
+    <div class="card" style="background-color: #FF000055; box-shadow: 0 0 5px black; border-color: white; border-radius: 0px;" id="panel_mob">
+      <div class="card-header"><p class="card-title text-light">Ennemi</p></div>
+      <div class="card-body form-horizontal p-1" style="color: white;">
+
+        <div class="row">
+          <div class="col-7 float-left">Points de Vie  </div>
+          <div class="col-5 float-right mb-1">
+            <input type="text" class="form-control" id="hp_mob" value="200">
+          </div>
+        </div>
+
+        <div class="row">
+          <label class="col-7 float-left">Stat de toucher</label>
+          <div class="col-5 float-right mb-1">
+            <input type="text" class="form-control" id="percent_mob" value="80" >
+          </div>
+        </div>
+
+        <div class="row">
+          <label class="col-7 float-left">Dé</label>
+          <div class="col-5 float-right mb-1">
+            <input type="text" class="form-control" id="dice_mob" value="8" >
+          </div>
+        </div>
+
+        <div class="row">
+          <label class="col-7 float-left">Mod dé</label>
+          <div class="col-5 float-right mb-1">
+            <input type="text" class="form-control" id="mod_mob" value="2" >
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -56,7 +106,7 @@
 
 <div class="row" style="margin-top: 20px;">
   <div class="col-sm-12">
-    <div id="sim_result" class="well well-sm" style="height: 450px; overflow-y: auto;"></div>
+    <div id="sim_result" class="card" style="height: 450px; overflow-y: auto;"></div>
   </div>
 </div>
 

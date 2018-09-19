@@ -35,6 +35,25 @@ namespace {
       return $this->db->get("item i")->row_array();
     }
 
+    // Returns every items in table
+    public function getItemList() {
+      $this->db->select("c.name category, i.id id, i.name name");
+      $this->db->join("item_category c", "i.category = c.id");
+      $this->db->order_by("i.category");
+      return $this->db->get("item i")->result_array();
+    }
+
+    public function searchItem($search) {
+      $this->db->select("c.name cat_name, i.*");
+      $this->db->like("i.name", $search);
+      $this->db->or_like("c.name", $search);
+      $this->db->or_like("i.id", $search);
+      $this->db->or_like("i.description", $search);
+      $this->db->or_like("i.bonus_stat", $search);
+      $this->db->join("item_category c", "c.id = i.category");
+      return $this->db->get("item i")->result_array();
+    }
+
 /*
     ===========================================================
     INSERT / UPDATE FUNCTIONS (ADD OR ALTER DATA)

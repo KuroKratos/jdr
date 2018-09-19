@@ -71,7 +71,7 @@ $(document).ready(function () {
   });
 
   // Generates inventory datatable
-  item_table = $("#inv_table").DataTable({
+  /*item_table = $("#inv_table").DataTable({
     ajax: base_url + "/inventory/char/" + char.char_id,
     info: false,
     filter: false,
@@ -94,12 +94,14 @@ $(document).ready(function () {
       }
     },
     columns: [
-      {data: "quantity"},
+      {data: "item_quantity"},
       {data: "name"},
       {data: "description"},
       {data: "edit"}
     ]
-  });
+  });*/
+
+  refresh_inventory(char.char_id);
 
   // Set stats values into inputs
   console.log(char);
@@ -116,7 +118,7 @@ $(document).ready(function () {
 
   // Set '%' character at the end of stats inputs
   $('.carac').each(function (index) {
-    if ($(this).attr('id') != "gold") {
+    if ($(this).attr('id') != "gold" && $(this).attr('id') != "defense") {
       $(this).val($(this).val() + '%');
     }
   });
@@ -456,3 +458,62 @@ $(document).bind('keydown', function (e) {
     return false;
   }
 });
+
+function refresh_inventory(char_id) {
+  var tbody     = "";
+  $.ajax({
+    data: {
+      char_id: char_id
+    },
+    type: "POST",
+    dataType: "JSON",
+    async: false,
+    url: base_url + 'inventory/char',
+    success: function(data){
+
+      $.each(data, function (i, item) {
+        var pop_title = "";
+        var pop       = "";
+        
+        pop_title += "<b>" + escapeHtml(item.name) + "</b> (" + item.category_name + ")";
+
+        pop  += "<i>" + item.description.replace('<code>','Attaque : <code>').replace("</code>","</code><hr class='p-0 my-1 border-light'>") + "</i>";
+        pop  += "<hr class='p-0 my-1 border-light'>";
+        pop  += "<b>ID :</b> " + item.item_id;
+        
+        tbody += "<tr>";
+        tbody += "<td>" + item.item_quantity + "</td>";
+        tbody += "<td><i class='fa fa-info-circle' data-toggle='popover' data-html='true' data-placement='left' title='" + escapeHtml(pop_title) + "' data-content='" + escapeHtml(pop) + "'></i> " + item.name + "</td>";
+        tbody += "<td>" + format(item.bonus_value) + " " + item.bonus_stat.toString().toUpperCase() +  "</td>";
+        tbody += "</tr>";
+      });
+      $("#inv_table tbody").html(tbody);
+
+      $("[data-toggle='popover']").popover();
+    },
+    error: function(e, d, l){
+      console.log(e);
+    }
+  });
+}
+
+function format(n) {
+    return (n>0?'+':'') + n;
+}
+
+var entityMap = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '/': '&#x2F;',
+  '`': '&#x60;',
+  '=': '&#x3D;'
+};
+
+function escapeHtml (string) {
+  return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+    return entityMap[s];
+  });
+}

@@ -230,7 +230,6 @@
                   <input type="text" class="text-center carac char_val" value="50%" id="luck">
                 </div>
               </div>
-              <div class="col-4"></div>
               <div class="col-4">
                 <div class="col-6 pull-left text-center char-label">PERC</div>
                 <div class="col-6 pull-left text-center text-info char-label" id="c_per">
@@ -296,12 +295,13 @@
             <table class="table table-striped table-hover table-sm" id="inv_table" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                  <th></th>
+                  <th>#</th>
                   <th>Nom</th>
                   <th>Desc</th>
                   <th class="th-modif-btn"></th>
                 </tr>
               </thead>
+              <tbody></tbody>
             </table>
           </div>
         </div>

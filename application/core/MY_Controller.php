@@ -8,6 +8,12 @@ namespace {
     }
 
     protected function loadView($content, $params=[]) {
+      if(!empty($params["js"])) {
+        $temp_js = $params["js"];
+      }
+
+      $params["js"] = [];
+
       if(!empty($params["assets"])) {
         foreach($params["assets"] as $asset) {
           switch($asset) {
@@ -40,6 +46,15 @@ namespace {
               // Do nothing
               break;
           }
+        }
+      }
+
+      $params["js"][] = assets_url("js/main.js");
+      $params["js"][] = assets_url("js/roll.js");
+
+      if(isset($temp_js)) {
+        foreach($temp_js as $js) {
+          $params["js"][] = $js;
         }
       }
 
