@@ -35,6 +35,8 @@ kbd {
   width: 100%; text-align: center !important;
 }
 
+
+
 .char_summary * {
   border-radius: 0 !important;
 }
@@ -550,7 +552,7 @@ ul.staff {
 
 #inventory {
   padding: 0;
-  max-height: 313px;
+  max-height: 386px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -563,7 +565,7 @@ ul.staff {
 #skills {
   padding:0;
   overflow-y: auto;
-  max-height: 280px;
+  max-height: 386px;
   overflow-x: hidden;
 }
 
@@ -629,5 +631,21 @@ table.dataTable {
 .char-label {
   font-weight: bold;
   font-size: 14px;
-  padding: 5px;
+  line-height: 31px !important;
+  padding:0 !important;
+  height: 33px !important;
+}
+
+.carac, #gold {
+  border: none !important;
+  height: 31px !important;
+  padding: 0 !important;
+}
+
+.text-info {
+  border-left: none !important;
+}
+
+#story-card-body {
+  height: 162px;
 }

@@ -13,7 +13,7 @@ namespace {
       if(isset($post["char_id"])) {
         $this->load->model("m_char");
         $inv = $this->m_char->getCharInventory($post["char_id"], $need_id);
-        echo json_encode($inv, JSON_PRETTY_PRINT);
+        echo json_encode(["data" => $inv], JSON_PRETTY_PRINT);
       }
     }
 

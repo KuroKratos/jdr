@@ -54,7 +54,7 @@ $(document).ready(function () {
         display: $.fn.dataTable.Responsive.display.modal({
           header: function (row) {
             var data = row.data();
-            return 'Details for ' + data[0] + ' ' + data[1];
+            return data.name;
           }
         }),
         renderer: $.fn.dataTable.Responsive.renderer.tableAll({
@@ -62,6 +62,10 @@ $(document).ready(function () {
         })
       }
     },
+    columnDefs: [
+      { responsivePriority: 1, targets: 0 },
+      { responsivePriority: 2, targets: -1 }
+    ],
     columns: [
       {data: "name"},
       {data: "worth"},
@@ -71,7 +75,7 @@ $(document).ready(function () {
   });
 
   // Generates inventory datatable
-  /*item_table = $("#inv_table").DataTable({
+  item_table = $("#inv_table").DataTable({
     ajax: base_url + "/inventory/char/" + char.char_id,
     info: false,
     filter: false,
@@ -85,7 +89,7 @@ $(document).ready(function () {
         display: $.fn.dataTable.Responsive.display.modal({
           header: function (row) {
             var data = row.data();
-            return 'Details for ' + data[0] + ' ' + data[1];
+            return 'Objet : ' + data.name;
           }
         }),
         renderer: $.fn.dataTable.Responsive.renderer.tableAll({
@@ -93,15 +97,19 @@ $(document).ready(function () {
         })
       }
     },
+    columnDefs: [
+      { responsivePriority: 1, targets: [0,1] },
+      { responsivePriority: 2, targets: -1 }
+    ],
     columns: [
-      {data: "item_quantity"},
+      {data: "quantity"},
       {data: "name"},
       {data: "description"},
       {data: "edit"}
     ]
-  });*/
+  });
 
-  refresh_inventory(char.char_id);
+  //refresh_inventory(char.char_id);
 
   // Set stats values into inputs
   console.log(char);
@@ -118,7 +126,7 @@ $(document).ready(function () {
 
   // Set '%' character at the end of stats inputs
   $('.carac').each(function (index) {
-    if ($(this).attr('id') != "gold" && $(this).attr('id') != "defense") {
+    if ($(this).attr('id') != "gold") {
       $(this).val($(this).val() + '%');
     }
   });
@@ -166,7 +174,7 @@ function edit_item(id) {
     type: "POST",
     dataType: "JSON",
     async: false,
-    url: base_url + "/inventory/info",
+    url: base_url + "/inventory/item",
     success: function (data) {
       $('#item_id').val(data.item_id);
       $('#item_name').val(data.name);

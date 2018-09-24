@@ -79,6 +79,7 @@ namespace {
       return $this->db->get("skill")->result_array();
     }
 
+    /*
     // Returns an array of an unique character's items
     public function getCharInventory ($char_id) {
       $this->db->select("i.*,c.*,cat.name as category_name");
@@ -88,6 +89,21 @@ namespace {
       $this->db->order_by("i.name");
       return $this->db->get("char_inventory c")->result_array();
     }
+    */
+
+    // Returns an array of an unique character's items
+    public function getCharInventory ($char_id, $need_id = 0) {
+      $btn_edit = "concat('<div class=\"btn-group\"><button class=\"btn btn-primary btn-xs\" onclick=\"edit_item(',item_id,')\"><i class=\"fa fa-edit\"></i></button><button class=\"btn btn-danger btn-xs\" onclick=\"prompt_delete_item(',item_id,')\"><i class=\"fa fa-remove\"></i></button></div>') as edit";
+      $fields = ["quantity","name", "description", $btn_edit];
+      if($need_id == 1) {
+        $fields[] = "item_id";
+      }
+      $this->db->select($fields);
+      $this->db->where("char_id",$char_id);
+      $this->db->order_by("name");
+      return $this->db->get("inventory")->result_array();
+    }
+
 
     // Adds or remove 5% to a character's competence depending on $sign (if not set, creates the table row)
     public function updateComp ($char_id, $comp_id, $sign) {

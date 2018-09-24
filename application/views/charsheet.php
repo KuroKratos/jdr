@@ -4,7 +4,7 @@
   char = <?= json_encode($c) ?>;
 </script>
 
-<!-- CHARACTER SHEET -->
+<!-- CHARACTER_SHEET -->
 <div class="row mt-2" id="charsheet">
 
 <!-- HEALTH AND MANA -->
@@ -17,7 +17,7 @@
               <a data-toggle="collapse" href="#collapse0" class="float-left">
                 <i class="fa fa-eye"></i>
               </a>
-              &#xA0;&#xA0;<span id="name"></span>, <span id="race"></span> <span id="class"></span> de niveau <span id="level"></span>.
+              &#xA0;&#xA0;<span id="name"></span>, <span id="race"></span> <span id="class_name"></span> de niveau <span id="level"></span>.
             </p>
           </div>
           <div class="panel-collapse collapse show" id="collapse0">
@@ -103,11 +103,9 @@
     <!-- </div> -->
   <!-- /HEALTH AND MANA -->
 
-  <div class="col-md-6 col-lg-7 col-xl-8">
+  <div class="col-md-12 col-lg-12 col-xl-12">
 
-  
-
-    <div class="row mb-4">
+    <div class="row">
 
     <!-- SUMMARY -->
       <!-- <div class="col-lg-12 col-xl-6 char_panel">
@@ -177,167 +175,159 @@
     <!-- /SUMMARY -->
 
     <!-- CHARACTERISTICS -->
-      <div class="col-lg-12 col-xl-6 char_panel">
-        <div class="card z-depth-3 text-white elegant-color md-form mt-0  border border-light">
+      <div class="col-lg-12 col-xl-4 char_panel">
+
+        <div class="card z-depth-3 text-white elegant-color md-form mt-0  border border-light mb-4 col-lg-6 col-xl-12 float-left">
           <div class="card-header"> <span class="float-right"><kbd>&crarr;</kbd> pour enregistrer</span>
             <p class="">Caract&#xE9;ristiques</p>
           </div>
           <div class="card-body p-2">
-            <div class="row mb-4 mt-3">
+            <div class="row mb-4">
               <div class="col-4">
-                <div class="col-6 pull-left text-center char-label">FORC</div>
-                <div class="col-6 pull-left text-center text-info char-label" id="c_str">
+                <div class="col-6 pull-left text-center char-label border border-light p-0">FORC</div>
+                <div class="col-6 pull-left text-center text-info char-label border border-light p-0" id="c_str">
                   <input type="text" class="carac char_val" value="50%" id="strength">
                 </div>
               </div>
               <div class="col-4">
-                <div class="col-6 pull-left text-center char-label">INTEL</div>
-                <div class="col-6 pull-left text-center text-info char-label" id="c_int">
+                <div class="col-6 pull-left text-center char-label border border-light p-0">INTEL</div>
+                <div class="col-6 pull-left text-center text-info char-label border border-light p-0" id="c_int">
                   <input type="text" class="text-center carac char_val" value="50%" id="intelligence">
                 </div>
               </div>
               <div class="col-4">
-                <div class="col-6 pull-left text-center char-label">ENDU</div>
-                <div class="col-6 pull-left text-center text-info char-label" id="c_con">
+                <div class="col-6 pull-left text-center char-label border border-light p-0">ENDU</div>
+                <div class="col-6 pull-left text-center text-info char-label border border-light p-0" id="c_con">
                   <input type="text" class="text-center carac char_val" value="50%" id="constitution">
                 </div>
               </div>
             </div>
             <div class="row mb-4">
               <div class="col-4">
-                <div class="col-6 pull-left text-center char-label">DEXT</div>
-                <div class="col-6 pull-left text-center text-info char-label" id="c_dex">
+                <div class="col-6 pull-left text-center char-label border border-light p-0">DEXT</div>
+                <div class="col-6 pull-left text-center text-info char-label border border-light p-0" id="c_dex">
                   <input type="text" class="text-center carac char_val" value="50%" id="dexterity">
                 </div>
               </div>
               <div class="col-4">
-                <div class="col-6 pull-left text-center char-label">CONN</div>
-                <div class="col-6 pull-left text-center text-info char-label" id="c_edu">
+                <div class="col-6 pull-left text-center char-label border border-light p-0">CONN</div>
+                <div class="col-6 pull-left text-center text-info char-label border border-light p-0" id="c_edu">
                   <input type="text" class="text-center carac char_val" value="50%" id="education">
                 </div>
               </div>
               <div class="col-4">
-                <div class="col-6 pull-left text-center char-label">CHAR</div>
-                <div class="col-6 pull-left text-center text-info char-label" id="c_cha">
+                <div class="col-6 pull-left text-center char-label border border-light p-0">CHAR</div>
+                <div class="col-6 pull-left text-center text-info char-label border border-light p-0" id="c_cha">
                   <input type="text" class="text-center carac char_val" value="50%" id="charisma">
                 </div>
               </div>
             </div>
-            <div class="row mb-4">
+            <div class="row">
               <div class="col-4">
-                <div class="col-6 pull-left text-center char-label">CHAN</div>
-                <div class="col-6 pull-left text-center text-info char-label" id="c_luk">
+                <div class="col-6 pull-left text-center char-label border border-light p-0">CHAN</div>
+                <div class="col-6 pull-left text-center text-info char-label border border-light p-0" id="c_luk">
                   <input type="text" class="text-center carac char_val" value="50%" id="luck">
                 </div>
               </div>
               <div class="col-4">
-                <div class="col-6 pull-left text-center char-label">PERC</div>
-                <div class="col-6 pull-left text-center text-info char-label" id="c_per">
+                <div class="col-6 pull-left text-center char-label border border-light p-0">PERC</div>
+                <div class="col-6 pull-left text-center text-info char-label border border-light p-0" id="c_per">
                   <input type="text" class="text-center carac char_val" value="50%" id="perception">
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-4"></div>
               <div class="col-4">
-                <div class="col-12 text-right text-info char-label" id="c_gld">
+                <div class="col-6 pull-left text-center char-label border border-light p-0">PO</div>
+                <div class="col-6 pull-left text-center text-info char-label border border-light p-0" id="c_per">
                   <input type="text" class="text-center char_val" value="0" id="gold">
-                  <span class="po_label">PO</span>
                 </div>
               </div>
-              <div class="col-4"></div>
             </div>
           </div>
         </div>
+
+      <!-- STORY -->
+        <div class="card z-depth-3 text-white elegant-color border border-light mb-4 col-lg-6 col-xl-12 float-right">
+            <div class="card-header">
+              <span class="float-right">
+                <kbd>Ctrl</kbd> + <kbd>S</kbd> ou cliquer <i class="fa fa-arrow-right"></i>
+                <button class="btn btn-secondary btn-xs" id="save_story"><i class="fa fa-save"></i></button>
+              </span>
+              <p class="">
+                <a data-toggle="collapse" href="#collapse1" class="float-left">
+                  <i class="fa fa-eye"></i>
+                </a>
+                &#xA0;&#xA0;Histoire
+              </p>
+            </div>
+            <div id="collapse1" class="panel-collapse show">
+              <div class="card-body p-2" id="story-card-body">
+                <textarea id="story" class="form-control"></textarea>
+              </div>
+            </div>
+          </div>
       </div>
     <!-- /CHARACTERISTICS -->
 
-    </div>
-  </div>
-  <div class="col-xl-4 float-right mb-4">
-
-  <!-- STORY -->
-    <div class="row mb-4">
-      <div class="col-lg-12 char_panel">
-        <div class="card z-depth-3 text-white elegant-color border border-light">
-          <div class="card-header">
-            <span class="float-right">
-              <kbd>Ctrl</kbd> + <kbd>S</kbd> ou cliquer <i class="fa fa-arrow-right"></i>
-              <button class="btn btn-secondary btn-xs" id="save_story"><i class="fa fa-save"></i></button>
-            </span>
-            <p class="">
-              <a data-toggle="collapse" href="#collapse1" class="float-left">
-                <i class="fa fa-eye"></i>
-              </a>
-              &#xA0;&#xA0;Histoire
-            </p>
-          </div>
-          <div id="collapse1" class="panel-collapse collapse">
-            <div class="card-body p-2">
-              <textarea id="story" class="form-control" rows="8"></textarea>
+    <!-- SKILLS -->
+      <!-- <div class="row mb-4"> -->
+        <div class="col-lg-6 col-xl-4 char_panel mb-4">
+          <div class="card z-depth-3 text-white elegant-color border border-light">
+            <div class="card-header">
+              <button class="btn btn-success btn-xs float-right" onclick="open_modal('add_edit_skill')"><i class="fa fa-plus"></i>
+              </button>
+              <p class="">Dons de <span class="name"></span></p>
+            </div>
+            <div class="card-body scrollbar-black" id="skills">
+              <table class="table table-striped table-hover table-sm dt-responsive nowrap" id="skill_table" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>Don</th>
+                    <th>Co&#xFB;t</th>
+                    <th>Effet</th>
+                    <th class="th-modif-btn">Modif.</th>
+                  </tr>
+                </thead>
+              </table>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  <!-- /STORY -->
+      <!-- </div> -->
+    <!-- /SKILLS -->
 
-  <!-- INVENTORY -->
-    <div class="row">
-      <div class="col-lg-12 char_panel">
-        <div class="card z-depth-3 text-white elegant-color border border-light">
-          <div class="card-header">
-            <button class="btn btn-success btn-xs float-right" onclick="open_modal('add_edit_item')"><i class="fa fa-plus"></i>
-            </button>
-            <p class="">Inventaire</p>
-          </div>
-          <div class="card-body scrollbar-black" id="inventory">
-            <table class="table table-striped table-hover table-sm" id="inv_table" cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Nom</th>
-                  <th>Desc</th>
-                  <th class="th-modif-btn"></th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+    <!-- INVENTORY -->
+      <!-- <div class="row"> -->
+        <div class="col-lg-6 col-xl-4 char_panel mb-4">
+          <div class="card z-depth-3 text-white elegant-color border border-light">
+            <div class="card-header">
+              <button class="btn btn-success btn-xs float-right" onclick="open_modal('add_edit_item')"><i class="fa fa-plus"></i>
+              </button>
+              <p class="">Inventaire</p>
+            </div>
+            <div class="card-body scrollbar-black" id="inventory">
+              <table class="table table-striped table-hover table-sm dt-responsive nowrap" id="inv_table" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Desc</th>
+                    <th class="th-modif-btn"></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  <!-- /INVENTORY -->
+      <!-- </div> -->
+    <!-- /INVENTORY -->
 
+    </div>
   </div>
+
   <div class="clearfix"></div>
 
-<!-- SKILLS -->
-  <div class="col-lg-12 char_panel">
-    <div class="card z-depth-3 text-white elegant-color border border-light">
-      <div class="card-header">
-        <button class="btn btn-success btn-xs float-right" onclick="open_modal('add_edit_skill')"><i class="fa fa-plus"></i>
-        </button>
-        <p class="">Dons de <span class="name"></span></p>
-      </div>
-      <div class="card-body scrollbar-black" id="skills">
-        <table class="table table-striped table-hover table-sm" id="skill_table" cellspacing="0" width="100%">
-          <thead>
-            <tr>
-              <th>Don</th>
-              <th>Co&#xFB;t</th>
-              <th>Effet</th>
-              <th class="th-modif-btn">Modif.</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
-  </div>
-<!-- /SKILLS -->
-
 </div>
-<!-- /CHARACTER SHEET -->
+<!-- /CHARACTER_SHEET -->
 
 <!-- SKILL ADD/EDIT MODAL -->
 <div class="modal fade" id="add_edit_skill" role="dialog">
