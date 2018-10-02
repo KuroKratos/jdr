@@ -31,11 +31,57 @@ kbd {
   content: "\00a0 ";
 }
 
-.char_val {
-  width: 100%; text-align: center !important;
+#strength, #strength-base {
+  /* background-color: #8f0e0e; */
+  background-color: #79541c;
+  color:white;
+}
+#intellect, #intellect-base {
+  /* background-color: #0e1b8f; */
+  background-color: #e93e0a;
+  color:white;
+}
+#dexterity, #dexterity-base {
+  /* background-color: #d13100; */
+  background-color: #3f8315;
+  color:white;
+}
+#constitution, #constitution-base {
+  /* background-color: #19630a; */
+  background-color: #a7142d;
+  color:white;
+}
+#willpower, #willpower-base {
+  /* background-color: #4a0a63; */
+  background-color: #533ab6;
+  color:white;
+}
+#size, #size-base {
+  /* background-color: #3f3f3f; */
+  background-color: #3f3f3f;
+  color:white;
+}
+#charisma, #charisma-base {
+  /* background-color: #af1273; */
+  background-color: #151468;
+  color:white;
+}
+#luck, #luck-base {
+  /* background-color: #7e7500; */
+  background-color: #165c85;
+  color:white;
+  border-bottom: 1px solid white !important;
+}
+#gold {
+  background-color: #ffd900;
+  color:black;
+  border-top: 1px solid white !important;
+  font-size: 12px;
 }
 
-
+#charsheet {
+  margin-left: 25px;
+}
 
 .char_summary * {
   border-radius: 0 !important;
@@ -636,10 +682,21 @@ table.dataTable {
   height: 33px !important;
 }
 
-.carac, #gold {
+/* #gold {
   border: none !important;
   height: 31px !important;
   padding: 0 !important;
+} */
+
+.carac, #gold {
+  padding: 0 !important;
+  width:37px;
+  height:37px;
+  line-height:37px;
+  text-align:center;
+  border: 1px solid white;
+  border-top:none;
+  border-right:none;
 }
 
 .text-info {
@@ -648,4 +705,47 @@ table.dataTable {
 
 #story-card-body {
   height: 162px;
+}
+
+.carac_line {
+  height:37px !important;
+  line-height: 36px;
+  width:100%;
+  text-align: right;
+}
+
+#sidebar {
+  width:250px;
+  position: fixed;
+  top:0;
+  left:0;
+  height: 100vh;
+  max-height:100vh;
+  overflow-y: auto;
+  z-index: 1;
+  padding-top:56px;
+  margin-left: -212px;
+}
+
+.stat_col {
+  width:100%;
+  float:right;
+  margin-top:-1px;
+}
+
+.stat-base {
+  width:37px;
+  height:37px;
+  display: inline-block;
+  border: 1px solid white;
+  padding:0;
+  margin:0;
+  text-align:center;
+  line-height:36px;
+}
+
+.carac_label {
+  display: inline-block;
+  width:130px;
+  text-align:left;
 }

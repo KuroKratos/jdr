@@ -45,7 +45,7 @@ $(document).ready(function() {
 });
 
 function get_all_char_info() {
-  $.post('index.php/character/all',function (result) { console.log(result); fill_char_sheets(result, false); }, 'json');
+  $.post('index.php/character/all',function (result) { console.log(result); fill_char_sheets(result, true); }, 'json');
 }
 
 function fill_char_sheets(chars, suffix) {
@@ -55,14 +55,14 @@ function fill_char_sheets(chars, suffix) {
     //$('#c_lvl_'+c.char_id).html('Niveau ' + c.level);
 
     // STATS
-    $('#c_str_'+c.char_id).html(c.strength     + (suffix ? '%' : '') );
+    $('#c_for_'+c.char_id).html(c.strength     + (suffix ? '%' : '') );
     $('#c_dex_'+c.char_id).html(c.dexterity    + (suffix ? '%' : ''));
     $('#c_luk_'+c.char_id).html(c.luck         + (suffix ? '%' : ''));
     $('#c_con_'+c.char_id).html(c.constitution + (suffix ? '%' : ''));
     $('#c_cha_'+c.char_id).html(c.charisma     + (suffix ? '%' : ''));
-    $('#c_per_'+c.char_id).html(c.perception   + (suffix ? '%' : ''));
-    $('#c_edu_'+c.char_id).html(c.education    + (suffix ? '%' : ''));
-    $('#c_int_'+c.char_id).html(c.intelligence + (suffix ? '%' : ''));
+    $('#c_pou_'+c.char_id).html(c.willpower    + (suffix ? '%' : ''));
+    $('#c_tai_'+c.char_id).html(c.size         + (suffix ? '%' : ''));
+    $('#c_int_'+c.char_id).html(c.intellect    + (suffix ? '%' : ''));
 
     // FIGHT
     $('#c_wpn_'+c.char_id).html(c.fight_melee    + (suffix ? '%' : ''));

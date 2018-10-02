@@ -3,6 +3,10 @@ var item_table;
 
 $(document).ready(function () {
 
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+
   // Progress bars animation
   $('.progress .progress-bar').css("width",
     function () {
@@ -116,6 +120,7 @@ $(document).ready(function () {
   $.each(char, function (index, value) {
     $('#' + index).val(value);
     $('#' + index).html(value);
+    $('#' + index + "-base").html(value/5);
   });
 
   $('.name').html(char.name);
@@ -140,7 +145,23 @@ $(document).ready(function () {
           3000
           );
 
+  total_stats_update();
+
 });
+
+function total_stats_update() {
+  var total = 0;
+
+  total += parseInt($("#strength").val().replace("%",""));
+  total += parseInt($("#intellect").val().replace("%",""));
+  total += parseInt($("#dexterity").val().replace("%",""));
+  total += parseInt($("#constitution").val().replace("%",""));
+  total += parseInt($("#willpower").val().replace("%",""));
+  total += parseInt($("#size").val().replace("%",""));
+  total += parseInt($("#charisma").val().replace("%",""));
+
+  $("#total_stats").html(total);
+}
 
 // Update skill (id, name, description, cost)
 function edit_skill(id) {
@@ -410,19 +431,46 @@ function save_char_carac(input) {
     async: false,
     url: base_url + "/character/update",
     success: function (data) {
+      // GREEN FLASH ON THE INPUT TO SHOW THAT VALUE IS SAVED
       input.css('background-color', "lightgreen");
       setTimeout(function () {
         input.css('background-color', old_bg);
       }, 500);
       input.blur();
 
+      // IF CON OR SIZ : REFRESH HP
+      if (input.attr('id') == "constitution" || input.attr('id') == "size") {
+        var con = parseInt($("#constitution").val().replace("%",""));
+        var siz = parseInt($("#size").val().replace("%",""));
+        var hp = (con+siz)*2;
+        $("#hp_max").val(hp);
+        save_char_carac($("#hp_max"));
+      }
+
+      // IF INT OR WIL : REFRESH PP
+      if (input.attr('id') == "willpower" || input.attr('id') == "intellect") {
+        var wil = parseInt($("#willpower").val().replace("%",""));
+        var int = parseInt($("#intellect").val().replace("%",""));
+        var pp = (wil+int)*2;
+        $("#pp_max").val(pp);
+        save_char_carac($("#pp_max"));
+      }
+
+      // IF HP : REFRESH BAR
       if (input.attr('id').match('hp')) {
         change_bar_val($('#hp_cur').val(), $('#hp_max').val(), 'hp');
       }
 
+      // IF PP : REFRESH BAR
       if (input.attr('id').match('pp')) {
         change_bar_val($('#pp_cur').val(), $('#pp_max').val(), 'pp');
       }
+
+      // REFRESH BASE STAT POINT (STAT%/5)
+      $("#"+input.attr("id")+"-base").html(parseInt(input.val().replace('%', ''))/5);
+
+      // REFRESH TOTAL STAT COUNTER
+      total_stats_update();
 
     },
     error: function (e, d, l) {
@@ -525,3 +573,22 @@ function escapeHtml (string) {
     return entityMap[s];
   });
 }
+
+var sidebar_state = "minimized";
+//Check if navbar is expanded or minimized and handle 
+$('#sidebar-toggle').click(function() {
+  console.log(sidebar_state);
+  if (sidebar_state == "expanded") {
+    $('#sidebar').animate({'margin-left': '-212px'});
+    $('#stats_rules').css("display","none");
+    $('#sidebar-toggle').html(">>>");
+    sidebar_state = "minimized";
+  } else {
+    if (sidebar_state == "minimized") {
+      $('#sidebar').animate({'margin-left': '0px'});
+      $('#stats_rules').css("display","block");
+      $('#sidebar-toggle').html("<<<");
+      sidebar_state = "expanded";
+    }
+  }
+});

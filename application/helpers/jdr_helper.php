@@ -155,21 +155,43 @@ namespace {
     echo "</div>";
   }
 
-  function char_stat_block ($title, $label, $id, $value, $gold=null, $mb=2) {
-    $text_class = ($gold) ? "amber-text" : "text-info";
+  function char_stat_block ($title, $label, $id, $value, $name, $gold=null, $mb=2) {
+    $text_class = ($gold) ? "amber-text" : "";
 
     echo "<div class='col-4 px-1 mb-".$mb."' data-toggle='tooltip' title='$title'>";
-    echo "      <table style='width: 100%; border: 1px solid rgba(255,255,255,0.5); background-color: rgba(255,255,255,0.15);'>";
+    echo "      <table style='width: 100%; border: 1px solid white;' id='$name-base'>";
     echo "        <tr>";
     if($gold === null) {
-      echo "          <td style='text-align: center; font-weight: bold; width: 30%; font-size:10px !important; line-height:11px;'>$label</td>";
+      echo "          <td style='text-align: center; font-weight: bold; width: 50%; font-size:12px !important; line-height:12px;'>$label</td>";
     }
 
-    echo "          <td style='text-align: center; padding: 0px; font-size:10px !important;'>";
-    echo "            <span class='text-right $text_class char_stat_val' style='font-weight: bold; font-size: 10px !important;' id='$id'>$value".(($gold) ? "" : "")."</span>";
+    echo "          <td style='text-align: center; padding: 0px; font-size:12px !important;'>";
+    echo "            <span class='text-right $text_class char_stat_val' style='font-weight: bold; font-size: 12px !important;' id='$id'>$value".(($gold) ? "" : "")."</span>";
     echo "          </td>";
     echo "        </tr>";
     echo "      </table>";
+    echo "</div>";
+  }
+
+  function sidebar_carac ($column, $abrev, $name) {
+    echo "<div class='carac_line' ".($column == "gold" ? "style='margin-top:30px;'" : "").">";
+    echo "  <div class='carac_label' ".($column == "gold" ? "style='width:191px'" : "").">";
+    //echo "    <img style='width:30px;' src='".assets_url("images/icons/$abrev.png")."'>";
+    echo "    $name :";
+    echo "  </div>";
+    if($column != "gold") {
+      echo "  <span id='$column-base' class='stat-base border-bottom-0'></span> <i class='fa fa-long-arrow-right'></i>";
+    }
+    echo "  <input 
+              type='text' 
+              class='".($column != "gold" ? "carac " : "")."char_val' 
+              value='50%' 
+              id='$column' 
+              data-toggle='tooltip' 
+              data-placement='right' 
+              data-html='true' 
+              title='".($name)."'
+            >";
     echo "</div>";
   }
 

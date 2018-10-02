@@ -48,7 +48,7 @@
           </div>
 
           <div class="row">
-            <label class="col-7 float-left">Mod dé</label>
+            <label class="col-7 float-left">Nombre de dés</label>
             <div class="col-5 float-right mb-1">
               <input type="text" class="form-control" id="mod_<?=$id?>" value="2" >
             </div>
@@ -86,7 +86,7 @@
         </div>
 
         <div class="row">
-          <label class="col-7 float-left">Mod dé</label>
+          <label class="col-7 float-left">Nombre de dés</label>
           <div class="col-5 float-right mb-1">
             <input type="text" class="form-control" id="mod_mob" value="2" >
           </div>
@@ -119,7 +119,7 @@
   var default_hp      = 200;
   var default_percent = 80;
   var default_dice    = 8;
-  var default_mod     = 2;
+  var default_mod     = 1;
   var panel_color     = ['FFaa8855','aa88FF55','00dd8855','88aaFF55','FF88aa55'];
 
   // CHECK ALL ACTIVE
@@ -198,14 +198,14 @@
 
         // CRITICAL SUCCESS
         else if (roll_test <= 5) {
-          damage   = Math.floor((parseInt(pj.dice) + parseInt(pj.mod))*1.5);
+          damage   = Math.floor(parseInt(pj.mod)*parseInt(pj.dice)*1.5);
           tr_style = "background-color: #ffdd00";
           td_dmg   = "Dégâts : " + damage.toString().padStart(3);
         }
 
         // SUCCESS
         else if(roll_test <= pj.percent) {
-          damage   = (Math.floor(Math.random() * parseInt(pj.dice)) + 1) + parseInt(pj.mod);
+          damage   = (Math.floor(Math.random() * parseInt(pj.dice)) + 1) * parseInt(pj.mod);
           tr_style = "background-color: #aaffaa";
           td_dmg   = "Dégâts : " + damage.toString().padStart(3);
         }
@@ -237,12 +237,12 @@
           }
           // FOE CRITICAL FAILURE
           if (mob_roll <= 5) {
-            mob_damage   = Math.floor((parseInt(battle_data.mob.dice) + parseInt(battle_data.mob.mod))*1.5);
+            mob_damage   = Math.floor(parseInt(battle_data.mob.dice) * parseInt(battle_data.mob.mod) * 1.5);
             td_mob_dmg   = "Dégâts mob : " + mob_damage.toString().padStart(3);
           }
           // FOE SUCCESS
           else if(roll_test <= battle_data.mob.percent) {
-            mob_damage   = (Math.floor(Math.random() * parseInt(battle_data.mob.dice)) + 1) + parseInt(battle_data.mob.mod);
+            mob_damage   = (Math.floor(Math.random() * parseInt(battle_data.mob.dice)) + 1) * parseInt(battle_data.mob.mod);
             td_mob_dmg   = "Dégâts mob : " + mob_damage.toString().padStart(3);
           }
           // FOE FAILURE
